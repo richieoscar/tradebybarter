@@ -12,7 +12,6 @@ class WelcomeScreen extends StatelessWidget{
             Expanded(child: OnBoardScreen()),
             Text("Skip"),
             SizedBox(height: 20,),
-            // ignore: deprecated_member_use
            /* FlatButton(
               color: Color(0xffa60000),
               child: Text('Skip'),
