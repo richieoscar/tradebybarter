@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:dots_indicator/dots_indicator.dart';
 
+import '../constants.dart';
+
 class OnBoardScreen extends StatefulWidget{
   @override
   _OnBoardScreenState createState() => _OnBoardScreenState();
@@ -17,22 +19,54 @@ List<Widget> _pages = [
   Column(
     children: [
       Expanded(child: Image.asset("images/onboardscreen-1.png")),
-      Text("Exchange your items for another"),
-      Text("Bring your item and get to trade with another trader"),
+      Text("Exchange your items for another", style: KPageViewTextStyle, textAlign: TextAlign.center),
+      SizedBox(
+        height: 20,
+      ),
+      Text("Bring your item and get",style: KPageViewTextStyle2, textAlign: TextAlign.center ),
+      SizedBox(
+        height: 20,
+      ),
+      Text("to trade with another trader",style: KPageViewTextStyle2, textAlign: TextAlign.center ),
+      SizedBox(
+          height: 20
+      ),
+
     ],
   ),
   Column(
     children: [
       Expanded(child: Image.asset("images/onboardscreen-2.png")),
-      Text("Exchange your items for another"),
-      Text("Bring your item and get to trade with another trader"),
+      Text("Exchange your items for another",style: KPageViewTextStyle,textAlign: TextAlign.center ),
+      SizedBox(
+        height: 20,
+      ),
+      Text("Bring your item and get",style: KPageViewTextStyle2, textAlign: TextAlign.center ),
+      SizedBox(
+        height: 20,
+      ),
+      Text("to trade with another trader",style: KPageViewTextStyle2, textAlign: TextAlign.center ),
+      SizedBox(
+          height: 20
+      ),
     ],
   ),
   Column(
     children: [
       Expanded(child: Image.asset("images/onboardscreen-3.png")),
-      Text("Exchange your items for another"),
-      Text("Bring your item and get to trade with another trader"),
+      Text("Exchange your items for another", style: KPageViewTextStyle,textAlign: TextAlign.center ),
+      SizedBox(
+        height: 20,
+      ),
+      Text("Bring your item and get",style: KPageViewTextStyle2, textAlign: TextAlign.center ),
+      SizedBox(
+        height: 20,
+      ),
+      Text("to trade with another trader",style: KPageViewTextStyle2, textAlign: TextAlign.center ),
+      SizedBox(
+        height: 20
+      ),
+
     ],
   ),
 ];
@@ -48,8 +82,9 @@ class _OnBoardScreenState extends State<OnBoardScreen>{
             controller: _controller,
             children: _pages,
              onPageChanged: (index){
-              _currentPage = index;
-
+              setState(() {
+                _currentPage = index;
+              });
              },
           ),
          ),
@@ -66,10 +101,11 @@ class _OnBoardScreenState extends State<OnBoardScreen>{
             ),
           ),
           SizedBox(
-            height: 20,
+            height: 200,
           ),
         ],
       ),
+      
 
     );
   }

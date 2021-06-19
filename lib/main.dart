@@ -1,6 +1,7 @@
 import 'dart:async';
 
 import 'package:flutter/material.dart';
+import 'package:trade_by_barter/screens/registerScreen.dart';
 import 'screens/onboardScreen.dart';
 
 void main() {
