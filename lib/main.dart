@@ -1,7 +1,8 @@
 import 'dart:async';
 
 import 'package:flutter/material.dart';
-import 'screens/welcome_screen.dart';
+import 'package:trade_by_barter/screens/registerScreen.dart';
+import 'screens/onboardScreen.dart';
 
 void main() {
   runApp(MyApp());
@@ -29,7 +30,7 @@ class _SplashScreenState extends State<SplashScreen>{
         seconds: 5,
       ),(){
         Navigator.pushReplacement(context, MaterialPageRoute(
-            builder:(context) => WelcomeScreen(),
+            builder:(context) => OnBoardScreen(),
         ));
     }
     );
