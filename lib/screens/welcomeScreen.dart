@@ -13,49 +13,11 @@ class WelcomeScreen extends StatelessWidget {
               SizedBox(
                 height: 200,
               ),
-              Image.asset("images/signin.png"),
-              SizedBox(
-                height: 100,
-              ),
-              Container(
-                width: 250.0,
-                child: ElevatedButton(
-                  style: ButtonStyle(
-                    backgroundColor:
-                        MaterialStateProperty.all(Color(0xffa60000)),
-                    shape: MaterialStateProperty.all(RoundedRectangleBorder(
-                      borderRadius: BorderRadius.circular(15.0),
-                    )),
-                  ),
-                  // color: Color(0xffa60000),
-                  child: Text('Sign Up'),
-                  onPressed: () {},
+              Text("Welcome",
+                style: TextStyle(
+                  fontWeight: FontWeight.bold,
+                  fontSize: 20.0,
                 ),
-              ),
-              SizedBox(
-                height: 10,
-              ),
-              Container(
-                width: 250.0,
-                child: ElevatedButton(
-                  style: ButtonStyle(
-                    backgroundColor: MaterialStateProperty.all(Colors.yellow),
-                    shape: MaterialStateProperty.all(RoundedRectangleBorder(
-                      borderRadius: BorderRadius.circular(15.0),
-                    )),
-                  ),
-                  // color: Color(0xffa60000),
-                  child: Text(
-                    "Login",
-                    style: TextStyle(
-                      color: Colors.black,
-                    ),
-                  ),
-                  onPressed: () {},
-                ),
-              ),
-              SizedBox(
-                height: 20,
               ),
             ],
           ),
