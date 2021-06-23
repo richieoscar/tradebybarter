@@ -3,6 +3,15 @@
    <application
         android:label="trade_by_barter"
         android:icon="@mipmap/ic_launcher">
+       
+        <!-- Google Map API key  -->
+         <meta-data android:name="com.google.android.geo.API_KEY"
+           android:value="AIzaSyACyXwsHvZPw6siibaCHvos8kqsXSEIsxs"/>
+
+        <!-- Permission -->
+          <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
+          <uses-permission android:name="android.permission.INTERNET"/>
+        
         <activity
             android:name=".MainActivity"
             android:launchMode="singleTop"

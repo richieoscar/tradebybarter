@@ -12,7 +12,7 @@ class MyTestApp extends StatelessWidget {
     return MaterialApp(
       home: Scaffold(
         appBar: AppBar(
-          title: Text("Home Page Screen"),
+          title: Text("Homepage Screen"),
           backgroundColor: Colors.brown,
           centerTitle: true,
         ),
@@ -52,7 +52,7 @@ class MyTestApp extends StatelessWidget {
                         decoration: InputDecoration(
                           enabledBorder: const OutlineInputBorder(
                             borderSide: BorderSide(
-                              color: Color(0xFFFCE302),
+                              color: Color(0xFFFCE303),
                             ),
                           ),
                           focusedBorder: OutlineInputBorder(
@@ -78,10 +78,24 @@ class MyTestApp extends StatelessWidget {
                       ),
                     ),
                     Padding(
-                      padding: const EdgeInsets.only(left: 50.0),
-                      child: Icon(
-                        Icons.menu,
-                        color: HexColor("#A60000"),
+                      padding: const EdgeInsets.only(
+                        left: 50.0,
+                        right: 10.0,
+                      ),
+                      child: Container(
+                        // margin: const EdgeInsets.all(30.0),
+                        padding: const EdgeInsets.all(10.0),
+                        decoration: BoxDecoration(
+                          border: Border.all(
+                            width: 2,
+                            color: HexColor("#A60000"),
+                          ),
+                          borderRadius: BorderRadius.all(Radius.circular(5.0)),
+                        ),
+                        child: Icon(
+                          Icons.menu,
+                          color: HexColor("#FCE303"),
+                        ),
                       ),
                     ),
                   ],
@@ -400,7 +414,7 @@ class MyTestApp extends StatelessWidget {
                                       ),
                                       ElevatedButton(
                                         style: ElevatedButton.styleFrom(
-                                          primary: HexColor("#FCE302"),
+                                          primary: HexColor("#FCE303"),
                                           // padding: EdgeInsets.symmetric(
                                           //     horizontal: 20, vertical: 20),
                                         ),
