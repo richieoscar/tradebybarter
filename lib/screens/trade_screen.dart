@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:trade_by_barter/screens/bottom_nav_bar.dart';
+
 
 class Trade extends StatefulWidget {
   @override
@@ -9,28 +11,16 @@ class _TradeState extends State<Trade> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      bottomNavigationBar: BottomNavBar(),
       backgroundColor: Colors.white60,
-      // appBar: AppBar(
-      //   elevation: 0,
-      //   title: Center(
-      //     child: Text(
-      //       "Trader's List",
-      //       style: TextStyle(
-      //         color: Colors.black,
-      //         fontWeight: FontWeight.bold,
-      //       ),
-      //     ),
-      //   ),
-      //   backgroundColor: Colors.white,
-      // ),
       body: Column(
         children: [
           SizedBox(height: 50),
           text("Trader's List"),
-
           Container(
+
             height: 500,
-            margin: EdgeInsets.fromLTRB(10, 50.0, 20.0, 0.0),
+            margin: EdgeInsets.fromLTRB(10, 25.0, 20.0, 0.0),
             decoration: BoxDecoration(shape: BoxShape.rectangle, boxShadow: [
               BoxShadow(
                 color: Colors.white,
@@ -47,7 +37,7 @@ class _TradeState extends State<Trade> {
                 imageRow(
                     "images/populardemand6.png", "images/populardemand2.png"),
                 imageRow(
-                    "images/populardemand6.png", "images/populardemand6.png"),
+                    "images/populardemand2.png", "images/populardemand6.png"),
                 imageRow(
                     "images/populardemand6.png", "images/populardemand5.png"),
               ],
@@ -57,7 +47,16 @@ class _TradeState extends State<Trade> {
           button(),
         ],
       ),
+
     );
+  }
+
+  int _selectedIndex =0;
+  void _onItemTapped(int index) {
+    setState(() {
+      _selectedIndex = index;
+
+    });
   }
 
   Widget imageRow(String image1, String image2) {
@@ -67,6 +66,9 @@ class _TradeState extends State<Trade> {
         mainAxisAlignment: MainAxisAlignment.center,
         children: [
           Container(
+            decoration: BoxDecoration(
+              borderRadius: BorderRadius.circular(30.0),
+            ),
             child: Image.asset(
               image1,
               width: 110.0,
@@ -76,8 +78,11 @@ class _TradeState extends State<Trade> {
             width: 25.0,
           ),
           Container(
+            decoration: BoxDecoration(
+              borderRadius: BorderRadius.circular(30.0),
+            ),
             child: Image.asset(
-              image1,
+              image2,
               width: 110.0,
             ),
           ),

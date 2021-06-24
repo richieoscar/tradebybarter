@@ -18,11 +18,7 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
 
       debugShowCheckedModeBanner: false,
-<<<<<<< HEAD
       home: Trade(),
-=======
-      home: BottomNavBar(),
->>>>>>> bottomnavbar
     );
   }
 }
