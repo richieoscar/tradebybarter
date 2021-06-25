@@ -1,6 +1,7 @@
  import 'dart:async';
 
 import 'package:flutter/material.dart';
+import 'package:trade_by_barter/screens/filterScreen.dart';
 import 'package:trade_by_barter/screens/registerScreen.dart';
 import 'package:trade_by_barter/screens/signup_login_screen.dart';
 import 'package:trade_by_barter/screens/welcomeScreen.dart';
@@ -18,7 +19,7 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
 
       debugShowCheckedModeBanner: false,
-      home: BottomNavBar(),
+      home: SplashScreen(),
     );
   }
 }
@@ -33,10 +34,10 @@ class _SplashScreenState extends State<SplashScreen>{
   void initState() {
     Timer(
       Duration(
-        seconds: 5,
+        seconds: 3,
       ),(){
         Navigator.pushReplacement(context, MaterialPageRoute(
-            builder:(context) => OnBoardScreen(),
+            builder:(context) => FilterScreen(),
         ));
     }
     );

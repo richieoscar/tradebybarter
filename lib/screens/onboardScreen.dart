@@ -75,35 +75,37 @@ class _OnBoardScreenState extends State<OnBoardScreen>{
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: Column(
-        children: [
-         Expanded(
-           child: PageView(
-            controller: _controller,
-            children: _pages,
-             onPageChanged: (index){
-              setState(() {
-                _currentPage = index;
-              });
-             },
-          ),
-         ),
-          SizedBox(
-            height: 20,
-          ),
-          new DotsIndicator(
-            dotsCount: _pages.length,
-            position: _currentPage.toDouble(),
-            decorator: DotsDecorator(
-              size: const Size.square(9.0),
-              activeSize: const Size(18.0, 9.0),
-              activeShape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(5.0)),
+      body: SafeArea(
+        child: Column(
+          children: [
+           Expanded(
+             child: PageView(
+              controller: _controller,
+              children: _pages,
+               onPageChanged: (index){
+                setState(() {
+                  _currentPage = index;
+                });
+               },
             ),
-          ),
-          SizedBox(
-            height: 200,
-          ),
-        ],
+           ),
+            SizedBox(
+              height: 20,
+            ),
+            new DotsIndicator(
+              dotsCount: _pages.length,
+              position: _currentPage.toDouble(),
+              decorator: DotsDecorator(
+                size: const Size.square(9.0),
+                activeSize: const Size(18.0, 9.0),
+                activeShape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(5.0)),
+              ),
+            ),
+            SizedBox(
+              height: 200,
+            ),
+          ],
+        ),
       ),
       
 
