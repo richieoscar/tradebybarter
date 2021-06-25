@@ -1,13 +1,8 @@
  import 'dart:async';
-
 import 'package:flutter/material.dart';
-import 'package:trade_by_barter/screens/registerScreen.dart';
-import 'package:trade_by_barter/screens/signup_login_screen.dart';
-import 'package:trade_by_barter/screens/welcomeScreen.dart';
+import 'package:trade_by_barter/screens/category_screen.dart';
+import 'screens/category_screen.dart';
 import 'screens/onboardScreen.dart';
-import 'screens/trade_screen.dart';
-import 'screens/signup_login_screen.dart';
-import 'screens/bottom_nav_bar.dart';
 
 void main() {
   runApp(MyApp());
@@ -18,7 +13,7 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
 
       debugShowCheckedModeBanner: false,
-      home: Trade(),
+      home: Category(),
     );
   }
 }
