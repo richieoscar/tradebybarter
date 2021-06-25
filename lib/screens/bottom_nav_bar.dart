@@ -22,8 +22,7 @@ class _BottomNavBarState extends State<BottomNavBar> {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      bottomNavigationBar: BottomNavigationBar(
+    return BottomNavigationBar(
         backgroundColor: Color(0xffa60000),
         type: BottomNavigationBarType.fixed,
         unselectedItemColor: Colors.white.withOpacity(.50),
@@ -52,7 +51,6 @@ class _BottomNavBarState extends State<BottomNavBar> {
         ],
         currentIndex: _selectedIndex,
         onTap: _onItemTapped,
-      ),
-    );
+      );
   }
 }
