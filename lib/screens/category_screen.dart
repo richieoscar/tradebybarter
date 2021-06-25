@@ -7,7 +7,6 @@ class Category extends StatefulWidget {
 }
 
 class _CategoryState extends State<Category> {
-  String dropdownValue = 'One';
 
   @override
   Widget build(BuildContext context) {
