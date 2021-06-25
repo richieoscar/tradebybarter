@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:trade_by_barter/screens/category_screen.dart';
 import 'screens/category_screen.dart';
 import 'screens/onboardScreen.dart';
+import 'screens/trade_item_screen.dart';
 
 void main() {
   runApp(MyApp());
@@ -13,7 +14,7 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
 
       debugShowCheckedModeBanner: false,
-      home: Category(),
+      home: ItemScreen(),
     );
   }
 }
