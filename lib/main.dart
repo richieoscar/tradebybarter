@@ -7,6 +7,7 @@ import 'screens/trade_item_screen.dart';
 void main() {
   runApp(MyApp());
 }
+
 class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
@@ -20,12 +21,12 @@ class MyApp extends StatelessWidget {
   }
 }
 
-class SplashScreen extends StatefulWidget{
+class SplashScreen extends StatefulWidget {
   @override
- _SplashScreenState createState() => _SplashScreenState();
-
+  _SplashScreenState createState() => _SplashScreenState();
 }
-class _SplashScreenState extends State<SplashScreen>{
+
+class _SplashScreenState extends State<SplashScreen> {
   @override
   void initState() {
     Timer(
@@ -39,15 +40,11 @@ class _SplashScreenState extends State<SplashScreen>{
     );
     super.initState();
   }
-  @override
-  Widget build(BuildContext context){
-    return Scaffold(
-      body: Center(
-        child: Hero(
-          tag: "logo",
-          child: Image.asset("images/logo.png"))
-        )
-      );
-  }
 
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+        body: Center(
+            child: Hero(tag: "logo", child: Image.asset("images/logo.png"))));
+  }
 }
