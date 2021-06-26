@@ -1,6 +1,7 @@
 import "package:flutter/material.dart";
 import 'package:flutter/widgets.dart';
 import 'package:hexcolor/hexcolor.dart';
+import 'package:trade_by_barter/screens/bottom_nav_bar.dart';
 
 void main() {
   runApp(MyTestApp());
@@ -11,6 +12,7 @@ class MyTestApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       home: Scaffold(
+        bottomNavigationBar: BottomNavBar(),
         appBar: AppBar(
           title: Text("Homepage Screen"),
           backgroundColor: Colors.brown,
