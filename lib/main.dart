@@ -1,8 +1,11 @@
  import 'dart:async';
 import 'package:flutter/material.dart';
+import 'package:trade_by_barter/screens/homepageScreen.dart';
+import 'package:trade_by_barter/screens/nearbyPeopleScreen.dart';
 
 import 'screens/onboardScreen.dart';
 import 'screens/trade_item_screen.dart';
+import 'screens/filterScreen.dart';
 
 void main() {
   runApp(MyApp());
@@ -14,7 +17,7 @@ class MyApp extends StatelessWidget {
 
       debugShowCheckedModeBanner: false,
 
-      home: ItemScreen(),
+      home:HomeScreen(),
 
     );
   }
