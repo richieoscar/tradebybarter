@@ -1,9 +1,8 @@
-import 'dart:async';
-
+ import 'dart:async';
 import 'package:flutter/material.dart';
-import 'package:trade_by_barter/screens/basedOnLocation.dart';
-import 'package:trade_by_barter/screens/registerScreen.dart';
+
 import 'screens/onboardScreen.dart';
+import 'screens/trade_item_screen.dart';
 
 void main() {
   runApp(MyApp());
@@ -13,8 +12,11 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
+
       debugShowCheckedModeBanner: false,
-      home: SplashScreen(),
+
+      home: ItemScreen(),
+
     );
   }
 }
@@ -28,15 +30,14 @@ class _SplashScreenState extends State<SplashScreen> {
   @override
   void initState() {
     Timer(
-        Duration(
-          seconds: 5,
-        ), () {
-      Navigator.pushReplacement(
-          context,
-          MaterialPageRoute(
-            builder: (context) => Location(),
-          ));
-    });
+      Duration(
+        seconds: 3,
+      ),(){
+        Navigator.pushReplacement(context, MaterialPageRoute(
+            builder:(context) => FilterScreen(),
+        ));
+    }
+    );
     super.initState();
   }
 
