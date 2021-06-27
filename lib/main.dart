@@ -1,6 +1,7 @@
 import 'dart:async';
 import 'package:flutter/material.dart';
-import 'package:trade_by_barter/signUp.dart';
+import 'package:trade_by_barter/screens/signUp.dart';
+import 'package:trade_by_barter/screens/trade_page_upload.dart';
 
 void main() {
   runApp(MyApp());
@@ -31,7 +32,7 @@ class _SplashScreenState extends State<SplashScreen> {
       Navigator.pushReplacement(
           context,
           MaterialPageRoute(
-            builder: (context) => Signup(),
+            builder: (context) => Pageupload(),
           ));
     });
     super.initState();
