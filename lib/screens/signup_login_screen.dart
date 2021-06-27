@@ -30,7 +30,9 @@ class SignUpLoginScreen extends StatelessWidget {
                   ),
                   // color: Color(0xffa60000),
                   child: Text('Sign Up'),
-                  onPressed: () {},
+                  onPressed: () {
+                    AppNavigator.navigateToSignUpScreen(context);
+                  },
                 ),
               ),
               SizedBox(

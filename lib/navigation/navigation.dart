@@ -7,6 +7,7 @@ import 'package:trade_by_barter/screens/filterScreen.dart';
 import 'package:trade_by_barter/screens/homepageScreen.dart';
 import 'package:trade_by_barter/screens/login-screen.dart';
 import 'package:trade_by_barter/screens/nearbyPeopleScreen.dart';
+import 'package:trade_by_barter/screens/signUp.dart';
 import 'package:trade_by_barter/screens/signup_login_screen.dart';
 import 'package:trade_by_barter/screens/trade_screen.dart';
 import 'package:trade_by_barter/screens/welcomeScreen.dart';
@@ -66,8 +67,12 @@ class AppNavigator{
     Navigator.push(context, MaterialPageRoute(builder: (context) => LoginScreen()));
   }
 
-  static void navigateToSignUpScreen(BuildContext context){
+  static void navigateToSignUpLoginScreen(BuildContext context){
     Navigator.push(context, MaterialPageRoute(builder: (context) => SignUpLoginScreen()));
+  }
+
+  static void navigateToSignUpScreen(BuildContext context){
+    Navigator.push(context, MaterialPageRoute(builder: (context) => Signup()));
   }
 
   static void navigateToFilterScreen(BuildContext context){

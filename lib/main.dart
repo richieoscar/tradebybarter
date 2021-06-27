@@ -5,6 +5,7 @@ import 'package:trade_by_barter/screens/bottom_nav_bar.dart';
 import 'package:trade_by_barter/screens/category_screen.dart';
 import 'package:trade_by_barter/screens/homepageScreen.dart';
 import 'package:trade_by_barter/screens/nearbyPeopleScreen.dart';
+import 'package:trade_by_barter/screens/signUp.dart';
 import 'package:trade_by_barter/screens/trade_screen.dart';
 
 import 'screens/onboardScreen.dart';
