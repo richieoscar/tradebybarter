@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:trade_by_barter/main.dart';
 import 'package:trade_by_barter/models/product_model.dart';
+import 'package:trade_by_barter/screens/bottom_nav_bar.dart';
 import 'package:trade_by_barter/screens/category_screen.dart';
 import 'package:trade_by_barter/screens/filterScreen.dart';
 import 'package:trade_by_barter/screens/homepageScreen.dart';
@@ -22,6 +23,8 @@ class AppNavigator{
   static const NEAR_BY_PEOPLE_ROUTE = '/nearbyPeople';
   static const TRADERS_LIST_ROUTE = '/traderList';
 
+  //The App Navigator supports Named routes and Material page route navigation types
+
 
   static void navigateTo(BuildContext context, String routeName){
     Navigator.pushNamed(context, routeName);
@@ -40,7 +43,9 @@ class AppNavigator{
   }
 
   static void navigateToWelcomeScreen(BuildContext context){
-    Navigator.push(context, MaterialPageRoute(builder: (context) => WelcomeScreen()));
+    Navigator.pushReplacement(context, MaterialPageRoute(
+      builder:(context) => SignUpLoginScreen(),
+    ));
   }
 
   static void navigateToCategoryScreen(BuildContext context){
@@ -48,6 +53,10 @@ class AppNavigator{
   }
   static void navigateToLocationScreen(BuildContext context){
     Navigator.push(context, MaterialPageRoute(builder: (context) => Trade()));
+  }
+
+  static void navigateToLauncherScreen(BuildContext context){
+    Navigator.push(context, MaterialPageRoute(builder: (context) => Launcher()));
   }
 
   static void navigateToNearByPeopleScreen(BuildContext context){

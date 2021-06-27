@@ -1,8 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:trade_by_barter/components/remember-me.dart';
+import 'package:trade_by_barter/navigation/navigation.dart';
 import '../components/button-component.dart';
 import '../components/password-input-component.dart';
 import '../components/text-input-component.dart';
+import '../constants.dart';
 import '../models/login-model.dart';
 // import '../helpers/validators.dart';
 
@@ -63,18 +65,26 @@ class LoginScreen extends StatelessWidget {
                 SizedBox(
                   height: 20,
                 ),
-                ButtonComponent(
-                  label: "Log in",
-                  textColor: Colors.white,
-                  bgColor: Color.fromRGBO(166, 0, 0, 1),
-                  height: 36,
-                  width: 173,
-                  borderRadius: 16.0,
-                  function: () {
-                    print(_user.email);
-                    print(_user.password);
-                    print(_user.rememberMe);
-                  },
+                Container(
+                  width: 200,
+                  child: (OutlinedButton(
+                    style: ButtonStyle(
+                      backgroundColor: MaterialStateProperty.all(KfilterBorderColors ),
+                      shape: MaterialStateProperty.all(RoundedRectangleBorder(
+                          borderRadius: BorderRadius.circular(20.0))),
+                    ),
+                    onPressed: () {
+                      print('Proceed clicked');
+                      AppNavigator.navigateToLauncherScreen(context);
+                    },
+                    child: Text(
+                      "Login",
+                      style: TextStyle(
+                          color: Colors.white ,
+                          fontWeight: FontWeight.w500,
+                          fontSize: 15),
+                    ),
+                  )),
                 ),
                 SizedBox(
                   height: 30,

@@ -7,15 +7,8 @@ import 'package:trade_by_barter/screens/bottom_nav_bar.dart';
 class HomeScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
-      home: Scaffold(
-        bottomNavigationBar: BottomNavBar(),
-        // appBar: AppBar(
-        //   title: Text("Homepage Screen"),
-        //   backgroundColor: Colors.brown,
-        //   centerTitle: true,
-        // ),
-        body: SafeArea(
+    return
+         SafeArea(
           child: Container(
             child: ListView(children: [
               Padding(
@@ -434,8 +427,6 @@ class HomeScreen extends StatelessWidget {
               ),
             ]),
           ),
-        ),
-      ),
-    );
+        );
   }
 }

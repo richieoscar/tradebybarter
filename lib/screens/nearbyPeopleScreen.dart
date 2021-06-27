@@ -22,7 +22,7 @@ class _NearByPeopleState extends State<NearByPeople> {
   Widget build(BuildContext context) {
     return MaterialApp(
       home: Scaffold(
-        bottomNavigationBar: BottomNavBar(),
+        bottomNavigationBar: Launcher(),
         appBar: AppBar(
           title: Text('Based on Nearby People'),
           backgroundColor: Colors.brown,

@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:trade_by_barter/navigation/navigation.dart';
 import 'package:trade_by_barter/screens/onboardScreen.dart';
 
 class SignUpLoginScreen extends StatelessWidget {
@@ -51,7 +52,9 @@ class SignUpLoginScreen extends StatelessWidget {
                       color: Colors.black,
                     ),
                   ),
-                  onPressed: () {},
+                  onPressed: () {
+                    AppNavigator.navigateToLoginScreen(context);
+                  },
                 ),
               ),
               SizedBox(
