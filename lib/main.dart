@@ -1,4 +1,5 @@
- import 'dart:async';
+
+import 'dart:async';
 import 'package:flutter/material.dart';
 import 'package:trade_by_barter/screens/bottom_nav_bar.dart';
 import 'package:trade_by_barter/screens/category_screen.dart';
@@ -13,6 +14,7 @@ import 'screens/filterScreen.dart';
 void main() {
   runApp(MyApp());
 }
+
 class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
@@ -26,12 +28,12 @@ class MyApp extends StatelessWidget {
   }
 }
 
-class SplashScreen extends StatefulWidget{
+class SplashScreen extends StatefulWidget {
   @override
- _SplashScreenState createState() => _SplashScreenState();
-
+  _SplashScreenState createState() => _SplashScreenState();
 }
-class _SplashScreenState extends State<SplashScreen>{
+
+class _SplashScreenState extends State<SplashScreen> {
   @override
   void initState() {
     Timer(
@@ -45,15 +47,11 @@ class _SplashScreenState extends State<SplashScreen>{
     );
     super.initState();
   }
-  @override
-  Widget build(BuildContext context){
-    return Scaffold(
-      body: Center(
-        child: Hero(
-          tag: "logo",
-          child: Image.asset("images/logo.png"))
-        )
-      );
-  }
 
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+        body: Center(
+            child: Hero(tag: "logo", child: Image.asset("images/logo.png"))));
+  }
 }
