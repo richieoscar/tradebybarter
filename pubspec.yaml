@@ -31,7 +31,6 @@ dependencies:
   cupertino_icons: ^1.0.2
   dots_indicator: ^2.0.0
   search_widget: ^1.0.2
-  hexcolor: ^2.0.4
   google_maps_flutter: ^2.0.6
 
 

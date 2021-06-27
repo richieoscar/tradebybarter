@@ -31,7 +31,7 @@ class _CategoryState extends State<Category> {
           ),
       ),
 
-      bottomNavigationBar: BottomNavBar(),
+    //  bottomNavigationBar: BottomNavBar(),
     );
   }
 
