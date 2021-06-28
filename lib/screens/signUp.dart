@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:trade_by_barter/networking/api_networking.dart';
 
 class Signup extends StatefulWidget {
   const Signup({Key key}) : super(key: key);
@@ -9,8 +10,23 @@ class Signup extends StatefulWidget {
 
 class _SignupState extends State<Signup> {
   bool _obscureText = true;
+  final userNameController = TextEditingController();
+  final firstNameController = TextEditingController();
+  final lastNameController = TextEditingController();
+  final emailController = TextEditingController();
+  final phoneController = TextEditingController();
+  final passwordController = TextEditingController();
+  final rePasswordController = TextEditingController();
 
-  String _password;
+  @override
+  void dispose(){
+    userNameController.dispose();
+    firstNameController.dispose();
+    lastNameController.dispose();
+    passwordController.dispose();
+    rePasswordController.dispose();
+    super.dispose();
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -57,7 +73,7 @@ class _SignupState extends State<Signup> {
                         height: 20,
                       ),
                       Text(
-                        'Full Name',
+                        'Username',
                         style: TextStyle(
                           color: Colors.black45,
                         ),
@@ -73,6 +89,7 @@ class _SignupState extends State<Signup> {
                             border: Border.all(color: Colors.white)),
                         height: 30,
                         child: TextField(
+                          controller: userNameController,
                           textInputAction: TextInputAction.done,
                           autofocus: true,
                           cursorColor: Colors.black54,
@@ -86,6 +103,103 @@ class _SignupState extends State<Signup> {
                       SizedBox(
                         height: 10,
                       ),
+                      Text(
+                        'First Name',
+                        style: TextStyle(
+                          color: Colors.black45,
+                        ),
+                        textAlign: TextAlign.start,
+                      ),
+                      SizedBox(
+                        height: 5,
+                      ),
+                      Container(
+                        decoration: BoxDecoration(
+                            color: Colors.white,
+                            borderRadius: BorderRadius.all(Radius.circular(10)),
+                            border: Border.all(color: Colors.white)),
+                        height: 30,
+                        child: TextField(
+                          controller: firstNameController,
+                          textInputAction: TextInputAction.done,
+                          autofocus: true,
+                          cursorColor: Colors.black54,
+                          decoration: InputDecoration(
+                            contentPadding:
+                                EdgeInsets.only(left: 8, bottom: 16),
+                            border: InputBorder.none,
+                          ),
+                        ),
+                      ),
+                      SizedBox(
+                        height: 10,
+                      ),
+                      Text(
+                        'LastName',
+                        style: TextStyle(
+                          color: Colors.black45,
+                        ),
+                        textAlign: TextAlign.start,
+                      ),
+                      SizedBox(
+                        height: 5,
+                      ),
+
+                      SizedBox(
+                        height: 5,
+                      ),
+                      Container(
+                        decoration: BoxDecoration(
+                            color: Colors.white,
+                            borderRadius: BorderRadius.all(Radius.circular(10)),
+                            border: Border.all(color: Colors.white)),
+                        height: 30,
+                        child: TextField(
+                          controller: lastNameController,
+                          textInputAction: TextInputAction.done,
+                          autofocus: true,
+                          cursorColor: Colors.black54,
+                          decoration: InputDecoration(
+                            contentPadding:
+                                EdgeInsets.only(left: 8, bottom: 16),
+                            border: InputBorder.none,
+                          ),
+                        ),
+                      ),
+                      SizedBox(height: 5),
+                      Text(
+                        'Email',
+                        style: TextStyle(
+                          color: Colors.black45,
+                        ),
+                        textAlign: TextAlign.start,
+                      ),
+                      SizedBox(
+                        height: 5,
+                      ),
+
+                      SizedBox(
+                        height: 5,
+                      ),
+                      Container(
+                        decoration: BoxDecoration(
+                            color: Colors.white,
+                            borderRadius: BorderRadius.all(Radius.circular(10)),
+                            border: Border.all(color: Colors.white)),
+                        height: 30,
+                        child: TextField(
+                          controller: emailController,
+                          textInputAction: TextInputAction.done,
+                          autofocus: true,
+                          cursorColor: Colors.black54,
+                          decoration: InputDecoration(
+                            contentPadding:
+                            EdgeInsets.only(left: 8, bottom: 16),
+                            border: InputBorder.none,
+                          ),
+                        ),
+                      ),
+                      SizedBox(height: 10,),
                       Text(
                         'Phone Number',
                         style: TextStyle(
@@ -93,6 +207,7 @@ class _SignupState extends State<Signup> {
                         ),
                         textAlign: TextAlign.start,
                       ),
+
                       SizedBox(
                         height: 5,
                       ),
@@ -103,102 +218,13 @@ class _SignupState extends State<Signup> {
                             border: Border.all(color: Colors.white)),
                         height: 30,
                         child: TextField(
+                          controller: phoneController,
                           textInputAction: TextInputAction.done,
                           autofocus: true,
                           cursorColor: Colors.black54,
                           decoration: InputDecoration(
                             contentPadding:
-                                EdgeInsets.only(left: 8, bottom: 16),
-                            border: InputBorder.none,
-                          ),
-                        ),
-                      ),
-                      SizedBox(
-                        height: 10,
-                      ),
-                      Text(
-                        'Email Address',
-                        style: TextStyle(
-                          color: Colors.black45,
-                        ),
-                        textAlign: TextAlign.start,
-                      ),
-                      SizedBox(
-                        height: 5,
-                      ),
-                      Container(
-                        decoration: BoxDecoration(
-                            color: Colors.white,
-                            borderRadius: BorderRadius.all(Radius.circular(10)),
-                            border: Border.all(color: Colors.white)),
-                        height: 30,
-                        child: TextField(
-                          textInputAction: TextInputAction.done,
-                          autofocus: true,
-                          cursorColor: Colors.black54,
-                          decoration: InputDecoration(
-                            contentPadding:
-                                EdgeInsets.only(left: 8, bottom: 16),
-                            border: InputBorder.none,
-                          ),
-                        ),
-                      ),
-                      SizedBox(
-                        height: 10,
-                      ),
-                      Text(
-                        'Country',
-                        style: TextStyle(
-                          color: Colors.black45,
-                        ),
-                        textAlign: TextAlign.start,
-                      ),
-                      SizedBox(
-                        height: 5,
-                      ),
-                      Container(
-                        decoration: BoxDecoration(
-                            color: Colors.white,
-                            borderRadius: BorderRadius.all(Radius.circular(10)),
-                            border: Border.all(color: Colors.white)),
-                        height: 30,
-                        child: TextField(
-                          textInputAction: TextInputAction.done,
-                          autofocus: true,
-                          cursorColor: Colors.black54,
-                          decoration: InputDecoration(
-                            contentPadding:
-                                EdgeInsets.only(left: 8, bottom: 16),
-                            border: InputBorder.none,
-                          ),
-                        ),
-                      ),
-                      SizedBox(
-                        height: 10,
-                      ),
-                      Text(
-                        'State of Residence',
-                        style: TextStyle(
-                          color: Colors.black45,
-                        ),
-                        textAlign: TextAlign.start,
-                      ),
-                      SizedBox(
-                        height: 5,
-                      ),
-                      Container(
-                        decoration: BoxDecoration(
-                            color: Colors.white,
-                            borderRadius: BorderRadius.all(Radius.circular(10)),
-                            border: Border.all(color: Colors.white)),
-                        height: 30,
-                        child: TextField(
-                          textInputAction: TextInputAction.done,
-                          autofocus: true,
-                          cursorColor: Colors.black54,
-                          decoration: InputDecoration(
-                            contentPadding:
-                                EdgeInsets.only(left: 8, bottom: 16),
+                            EdgeInsets.only(left: 8, bottom: 16),
                             border: InputBorder.none,
                           ),
                         ),
@@ -223,6 +249,7 @@ class _SignupState extends State<Signup> {
                             border: Border.all(color: Colors.white)),
                         height: 30,
                         child: TextField(
+                          controller: passwordController,
                           obscureText: _obscureText,
                           textInputAction: TextInputAction.done,
                           autofocus: true,
@@ -267,6 +294,7 @@ class _SignupState extends State<Signup> {
                             border: Border.all(color: Colors.white)),
                         height: 30,
                         child: TextField(
+                          controller: rePasswordController,
                           obscureText: _obscureText,
                           textInputAction: TextInputAction.done,
                           autofocus: true,
@@ -295,17 +323,29 @@ class _SignupState extends State<Signup> {
                         height: 20,
                       ),
                       Container(
-                        height: 40,
-                        width: MediaQuery.of(context).size.width,
-                        decoration: BoxDecoration(
-                          borderRadius: BorderRadius.all(Radius.circular(10)),
-                          color: Color(0xffA60000),
-                        ),
-                        child: Center(
-                          child: Text(
-                            'Sign Up',
-                            style: TextStyle(color: Colors.white),
+                        width: 250.0,
+                        child: ElevatedButton(
+                          style: ButtonStyle(
+                            backgroundColor:
+                            MaterialStateProperty.all(Color(0xffa60000)),
+                            shape: MaterialStateProperty.all(RoundedRectangleBorder(
+                              borderRadius: BorderRadius.circular(15.0),
+                            )),
                           ),
+                          // color: Color(0xffa60000),
+                          child: Text('Sign Up'),
+                          onPressed: () {
+                            var userName =userNameController.text;
+                            var firstName = firstNameController.text;
+                            var lastName = lastNameController.text;
+                            var email = emailController.text;
+                            var phone = phoneController.text;
+                            var password = passwordController.text;
+                            var rePassword = rePasswordController.text;
+                           ApiNetworkingManager.signUpUser(userName, firstName, lastName, email, phone, password, rePassword, context);
+
+                           // AppNavigator.navigateToSignUpScreen(context);
+                          },
                         ),
                       ),
                       SizedBox(
