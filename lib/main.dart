@@ -1,5 +1,6 @@
  import 'dart:async';
 import 'package:flutter/material.dart';
+import 'package:trade_by_barter/screens/filterScreen.dart';
 
 import 'screens/onboardScreen.dart';
 import 'screens/trade_item_screen.dart';
@@ -14,7 +15,7 @@ class MyApp extends StatelessWidget {
 
       debugShowCheckedModeBanner: false,
 
-      home: ItemScreen(),
+      home: SplashScreen(),
 
     );
   }
@@ -30,10 +31,10 @@ class _SplashScreenState extends State<SplashScreen>{
   void initState() {
     Timer(
       Duration(
-        seconds: 3,
+        seconds: 5,
       ),(){
         Navigator.pushReplacement(context, MaterialPageRoute(
-            builder:(context) => FilterScreen(),
+            builder:(context) => OnBoardScreen(),
         ));
     }
     );
@@ -42,11 +43,13 @@ class _SplashScreenState extends State<SplashScreen>{
   @override
   Widget build(BuildContext context){
     return Scaffold(
-      body: Center(
-        child: Hero(
-          tag: "logo",
-          child: Image.asset("images/logo.png"))
-        )
+      body: SafeArea(
+        child: Container(
+          decoration: BoxDecoration(
+              image: DecorationImage(
+                  image: AssetImage("images/splashscreenimage.png"), fit: BoxFit.fill)),
+        ),
+      )
       );
   }
 
