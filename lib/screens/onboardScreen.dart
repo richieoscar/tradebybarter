@@ -110,7 +110,6 @@ class _OnBoardScreenState extends State<OnBoardScreen> {
                     borderRadius: BorderRadius.circular(5.0)),
               ),
             ),
-            
             Container(
               width: 200,
               child: (OutlinedButton(
