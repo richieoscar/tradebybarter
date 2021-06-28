@@ -26,6 +26,7 @@ List<Widget> pageView(BuildContext context) {
 
           ),
         ),
+        SizedBox(height: 50,),
         Text("Exchange your items for another",
             style: KPageViewTextStyle, textAlign: TextAlign.center),
         SizedBox(
@@ -44,6 +45,7 @@ List<Widget> pageView(BuildContext context) {
     Column(
       children: [
         Image.asset("images/onboardscreen-2.png"),
+
         Text("Exchange your items for another",
             style: KPageViewTextStyle, textAlign: TextAlign.center),
         SizedBox(
@@ -62,6 +64,7 @@ List<Widget> pageView(BuildContext context) {
     Column(
       children: [
         Image.asset("images/onboardscreen-3.png"),
+        SizedBox(height: 100,),
         Text("Exchange your items for another",
             style: KPageViewTextStyle, textAlign: TextAlign.center),
         SizedBox(
@@ -131,7 +134,7 @@ class _OnBoardScreenState extends State<OnBoardScreen> {
                 ),
               )),
             ),
-            SizedBox(height: 200,)
+            SizedBox(height: 20,)
           ],
         ),
       ),
