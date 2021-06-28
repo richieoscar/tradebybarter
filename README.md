@@ -8,3 +8,4 @@ Mobile version of the project have contributions from - EunicePops -Popoola Euni
                                                       - ogomegbunam     Okorie Christian
                                                       - Lomari-F 
 Project Status: Developing 
+project Testing: develop is the testing branch, https://github.com/zuri-training/trade-by-barter-mobile-pjt-98
