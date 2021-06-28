@@ -57,14 +57,14 @@ class AppNavigator{
   }
 
   static void navigateToLauncherScreen(BuildContext context){
-    Navigator.push(context, MaterialPageRoute(builder: (context) => Launcher()));
+    Navigator.pushReplacement(context, MaterialPageRoute(builder: (context) => Launcher()));
   }
 
   static void navigateToNearByPeopleScreen(BuildContext context){
     Navigator.push(context, MaterialPageRoute(builder: (context) => NearByPeople()));
   }
   static void navigateToLoginScreen(BuildContext context){
-    Navigator.push(context, MaterialPageRoute(builder: (context) => LoginScreen()));
+    Navigator.pushReplacement(context, MaterialPageRoute(builder: (context) => LoginScreen()));
   }
 
   static void navigateToSignUpLoginScreen(BuildContext context){
