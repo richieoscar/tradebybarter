@@ -18,19 +18,6 @@ final _controller = PageController(
 List<Widget> _pages = [
   Column(
     children: [
-      /*Padding(padding: EdgeInsets.all(20),
-        child: ConstrainedBox(
-          constraints: BoxConstraints(
-              minHeight: 373,
-              minWidth: 353
-          ),
-          child: Expanded(
-            child: Container(
-              child: Image.asset("images/onboardscreen-1.png"),
-            ),
-          ),
-        ),
-      ),*/
       Expanded(child: Image.asset("images/onboardscreen-1.png")),
       Text("Exchange your items for another", style: KPageViewTextStyle, textAlign: TextAlign.center),
       SizedBox(
@@ -218,9 +205,6 @@ class _OnBoardScreenState extends State<OnBoardScreen>{
             ),
 
            ),
-            /*SizedBox(
-              height: 20,
-            ),*/
             new DotsIndicator(
               dotsCount: _pages.length,
               position: _currentPage.toDouble(),
@@ -233,35 +217,6 @@ class _OnBoardScreenState extends State<OnBoardScreen>{
             SizedBox(
               height: 100,
             )
-            /*Container(
-              height: 40,
-              width: 100,
-              child: (
-                  OutlinedButton(
-                    style: ButtonStyle(
-                      backgroundColor: MaterialStateProperty.all(KProceedColor),
-                      shape: MaterialStateProperty.all(RoundedRectangleBorder(
-                          side: BorderSide(color: Colors.red, width: 20,),
-                          borderRadius: BorderRadius.circular(15.0)
-                      )),
-
-                    ),
-
-                    onPressed: () {
-                      print('Skip clicked');
-                    },
-                    child: Text("Skip",
-                      style: TextStyle(
-                          color: Colors.black,
-                          fontWeight: FontWeight.bold,
-                          fontSize: 20
-                      ),
-                    ),
-                  )),
-            ),*/
-            /*SizedBox(
-              height: 60,
-            ),*/
 
           ],
         ),
