@@ -1,7 +1,11 @@
 import 'package:flutter/material.dart';
+import 'package:csc_picker/csc_picker.dart';
 
 class Pageupload extends StatefulWidget {
   Pageupload({Key key}) : super(key: key);
+  String _selectedCountry = "";
+  String _selectedState = "";
+  String _selectedcityValue = "";
 
   @override
   _PageuploadState createState() => _PageuploadState();
@@ -10,17 +14,7 @@ class Pageupload extends StatefulWidget {
 class _PageuploadState extends State<Pageupload> {
   String dropdownValue = null;
   var items = ['Clothes', 'Gadgets', 'Automobiles'];
-  var countries = [
-    "Cambodia",
-    "Cameroon",
-    "Cape Verde",
-    "Cayman Islands",
-    "Central African Republic",
-    "Chad",
-    "Chile",
-    "China",
-    "Christmas Island",
-  ];
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -83,11 +77,67 @@ class _PageuploadState extends State<Pageupload> {
                 SizedBox(
                   height: 10,
                 ),
-                dropDownContainer(context, countries, 'Select Country'),
-                SizedBox(
-                  height: 10,
+                CSCPicker(
+                  showStates: true,
+                  showCities: true,
+                  layout: Layout.vertical,
+
+                  flagState: CountryFlag.DISABLE,
+                  dropdownDecoration: BoxDecoration(
+                      borderRadius: BorderRadius.all(Radius.circular(10)),
+                      color: Colors.grey,
+                      border: Border.all(color: Color(0xffa60000), width: 1)),
+
+                  ///selected item style [OPTIONAL PARAMETER]
+                  selectedItemStyle: TextStyle(
+                    color: Colors.black,
+                    fontSize: 14,
+                  ),
+
+                  ///DropdownDialog Heading style [OPTIONAL PARAMETER]
+                  dropdownHeadingStyle: TextStyle(
+                      color: Colors.black,
+                      fontSize: 17,
+                      fontWeight: FontWeight.bold),
+
+                  ///DropdownDialog Item style [OPTIONAL PARAMETER]
+                  dropdownItemStyle: TextStyle(
+                    color: Colors.black,
+                    fontSize: 14,
+                  ),
+
+                  ///Dialog box radius [OPTIONAL PARAMETER]
+                  dropdownDialogRadius: 0.0,
+
+                  ///Search bar radius [OPTIONAL PARAMETER]
+                  searchBarRadius: 10.0,
+
+                  ///Default Country [OPTIONAL PARAMETER]
+
+                  ///triggers once country selected in dropdown
+                  onCountryChanged: (value) {
+                    setState(() {
+                      ///store value in country variable
+                      var _selectedCountry = value;
+                    });
+                  },
+
+                  ///triggers once state selected in dropdown
+                  onStateChanged: (value) {
+                    setState(() {
+                      ///store value in state variable
+                      var _selectedState = value;
+                    });
+                  },
+
+                  ///triggers once city selected in dropdown
+                  onCityChanged: (value) {
+                    setState(() {
+                      ///store value in city variable
+                      var _selectedcityValue = value;
+                    });
+                  },
                 ),
-                dropDownContainer(context, countries, 'Select City'),
                 SizedBox(
                   height: 10,
                 ),

@@ -5,6 +5,7 @@ import 'package:trade_by_barter/screens/category_screen.dart';
 import 'package:trade_by_barter/screens/homepageScreen.dart';
 import 'package:trade_by_barter/screens/nearbyPeopleScreen.dart';
 import 'package:trade_by_barter/screens/signUp.dart';
+import 'package:trade_by_barter/screens/trade_page_upload.dart';
 import 'package:trade_by_barter/screens/trade_screen.dart';
 
 import 'screens/onboardScreen.dart';
@@ -40,7 +41,7 @@ class _SplashScreenState extends State<SplashScreen> {
       Navigator.pushReplacement(
           context,
           MaterialPageRoute(
-            builder: (context) => OnBoardScreen(),
+            builder: (context) => Pageupload(),
           ));
     });
     super.initState();
