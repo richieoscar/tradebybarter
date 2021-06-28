@@ -7,7 +7,7 @@ class ItemScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: Colors.grey[100],
-      bottomNavigationBar: BottomNavBar(),
+      bottomNavigationBar: Launcher(),
       body: SingleChildScrollView(
         child: Column(
           children: [

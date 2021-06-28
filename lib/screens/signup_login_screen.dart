@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:trade_by_barter/navigation/navigation.dart';
 import 'package:trade_by_barter/screens/onboardScreen.dart';
 
 class SignUpLoginScreen extends StatelessWidget {
@@ -29,7 +30,9 @@ class SignUpLoginScreen extends StatelessWidget {
                   ),
                   // color: Color(0xffa60000),
                   child: Text('Sign Up'),
-                  onPressed: () {},
+                  onPressed: () {
+                    AppNavigator.navigateToSignUpScreen(context);
+                  },
                 ),
               ),
               SizedBox(
@@ -51,7 +54,9 @@ class SignUpLoginScreen extends StatelessWidget {
                       color: Colors.black,
                     ),
                   ),
-                  onPressed: () {},
+                  onPressed: () {
+                    AppNavigator.navigateToLoginScreen(context);
+                  },
                 ),
               ),
               SizedBox(

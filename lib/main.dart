@@ -1,13 +1,22 @@
- import 'dart:async';
+
+import 'dart:async';
 import 'package:flutter/material.dart';
-import 'package:trade_by_barter/screens/filterScreen.dart';
+import 'package:trade_by_barter/screens/bottom_nav_bar.dart';
+import 'package:trade_by_barter/screens/category_screen.dart';
+import 'package:trade_by_barter/screens/homepageScreen.dart';
+import 'package:trade_by_barter/screens/nearbyPeopleScreen.dart';
+import 'package:trade_by_barter/screens/signUp.dart';
+import 'package:trade_by_barter/screens/trade_screen.dart';
+
 
 import 'screens/onboardScreen.dart';
 import 'screens/trade_item_screen.dart';
+import 'screens/filterScreen.dart';
 
 void main() {
   runApp(MyApp());
 }
+
 class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
@@ -15,18 +24,18 @@ class MyApp extends StatelessWidget {
 
       debugShowCheckedModeBanner: false,
 
-      home: SplashScreen(),
+      home:SplashScreen(),
 
     );
   }
 }
 
-class SplashScreen extends StatefulWidget{
+class SplashScreen extends StatefulWidget {
   @override
- _SplashScreenState createState() => _SplashScreenState();
-
+  _SplashScreenState createState() => _SplashScreenState();
 }
-class _SplashScreenState extends State<SplashScreen>{
+
+class _SplashScreenState extends State<SplashScreen> {
   @override
   void initState() {
     Timer(
@@ -40,9 +49,11 @@ class _SplashScreenState extends State<SplashScreen>{
     );
     super.initState();
   }
+
   @override
-  Widget build(BuildContext context){
+  Widget build(BuildContext context) {
     return Scaffold(
+
       body: SafeArea(
         child: Container(
           decoration: BoxDecoration(
@@ -52,5 +63,4 @@ class _SplashScreenState extends State<SplashScreen>{
       )
       );
   }
-
 }
