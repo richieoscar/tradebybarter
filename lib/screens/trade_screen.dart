@@ -11,7 +11,7 @@ class _TradeState extends State<Trade> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      bottomNavigationBar: BottomNavBar(),
+     // bottomNavigationBar: BottomNavBar(),
       backgroundColor: Colors.white60,
       body: Column(
         children: [

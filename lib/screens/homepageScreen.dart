@@ -3,22 +3,12 @@ import 'package:flutter/widgets.dart';
 import 'package:hexcolor/hexcolor.dart';
 import 'package:trade_by_barter/screens/bottom_nav_bar.dart';
 
-void main() {
-  runApp(MyTestApp());
-}
 
-class MyTestApp extends StatelessWidget {
+class HomeScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
-      home: Scaffold(
-        bottomNavigationBar: BottomNavBar(),
-        appBar: AppBar(
-          title: Text("Homepage Screen"),
-          backgroundColor: Colors.brown,
-          centerTitle: true,
-        ),
-        body: SafeArea(
+    return
+         SafeArea(
           child: Container(
             child: ListView(children: [
               Padding(
@@ -437,8 +427,6 @@ class MyTestApp extends StatelessWidget {
               ),
             ]),
           ),
-        ),
-      ),
-    );
+        );
   }
 }

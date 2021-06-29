@@ -3,26 +3,30 @@ This is the custom class for the Bottom Navigation Bar
 Instantiate class to get the bottom nav bar for ur screen
  */
 import 'package:flutter/material.dart';
-import 'package:trade_by_barter/screens/signup_login_screen.dart';
+import 'package:trade_by_barter/networking/api_networking.dart';
+import 'package:trade_by_barter/screens/account_screen.dart';
+import 'package:trade_by_barter/screens/category_screen.dart';
+import 'package:trade_by_barter/screens/homepageScreen.dart';
+import 'package:trade_by_barter/screens/notification_screen.dart';
+import 'package:trade_by_barter/screens/trade_screen.dart';
 
-class BottomNavBar extends StatefulWidget {
+class Launcher extends StatefulWidget {
   @override
-  _BottomNavBarState createState() => _BottomNavBarState();
+  _LauncherState createState() => _LauncherState();
 }
 
-class _BottomNavBarState extends State<BottomNavBar> {
+class _LauncherState extends State<Launcher> {
+  //This is the the page that carries all other pages
 
- int _selectedIndex =0;
-  void _onItemTapped(int index) {
-    setState(() {
-      _selectedIndex = index;
 
-    });
-  }
+  int _selectedIndex = 0;
+  final navBarLocations = [HomeScreen(), Category(), Trade(), NotificationScreen(), Account()];
 
   @override
   Widget build(BuildContext context) {
-    return BottomNavigationBar(
+    return Scaffold(
+      body: navBarLocations[_selectedIndex],
+      bottomNavigationBar: BottomNavigationBar(
         backgroundColor: Color(0xffa60000),
         type: BottomNavigationBarType.fixed,
         unselectedItemColor: Colors.white.withOpacity(.50),
@@ -49,8 +53,20 @@ class _BottomNavBarState extends State<BottomNavBar> {
             label: 'Account',
           ),
         ],
-        currentIndex: _selectedIndex,
         onTap: _onItemTapped,
-      );
+        currentIndex: _selectedIndex,
+      ),
+    );
+  }
+
+  void _onItemTapped(int index) {
+    setState(() {
+      _selectedIndex = index;
+    });
+  }
+
+  @override
+  void initState() {
+    ApiNetworkingManager.isUserLoggedIn(context);
   }
 }

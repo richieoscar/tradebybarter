@@ -21,7 +21,9 @@ environment:
   sdk: ">=2.7.0 <3.0.0"
 
 dependencies:
-  
+  http: ^0.13.3
+  shared_preferences: ^2.0.6
+  hexcolor: ^2.0.4
   flutter:
     sdk: flutter
   csc_picker: ^0.2.5
@@ -31,7 +33,6 @@ dependencies:
   cupertino_icons: ^1.0.2
   dots_indicator: ^2.0.0
   search_widget: ^1.0.2
-  hexcolor: ^2.0.4
   google_maps_flutter: ^2.0.6
 
 
