@@ -163,19 +163,56 @@ class _PageuploadState extends State<Pageupload> {
                 SizedBox(
                   height: 10,
                 ),
-                Row(
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  children: [
-                    Upload(),
-                    SizedBox(
-                      width: 10,
-                    ),
-                    Upload(),
-                    SizedBox(
-                      width: 10,
-                    ),
-                    Upload()
-                  ],
+                Container(
+                  height: 83,
+                  width: 94,
+                  decoration: BoxDecoration(
+                      color: Colors.grey.shade50,
+                      borderRadius: BorderRadius.all(Radius.circular(10)),
+                      border: Border.all(color: Color(0xffA60000))),
+                  child: Column(
+                    children: [
+                      Expanded(
+                        child: Container(
+                          child: Center(
+                            child: Icon(
+                              Icons.add_circle,
+                              color: Color(0xffA60000),
+                            ),
+                          ),
+                        ),
+                      ),
+                      Expanded(
+                        child: Container(
+                          child: Column(
+                            crossAxisAlignment: CrossAxisAlignment.end,
+                            mainAxisAlignment: MainAxisAlignment.center,
+                            children: [
+                              Expanded(
+                                child: Container(
+                                  width: MediaQuery.of(context).size.width,
+                                  decoration: BoxDecoration(
+                                    color: Color(0xffCA6666),
+                                    border: Border.all(
+                                      color: Color(0xffA60000),
+                                    ),
+                                  ),
+                                ),
+                              ),
+                              Expanded(
+                                  child: Container(
+                                child: Icon(
+                                  Icons.cancel,
+                                  color: Color(0xffA60000),
+                                  size: 20,
+                                ),
+                              ))
+                            ],
+                          ),
+                        ),
+                      )
+                    ],
+                  ),
                 ),
                 SizedBox(
                   height: 20,
@@ -216,27 +253,30 @@ class _PageuploadState extends State<Pageupload> {
           borderRadius: BorderRadius.all(Radius.circular(10)),
           border: Border.all(color: Color(0xffA60000))),
       height: 40,
-      child: DropdownButton<String>(
-        hint: Text(hintText),
-        value: dropdownValue,
-        icon: const Icon(
-          Icons.arrow_drop_down,
-          color: Color(0xffA60000),
+      child: Padding(
+        padding: const EdgeInsets.all(8.0),
+        child: DropdownButton<String>(
+          isExpanded: true,
+          hint: Text(hintText),
+          value: dropdownValue,
+          icon: const Icon(
+            Icons.keyboard_arrow_down,
+            color: Colors.black87,
+          ),
+          iconSize: 20,
+          elevation: 8,
+          onChanged: (String newValue) {
+            setState(() {
+              dropdownValue = newValue;
+            });
+          },
+          items: dropDownItems.map<DropdownMenuItem<String>>((String value) {
+            return DropdownMenuItem<String>(
+              value: value,
+              child: Text(value),
+            );
+          }).toList(),
         ),
-        iconSize: 24,
-        elevation: 16,
-        style: const TextStyle(color: Color(0xffA60000)),
-        onChanged: (String newValue) {
-          setState(() {
-            dropdownValue = newValue;
-          });
-        },
-        items: dropDownItems.map<DropdownMenuItem<String>>((String value) {
-          return DropdownMenuItem<String>(
-            value: value,
-            child: Text(value),
-          );
-        }).toList(),
       ),
     );
   }
@@ -288,7 +328,7 @@ class Upload extends StatelessWidget {
             child: Container(
               child: Center(
                 child: Icon(
-                  Icons.add_a_photo_sharp,
+                  Icons.add_circle,
                   color: Color(0xffA60000),
                 ),
               ),
