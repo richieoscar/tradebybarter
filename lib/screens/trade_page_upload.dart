@@ -151,87 +151,27 @@ class _PageuploadState extends State<Pageupload> {
                   label: 'Phone Number:',
                 ),
                 SizedBox(
-                  height: 10,
-                ),
-                Text(
-                  'Upload Verification Video',
-                  style: TextStyle(
-                    fontWeight: FontWeight.bold,
-                    fontSize: 18,
-                  ),
-                ),
-                SizedBox(
-                  height: 10,
-                ),
-                Container(
-                  height: 83,
-                  width: 94,
-                  decoration: BoxDecoration(
-                      color: Colors.grey.shade50,
-                      borderRadius: BorderRadius.all(Radius.circular(10)),
-                      border: Border.all(color: Color(0xffA60000))),
-                  child: Column(
-                    children: [
-                      Expanded(
-                        child: Container(
-                          child: Center(
-                            child: Icon(
-                              Icons.add_circle,
-                              color: Color(0xffA60000),
-                            ),
-                          ),
-                        ),
-                      ),
-                      Expanded(
-                        child: Container(
-                          child: Column(
-                            crossAxisAlignment: CrossAxisAlignment.end,
-                            mainAxisAlignment: MainAxisAlignment.center,
-                            children: [
-                              Expanded(
-                                child: Container(
-                                  width: MediaQuery.of(context).size.width,
-                                  decoration: BoxDecoration(
-                                    color: Color(0xffCA6666),
-                                    border: Border.all(
-                                      color: Color(0xffA60000),
-                                    ),
-                                  ),
-                                ),
-                              ),
-                              Expanded(
-                                  child: Container(
-                                child: Icon(
-                                  Icons.cancel,
-                                  color: Color(0xffA60000),
-                                  size: 20,
-                                ),
-                              ))
-                            ],
-                          ),
-                        ),
-                      )
-                    ],
-                  ),
-                ),
-                SizedBox(
                   height: 20,
                 ),
                 Container(
-                  width: 200.0,
-                  child: ElevatedButton(
-                    style: ButtonStyle(
-                      backgroundColor: MaterialStateProperty.all(Colors.yellow),
-                      shape: MaterialStateProperty.all(RoundedRectangleBorder(
-                        borderRadius: BorderRadius.circular(15.0),
-                      )),
-                    ),
-                    onPressed: () {},
-                    child: Text(
-                      "Proceed",
-                      style: TextStyle(
-                        color: Colors.black,
-                        fontWeight: FontWeight.bold,
+                  width: MediaQuery.of(context).size.width,
+                  child: Padding(
+                    padding: const EdgeInsets.all(8.0),
+                    child: ElevatedButton(
+                      style: ButtonStyle(
+                        backgroundColor:
+                            MaterialStateProperty.all(Colors.yellow),
+                        shape: MaterialStateProperty.all(RoundedRectangleBorder(
+                          borderRadius: BorderRadius.circular(15.0),
+                        )),
+                      ),
+                      onPressed: () {},
+                      child: Text(
+                        "Proceed",
+                        style: TextStyle(
+                          color: Colors.black,
+                          fontWeight: FontWeight.bold,
+                        ),
                       ),
                     ),
                   ),

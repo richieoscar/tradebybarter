@@ -16,117 +16,119 @@ class _LocationState extends State<Location> {
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: Color(0xfff7f7f7),
-      body: SafeArea(
-        child: Padding(
-          padding: const EdgeInsets.fromLTRB(8, 20, 8, 8),
-          child: Column(
-            crossAxisAlignment: CrossAxisAlignment.center,
-            children: [
-              SizedBox(
-                height: 30,
-              ),
-              Text(
-                'Location sign in',
-                style: TextStyle(
-                  fontWeight: FontWeight.bold,
-                  fontSize: 24,
+      body: SingleChildScrollView(
+        child: SafeArea(
+          child: Padding(
+            padding: const EdgeInsets.fromLTRB(8, 20, 8, 8),
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.center,
+              children: [
+                SizedBox(
+                  height: 30,
                 ),
-              ),
-              Container(
-                height: 150,
-                child: Image.asset('images/dropdown.jpeg'),
-              ),
-              SizedBox(
-                height: 50,
-              ),
-              CSCPicker(
-                showStates: true,
-                showCities: true,
-                layout: Layout.vertical,
-
-                flagState: CountryFlag.DISABLE,
-                dropdownDecoration: BoxDecoration(
-                    borderRadius: BorderRadius.all(Radius.circular(10)),
-                    color: Colors.grey.shade300,
-                    border: Border.all(color: Color(0xffa60000), width: 1)),
-
-                ///selected item style [OPTIONAL PARAMETER]
-                selectedItemStyle: TextStyle(
-                  color: Colors.black,
-                  fontSize: 14,
+                Text(
+                  'Location sign in',
+                  style: TextStyle(
+                    fontWeight: FontWeight.bold,
+                    fontSize: 24,
+                  ),
                 ),
+                Container(
+                  height: 150,
+                  child: Image.asset('images/dropdown.jpeg'),
+                ),
+                SizedBox(
+                  height: 50,
+                ),
+                CSCPicker(
+                  showStates: true,
+                  showCities: true,
+                  layout: Layout.vertical,
 
-                ///DropdownDialog Heading style [OPTIONAL PARAMETER]
-                dropdownHeadingStyle: TextStyle(
+                  flagState: CountryFlag.DISABLE,
+                  dropdownDecoration: BoxDecoration(
+                      borderRadius: BorderRadius.all(Radius.circular(10)),
+                      color: Colors.grey.shade300,
+                      border: Border.all(color: Color(0xffa60000), width: 1)),
+
+                  ///selected item style [OPTIONAL PARAMETER]
+                  selectedItemStyle: TextStyle(
                     color: Colors.black,
-                    fontSize: 17,
-                    fontWeight: FontWeight.bold),
+                    fontSize: 14,
+                  ),
 
-                ///DropdownDialog Item style [OPTIONAL PARAMETER]
-                dropdownItemStyle: TextStyle(
-                  color: Colors.black,
-                  fontSize: 14,
+                  ///DropdownDialog Heading style [OPTIONAL PARAMETER]
+                  dropdownHeadingStyle: TextStyle(
+                      color: Colors.black,
+                      fontSize: 17,
+                      fontWeight: FontWeight.bold),
+
+                  ///DropdownDialog Item style [OPTIONAL PARAMETER]
+                  dropdownItemStyle: TextStyle(
+                    color: Colors.black,
+                    fontSize: 14,
+                  ),
+
+                  ///Dialog box radius [OPTIONAL PARAMETER]
+                  dropdownDialogRadius: 0.0,
+
+                  ///Search bar radius [OPTIONAL PARAMETER]
+                  searchBarRadius: 10.0,
+
+                  ///Default Country [OPTIONAL PARAMETER]
+
+                  ///triggers once country selected in dropdown
+                  onCountryChanged: (value) {
+                    setState(() {
+                      ///store value in country variable
+                      var _selectedCountry = value;
+                    });
+                  },
+
+                  ///triggers once state selected in dropdown
+                  onStateChanged: (value) {
+                    setState(() {
+                      ///store value in state variable
+                      var _selectedState = value;
+                    });
+                  },
+
+                  ///triggers once city selected in dropdown
+                  onCityChanged: (value) {
+                    setState(() {
+                      ///store value in city variable
+                      var _selectedcityValue = value;
+                    });
+                  },
                 ),
-
-                ///Dialog box radius [OPTIONAL PARAMETER]
-                dropdownDialogRadius: 0.0,
-
-                ///Search bar radius [OPTIONAL PARAMETER]
-                searchBarRadius: 10.0,
-
-                ///Default Country [OPTIONAL PARAMETER]
-
-                ///triggers once country selected in dropdown
-                onCountryChanged: (value) {
-                  setState(() {
-                    ///store value in country variable
-                    var _selectedCountry = value;
-                  });
-                },
-
-                ///triggers once state selected in dropdown
-                onStateChanged: (value) {
-                  setState(() {
-                    ///store value in state variable
-                    var _selectedState = value;
-                  });
-                },
-
-                ///triggers once city selected in dropdown
-                onCityChanged: (value) {
-                  setState(() {
-                    ///store value in city variable
-                    var _selectedcityValue = value;
-                  });
-                },
-              ),
-              SizedBox(
-                height: 40,
-              ),
-              Padding(
-                padding: const EdgeInsets.all(8.0),
-                child: Container(
-                  width: MediaQuery.of(context).size.width,
-                  child: ElevatedButton(
-                    style: ButtonStyle(
-                      backgroundColor:
-                          MaterialStateProperty.all(Color(0xFFA60000)),
-                      shape: MaterialStateProperty.all(RoundedRectangleBorder(
-                        borderRadius: BorderRadius.circular(15.0),
-                      )),
-                    ),
-                    onPressed: () {},
-                    child: Text(
-                      "Proceed",
-                      style: TextStyle(
-                        color: Colors.white,
-                        fontWeight: FontWeight.w400,
+                SizedBox(
+                  height: 40,
+                ),
+                Padding(
+                  padding: const EdgeInsets.all(8.0),
+                  child: Container(
+                    width: MediaQuery.of(context).size.width,
+                    child: ElevatedButton(
+                      style: ButtonStyle(
+                        backgroundColor:
+                            MaterialStateProperty.all(Color(0xFFA60000)),
+                        shape: MaterialStateProperty.all(RoundedRectangleBorder(
+                          borderRadius: BorderRadius.circular(15.0),
+                        )),
+                      ),
+                      onPressed: () {},
+                      child: Text(
+                        "Proceed",
+                        style: TextStyle(
+                          color: Colors.white,
+                          fontWeight: FontWeight.w400,
+                        ),
                       ),
                     ),
                   ),
                 ),
-              ),
-            ],
+              ],
+            ),
           ),
         ),
       ),
