@@ -11,12 +11,20 @@ class _CategoryState extends State<Category> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      appBar: AppBar(
+          elevation: 0.0,
+          backgroundColor: Colors.white,
+          title: Center(
+            child: Text(
+              "Select Category",
+              style:
+              TextStyle(color: Colors.black, fontWeight: FontWeight.bold),
+            ),
+          )),
       body:  SingleChildScrollView(
         child: Column(
             children: [
-              SizedBox(height: 50),
-              textTitle("Select Category"),
-              SizedBox(height: 30),
+              SizedBox(height: 20),
               searchBox("Search"),
               SizedBox(height: 10),
               categoryOption("Antiques"),

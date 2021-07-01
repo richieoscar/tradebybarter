@@ -96,9 +96,10 @@ class ApiNetworkingManager{
     print("SharedPref" +_sharePref.get("auth_token"));
     final response = await http.post(
       Uri.parse(LOGOUT_URL),
-     headers: {
-        "Authorization" : token
-     }
+      headers: <String, String>{
+        'Authorization: Token ${_sharePref.getString("auth_token")}'
+            'Content-Type': 'application/json; charset=UTF-8',
+      },
     );
     if (response.statusCode == 204){
       print("user is logout");
