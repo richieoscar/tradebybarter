@@ -7,6 +7,7 @@ import 'package:trade_by_barter/screens/homepageScreen.dart';
 import 'package:trade_by_barter/screens/nearbyPeopleScreen.dart';
 import 'package:trade_by_barter/screens/signUp.dart';
 import 'package:trade_by_barter/screens/trade_screen.dart';
+import 'package:trade_by_barter/screens/verificationScreen.dart';
 
 
 import 'screens/onboardScreen.dart';
@@ -43,7 +44,7 @@ class _SplashScreenState extends State<SplashScreen> {
         seconds: 5,
       ),(){
         Navigator.pushReplacement(context, MaterialPageRoute(
-            builder:(context) => OnBoardScreen(),
+            builder:(context) => VerifyScreen(),
         ));
     }
     );
