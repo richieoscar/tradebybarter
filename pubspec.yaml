@@ -21,9 +21,15 @@ environment:
   sdk: ">=2.7.0 <3.0.0"
 
 dependencies:
+  accordion: ^1.0.4
+  pin_code_text_field: ^1.8.0
+  flutter_otp_text_field: ^0.0.1
+  linkify: ^4.0.0
+  url_launcher: ^6.0.8
   http: ^0.13.3
   shared_preferences: ^2.0.6
   hexcolor: ^2.0.4
+
   flutter:
     sdk: flutter
   csc_picker: ^0.2.5
