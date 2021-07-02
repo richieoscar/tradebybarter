@@ -1,6 +1,5 @@
 import 'package:accordion/accordion.dart';
 import 'package:flutter/material.dart';
-import 'package:trade_by_barter/screens/bottom_nav_bar.dart';
 import 'package:hexcolor/hexcolor.dart';
 
 void main() async {
@@ -22,7 +21,6 @@ class FaqPage extends StatelessWidget //__
 {
   build(context) => Scaffold(
         backgroundColor: Colors.white,
-        bottomNavigationBar: Launcher(),
         appBar: AppBar(
           title: Text('FAQ'),
           centerTitle: true,
