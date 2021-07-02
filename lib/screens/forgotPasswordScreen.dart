@@ -22,28 +22,18 @@ class _ForgotPasswordScreenState extends State<ForgotPasswordScreen> {
   Widget build(BuildContext context) {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
-      home: Scaffold(
-        body: SafeArea(
+      home: Container(
+        decoration: BoxDecoration(
+          image: DecorationImage(
+            image: AssetImage("images/verificationbg.png"), fit: BoxFit.cover)),
+          child: Scaffold(
+                backgroundColor: Colors.transparent,
+                   // backgroundColor: Image.asset('images/verificationbg.png').color,
+              body: SafeArea(
+
             child:Column(
               crossAxisAlignment: CrossAxisAlignment.center,
               children: [
-
-                Expanded(
-                    child: Container(
-
-                        height: 60,
-                        width: 200,
-                        alignment: Alignment.topRight,
-
-                        child:
-
-                              Image.asset("images/logo.png", //fit: BoxFit.fill
-                                ),
-                            ),),
-
-
-                  //alignment: Alignment.topRight,),,
-
                 SizedBox(height:20),
 
                 Container(
@@ -99,7 +89,8 @@ class _ForgotPasswordScreenState extends State<ForgotPasswordScreen> {
               ],
             )),
       ),
-    );
+    ),
+      );
 
   }
 }
