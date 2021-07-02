@@ -15,6 +15,11 @@ const KVerEmail = TextStyle(
   fontSize: 16, fontWeight: FontWeight.bold,
 );
 
+const KVerButton = TextStyle(
+  fontSize: 16, fontWeight: FontWeight.bold,
+);
+
+
 const KForgotPassword = TextStyle(
   fontSize: 20, fontWeight: FontWeight.normal,
 );
@@ -33,3 +38,6 @@ const KProceedColor = const Color(0xFFFCE303);
 const KVerResendLink = const Color(0xFFE0BF0F);
 // Verification Page Font Color
 const KVerPageColors = const Color(0xFFE0BF0F);
+
+//Verify Button Color
+const KVerifyButton = const Color(0xFFFFFFFF);
