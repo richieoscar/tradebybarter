@@ -45,7 +45,7 @@ class _SplashScreenState extends State<SplashScreen> {
         seconds: 5,
       ),(){
         Navigator.pushReplacement(context, MaterialPageRoute(
-            builder:(context) => ForgotPasswordScreen(),
+            builder:(context) => OnBoardScreen(),
         ));
     }
     );
