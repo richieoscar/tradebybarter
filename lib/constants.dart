@@ -10,6 +10,17 @@ const KPageViewTextStyle2 = TextStyle(
   fontSize: 15, fontWeight: FontWeight.w700,
 );
 
+// Text Style for mail on the verification  page
+const KVerEmail = TextStyle(
+  fontSize: 16, fontWeight: FontWeight.bold,
+);
+
+const KForgotPassword = TextStyle(
+  fontSize: 20, fontWeight: FontWeight.normal,
+);
+const KVerText = TextStyle(
+  fontSize: 16, fontWeight: FontWeight.normal,
+);
 const KTextStyleDropDownList = TextStyle(color: Colors.red);
 
 const KfilterRectangles = const Color(0xFFF1F1F1);
@@ -19,4 +30,6 @@ const KfilterBorderColors = const Color(0xFFA60000);
 const KBrandColors = const Color(0xFFA60000);
 //color for the proceed button on Filter Screen
 const KProceedColor = const Color(0xFFFCE303);
-
+const KVerResendLink = const Color(0xFFE0BF0F);
+// Verification Page Font Color
+const KVerPageColors = const Color(0xFFE0BF0F);
