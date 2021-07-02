@@ -22,6 +22,7 @@ environment:
 
 dependencies:
   accordion: ^1.0.4
+<<<<<<< Updated upstream
   pin_code_text_field: ^1.8.0
   flutter_otp_text_field: ^0.0.1
   linkify: ^4.0.0
