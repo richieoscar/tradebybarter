@@ -24,70 +24,77 @@ class _ForgotPasswordScreenState extends State<ForgotPasswordScreen> {
       debugShowCheckedModeBanner: false,
       home: Container(
         decoration: BoxDecoration(
+          color: Colors.transparent,
           image: DecorationImage(
             image: AssetImage("images/verificationbg.png"), fit: BoxFit.cover)),
           child: Scaffold(
                 backgroundColor: Colors.transparent,
                    // backgroundColor: Image.asset('images/verificationbg.png').color,
-              body: SafeArea(
+              body: Padding(padding: EdgeInsets.all(20),
+                child: SafeArea(
 
             child:Column(
-              crossAxisAlignment: CrossAxisAlignment.center,
-              children: [
-                SizedBox(height:20),
+                crossAxisAlignment: CrossAxisAlignment.center,
+                children: [
+                  SizedBox(height:100),
 
-                Container(
-                  child: Text("Forgot Password", style: KPageViewTextStyle,),
-                ),
-                SizedBox(height:20),
-                Container(
-                  child: Text("Enter your phone number", style: KForgotPassword,),
-                ),
+                  Container(
+                    child: Text("Forgot Password", style: KPageViewTextStyle,),
+                  ),
+                  SizedBox(height:20),
+                  Container(
 
-                SizedBox(height:20),
-                Container(
-                  child: Padding(
-                    padding:EdgeInsets.all(20),
-                    child: TextField(
-                      obscureText: true,
-                      decoration: InputDecoration(
-                        border: OutlineInputBorder(),
-                        labelText: 'Phone Number',
+                    child: Padding(
+                      padding: EdgeInsets.all(10),
+                    child: Text("Enter your phone number", style: KForgotPassword,),
+                    ),
+                  ),
+
+                  SizedBox(height:20),
+                  Container(
+                    child: Padding(
+                      padding:EdgeInsets.all(20),
+                      child: TextField(
+                        obscureText: true,
+                        decoration: InputDecoration(
+                          border: OutlineInputBorder(),
+                          labelText: 'Phone Number',
+                        ),
                       ),
                     ),
                   ),
-                ),
 
-                SizedBox(height: 20,),
+                  SizedBox(height: 20,),
 
-                Container(
-                  margin: EdgeInsets.all(20),
-                  constraints: BoxConstraints.tightFor(width: 500, height: 60),
-                  child:OutlinedButton(
-                    style: ButtonStyle(
-                      backgroundColor: MaterialStateProperty.all(KfilterBorderColors ),
-                      shape: MaterialStateProperty.all(RoundedRectangleBorder(
-                          borderRadius: BorderRadius.circular(10.0))),
-                    ),
-                    onPressed: () {
-                      print('Next clicked');
-                      AppNavigator.navigateToWelcomeScreen(context);
-                    },
-                    child: Text(
-                      "Next",
-                      style: TextStyle(
-                          color:  const Color(0xFFE0BF0F) ,
-                          fontWeight: FontWeight.w500,
-                          fontSize: 15),
+                  Container(
+                    margin: EdgeInsets.all(20),
+                    constraints: BoxConstraints.tightFor(width: 500, height: 60),
+                    child:OutlinedButton(
+                      style: ButtonStyle(
+                        backgroundColor: MaterialStateProperty.all(KfilterBorderColors ),
+                        shape: MaterialStateProperty.all(RoundedRectangleBorder(
+                            borderRadius: BorderRadius.circular(10.0))),
+                      ),
+                      onPressed: () {
+                        print('Next clicked');
+                        AppNavigator.navigateToWelcomeScreen(context);
+                      },
+                      child: Text(
+                        "Next",
+                        style: TextStyle(
+                            color:  const Color(0xFFE0BF0F) ,
+                            fontWeight: FontWeight.w500,
+                            fontSize: 15),
+                      ),
                     ),
                   ),
-                ),
-                SizedBox(height:10),
+                  SizedBox(height:10),
 
 
-                SizedBox(height: 50)
-              ],
+                  SizedBox(height: 50)
+                ],
             )),
+              ),
       ),
     ),
       );
