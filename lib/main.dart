@@ -5,6 +5,7 @@ import 'package:trade_by_barter/screens/bottom_nav_bar.dart';
 import 'package:trade_by_barter/screens/category_screen.dart';
 import 'package:trade_by_barter/screens/homepageScreen.dart';
 import 'package:trade_by_barter/screens/nearbyPeopleScreen.dart';
+import 'package:trade_by_barter/screens/forgotPasswordScreen.dart';
 import 'package:trade_by_barter/screens/signUp.dart';
 import 'package:trade_by_barter/screens/trade_screen.dart';
 import 'package:trade_by_barter/screens/verificationScreen.dart';
@@ -44,7 +45,7 @@ class _SplashScreenState extends State<SplashScreen> {
         seconds: 5,
       ),(){
         Navigator.pushReplacement(context, MaterialPageRoute(
-            builder:(context) => VerifyScreen(),
+            builder:(context) => OnBoardScreen(),
         ));
     }
     );
@@ -59,7 +60,7 @@ class _SplashScreenState extends State<SplashScreen> {
         child: Container(
           decoration: BoxDecoration(
               image: DecorationImage(
-                  image: AssetImage("images/splashscreenimage.png"), fit: BoxFit.fill)),
+                  image: AssetImage("images/welcomescreen2.png"), fit: BoxFit.fill)),
         ),
       )
       );

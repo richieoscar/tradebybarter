@@ -21,6 +21,7 @@ environment:
   sdk: ">=2.7.0 <3.0.0"
 
 dependencies:
+  accordion: ^1.0.4
   pin_code_text_field: ^1.8.0
   flutter_otp_text_field: ^0.0.1
   linkify: ^4.0.0
@@ -38,7 +39,6 @@ dependencies:
   dots_indicator: ^2.0.0
   search_widget: ^1.0.2
   google_maps_flutter: ^2.0.6
-  accordion: ^1.0.4
   getwidget: ^1.1.0
 
 
