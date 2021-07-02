@@ -58,6 +58,7 @@ class _SplashScreenState extends State<SplashScreen> {
 
       body: SafeArea(
         child: Container(
+
           decoration: BoxDecoration(
               image: DecorationImage(
                   image: AssetImage("images/welcomescreen2.png"), fit: BoxFit.fill)),

@@ -14,7 +14,7 @@ class SignUpLoginScreen extends StatelessWidget {
               SizedBox(
                 height: 200,
               ),
-              Image.asset("images/signin.png"),
+              Expanded(child: Container(child: Image.asset("images/signin.png"))),
               SizedBox(
                 height: 100,
               ),
