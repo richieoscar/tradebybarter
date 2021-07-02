@@ -1,7 +1,6 @@
 import "package:flutter/material.dart";
 import 'package:flutter/widgets.dart';
 import 'package:hexcolor/hexcolor.dart';
-import 'package:trade_by_barter/screens/bottom_nav_bar.dart';
 
 class HomeScreen extends StatelessWidget {
   @override
@@ -450,23 +449,31 @@ class WhatsNewWidget extends StatelessWidget {
                         ),
                         child: Column(
                           children: [
-                            Text(
-                              'You can now exchange currency with the trade by barter app',
-                              textAlign: TextAlign.justify,
-                              textDirection: TextDirection.ltr,
-                              style: TextStyle(
-                                color: Colors.black, fontSize: 12.0,
-                                // fontWeight: FontWeight.bold,
+                            Container(
+                              alignment: Alignment.centerLeft,
+                              margin: EdgeInsets.only(left: 1.0, top: 5.0),
+                              child: Text(
+                                'You can now exchange currency with the trade by barter app',
+                                textAlign: TextAlign.justify,
+                                textDirection: TextDirection.ltr,
+                                style: TextStyle(
+                                  color: Colors.black,
+                                  fontSize: 15.0,
+                                ),
                               ),
                             ),
-                            ElevatedButton(
-                              style: ElevatedButton.styleFrom(
-                                primary: HexColor("#FCE303"),
-                                // padding: EdgeInsets.symmetric(
-                                //     horizontal: 20, vertical: 20),
+                            Container(
+                              alignment: Alignment.centerLeft,
+                              margin: EdgeInsets.only(left: 1.0, top: 5.0),
+                              child: Text(
+                                'Learn More',
+                                textAlign: TextAlign.left,
+                                textDirection: TextDirection.ltr,
+                                style: TextStyle(
+                                  color: HexColor("#FCE303"),
+                                  fontSize: 15.0,
+                                ),
                               ),
-                              onPressed: () {},
-                              child: const Text('Learn More'),
                             ),
                           ],
                         ),
