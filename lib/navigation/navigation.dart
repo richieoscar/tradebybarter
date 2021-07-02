@@ -1,12 +1,14 @@
 import 'package:flutter/material.dart';
 import 'package:trade_by_barter/main.dart';
 import 'package:trade_by_barter/models/product_model.dart';
+import 'package:trade_by_barter/screens/add_photos_screen.dart';
 import 'package:trade_by_barter/screens/bottom_nav_bar.dart';
 import 'package:trade_by_barter/screens/category_screen.dart';
 import 'package:trade_by_barter/screens/filterScreen.dart';
 import 'package:trade_by_barter/screens/homepageScreen.dart';
 import 'package:trade_by_barter/screens/login-screen.dart';
 import 'package:trade_by_barter/screens/nearbyPeopleScreen.dart';
+import 'package:trade_by_barter/screens/settings_screen.dart';
 import 'package:trade_by_barter/screens/signUp.dart';
 import 'package:trade_by_barter/screens/signup_login_screen.dart';
 import 'package:trade_by_barter/screens/trade_screen.dart';
@@ -77,5 +79,16 @@ class AppNavigator{
 
   static void navigateToFilterScreen(BuildContext context){
     Navigator.push(context, MaterialPageRoute(builder: (context) => FilterScreen()));
+  }
+
+  static void navigateToSettingsScreen(BuildContext context){
+    Navigator.push(context, MaterialPageRoute(builder: (context) => Settings()));
+  }
+  static void navigateToAddPhotoScreen(BuildContext context){
+    Navigator.push(context, MaterialPageRoute(builder: (context) => AddPhotos()));
+  }
+
+  static void navigateBack(BuildContext context){
+    Navigator.pop(context, false);
   }
 }

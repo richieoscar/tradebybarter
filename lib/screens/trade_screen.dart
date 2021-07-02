@@ -11,36 +11,37 @@ class _TradeState extends State<Trade> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-     // bottomNavigationBar: BottomNavBar(),
+      appBar: AppBar(
+          elevation: 0.0,
+          backgroundColor: Colors.white,
+          title: Center(
+            child: Text(
+              "Trade's List",
+              style:
+              TextStyle(color: Colors.black, fontWeight: FontWeight.bold),
+            ),
+          )),
       backgroundColor: Colors.white60,
       body: Column(
         children: [
-          SizedBox(height: 50),
-          text("Trader's List"),
-          Container(
-
-            height: 500,
-            margin: EdgeInsets.fromLTRB(10, 25.0, 20.0, 0.0),
-            decoration: BoxDecoration(shape: BoxShape.rectangle, boxShadow: [
-              BoxShadow(
-                color: Colors.white,
-                offset: Offset(5.0, 5.0),
-                blurRadius: 1.0,
-                spreadRadius: 2.0,
+          SizedBox(height: 20),
+          Card(
+            child: Container(
+              height: 500,
+              margin: EdgeInsets.fromLTRB(30, 25.0, 30.0, 0.0),
+              child: Column(
+                children: [
+                  SizedBox(
+                    height: 10.0,
+                  ),
+                  imageRow(
+                      "images/populardemand6.png", "images/populardemand2.png"),
+                  imageRow(
+                      "images/populardemand2.png", "images/populardemand6.png"),
+                  imageRow(
+                      "images/populardemand6.png", "images/populardemand5.png"),
+                ],
               ),
-            ]),
-            child: Column(
-              children: [
-                SizedBox(
-                  height: 10.0,
-                ),
-                imageRow(
-                    "images/populardemand6.png", "images/populardemand2.png"),
-                imageRow(
-                    "images/populardemand2.png", "images/populardemand6.png"),
-                imageRow(
-                    "images/populardemand6.png", "images/populardemand5.png"),
-              ],
             ),
           ),
           SizedBox(height: 30.0),
