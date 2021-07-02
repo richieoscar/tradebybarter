@@ -29,6 +29,7 @@ class _LoginState extends State<LoginScreen> {
           child: Padding(
             padding: EdgeInsets.all(15.0),
             child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 SizedBox(
                   height: 30,
@@ -55,12 +56,15 @@ class _LoginState extends State<LoginScreen> {
                   ),
                   textAlign: TextAlign.start,
                 ),
+                SizedBox(
+                  height: 5,
+                ),
                 Container(
                   decoration: BoxDecoration(
                       color: Colors.white,
                       borderRadius: BorderRadius.all(Radius.circular(10)),
-                      border: Border.all(color: Colors.white)),
-                  height: 30,
+                      border: Border.all(color: Color(0xFFA60000))),
+                  height: 40,
                   child: TextField(
                     controller: emailController,
                     textInputAction: TextInputAction.done,
@@ -83,14 +87,14 @@ class _LoginState extends State<LoginScreen> {
                   textAlign: TextAlign.start,
                 ),
                 SizedBox(
-                  height: 20,
+                  height: 5,
                 ),
                 Container(
                   decoration: BoxDecoration(
                       color: Colors.white,
                       borderRadius: BorderRadius.all(Radius.circular(10)),
-                      border: Border.all(color: Colors.white)),
-                  height: 30,
+                      border: Border.all(color: Color(0xFFA60000))),
+                  height: 40,
                   child: TextField(
                     controller: passwordController,
                     obscureText: _obscureText,
@@ -116,33 +120,38 @@ class _LoginState extends State<LoginScreen> {
                     ),
                   ),
                 ),
-                Container(
-                  width: 200,
-                  child: (OutlinedButton(
-                    style: ButtonStyle(
-                      backgroundColor:
-                          MaterialStateProperty.all(KfilterBorderColors),
-                      shape: MaterialStateProperty.all(RoundedRectangleBorder(
-                          borderRadius: BorderRadius.circular(20.0))),
-                    ),
-                    onPressed: () {
-                      print('Proceed clicked');
-                      var email = emailController.text;
-                      var password = passwordController.text;
-                     // ApiNetworkingManager.loginUser(email, password, context);
-                      AppNavigator.navigateToLauncherScreen(context);
-                    },
-                    child: Text(
-                      "Login",
-                      style: TextStyle(
-                          color: Colors.white,
-                          fontWeight: FontWeight.w500,
-                          fontSize: 15),
-                    ),
-                  )),
+                SizedBox(
+                  height: 20,
+                ),
+                Center(
+                  child: Container(
+                    width: 200,
+                    child: (OutlinedButton(
+                      style: ButtonStyle(
+                        backgroundColor:
+                            MaterialStateProperty.all(KfilterBorderColors),
+                        shape: MaterialStateProperty.all(RoundedRectangleBorder(
+                            borderRadius: BorderRadius.circular(20.0))),
+                      ),
+                      onPressed: () {
+                        print('Proceed clicked');
+                        var email = emailController.text;
+                        var password = passwordController.text;
+                        ApiNetworkingManager.loginUser(
+                            email, password, context);
+                      },
+                      child: Text(
+                        "Login",
+                        style: TextStyle(
+                            color: Colors.white,
+                            fontWeight: FontWeight.w500,
+                            fontSize: 15),
+                      ),
+                    )),
+                  ),
                 ),
                 SizedBox(
-                  height: 30,
+                  height: 10,
                 ),
                 Row(
                   mainAxisAlignment: MainAxisAlignment.center,
@@ -159,6 +168,7 @@ class _LoginState extends State<LoginScreen> {
                     Icon(
                       Icons.arrow_forward,
                       size: 18.0,
+                      color: Color(0xFFA60000),
                     )
                   ],
                 )
