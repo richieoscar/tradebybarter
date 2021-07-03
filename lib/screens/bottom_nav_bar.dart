@@ -61,7 +61,7 @@ class _LauncherState extends State<Launcher> {
   @override
   void initState() {
     super.initState();
-    user = ApiNetworkingManager.loggedInUser(context);
+   // user = ApiNetworkingManager.loggedInUser(context);
   }
 
   void _onItemTapped(int index) {

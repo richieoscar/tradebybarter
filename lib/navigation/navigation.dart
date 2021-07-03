@@ -14,6 +14,7 @@ import 'package:trade_by_barter/screens/settings_screen.dart';
 import 'package:trade_by_barter/screens/signUp.dart';
 import 'package:trade_by_barter/screens/signup_login_screen.dart';
 import 'package:trade_by_barter/screens/trade_screen.dart';
+import 'package:trade_by_barter/screens/verificationScreen.dart';
 import 'package:trade_by_barter/screens/welcomeScreen.dart';
 
 class AppNavigator{
@@ -77,6 +78,15 @@ class AppNavigator{
 
   static void navigateToSignUpScreen(BuildContext context){
     Navigator.push(context, MaterialPageRoute(builder: (context) => Signup()));
+  }
+
+  static void navigateToVerificationScreen(BuildContext context){
+    Navigator.push(context, MaterialPageRoute(builder: (context) => VerifyScreen()));
+  }
+
+  static void logOut(BuildContext context){
+  Navigator.push(context, MaterialPageRoute(builder: (context) => LoginScreen()));
+  
   }
 
   static void navigateToFilterScreen(BuildContext context){

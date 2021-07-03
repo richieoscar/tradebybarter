@@ -12,7 +12,7 @@ class SignUpLoginScreen extends StatelessWidget {
           child: Column(
             children: [
               SizedBox(
-                height: 200,
+                height: 80,
               ),
               Expanded(child: Container(child: Image.asset("images/signin.png"))),
               SizedBox(

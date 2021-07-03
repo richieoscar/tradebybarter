@@ -1,11 +1,8 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:trade_by_barter/components/remember-me.dart';
 import 'package:trade_by_barter/navigation/navigation.dart';
 import 'package:trade_by_barter/networking/api_networking.dart';
-import '../components/button-component.dart';
-import '../components/password-input-component.dart';
-import '../components/text-input-component.dart';
+
 import '../constants.dart';
 import '../models/login-model.dart';
 // import '../helpers/validators.dart';
@@ -21,6 +18,21 @@ class _LoginState extends State<LoginScreen> {
   bool _obscureText = true;
   final emailController = TextEditingController();
   final passwordController = TextEditingController();
+  bool show = false;
+
+  load(){
+    if(show == false){
+      setState(() {
+        show = true;
+      });
+    }
+    else{
+      setState(() {
+       show = false; 
+      });
+      
+    }
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -33,9 +45,7 @@ class _LoginState extends State<LoginScreen> {
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  SizedBox(
-                    height: 30,
-                  ),
+                 
                   Positioned(
                     child:  Container(
                         width: 292.0,
@@ -162,10 +172,12 @@ class _LoginState extends State<LoginScreen> {
                               borderRadius: BorderRadius.circular(10.0))),
                               ),
                         onPressed: () {
+                        load();
                           print('Proceed clicked');
                           var email = emailController.text;
                           var password = passwordController.text;
-                         ApiNetworkingManager.loginUser(email, password, context);
+                        var res = ApiNetworkingManager.loginUser(email, password, context);
+                        res.whenComplete(() => hideProgressBar());
 
                         },
                         child: Text(
@@ -202,11 +214,32 @@ class _LoginState extends State<LoginScreen> {
                         color: Color(0xFFA60000),
                       )
                     ],
-                  )
+                  ),
+                  SizedBox(height:20),
+                  showProgressBar(),
                 ],
               ),
             ),
           ),
+        ),
+      ),
+    );
+  }
+
+
+ Widget hideProgressBar(){
+   return Visibility(
+      visible: false,
+      child: CircularProgressIndicator(),
+    );
+  }
+
+  Widget showProgressBar(){
+    return Center(
+      child: Visibility(
+        visible: show,
+        child: CircularProgressIndicator(
+          color: KfilterBorderColors,
         ),
       ),
     );

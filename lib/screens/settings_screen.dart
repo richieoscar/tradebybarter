@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:trade_by_barter/constants.dart';
 import 'package:trade_by_barter/navigation/navigation.dart';
+import 'package:trade_by_barter/networking/api_networking.dart';
 
 class Settings extends StatelessWidget {
   @override
@@ -53,6 +54,8 @@ class Settings extends StatelessWidget {
             ),
             onPressed: () {
               print('Proceed clicked');
+              ApiNetworkingManager.logOut(context);
+            
             },
             child: Text(
               "Logout",

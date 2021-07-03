@@ -6,18 +6,9 @@ import 'package:trade_by_barter/screens/bottom_nav_bar.dart';
 
 import 'package:hexcolor/hexcolor.dart';
 
-class FaqScreen extends StatelessWidget {
-  // This widget is the root of your application.
-  @override
-  Widget build(BuildContext context) {
-    return MaterialApp(
-      title: 'FAQ',
-      home: FaqPage(),
-    );
-  }
-}
 
-class FaqPage extends StatelessWidget {
+
+class FaqScreen extends StatelessWidget {
   build(context) => Scaffold(
     appBar: AppBar(
       title: Center(
