@@ -165,9 +165,8 @@ class _LoginState extends State<LoginScreen> {
                           print('Proceed clicked');
                           var email = emailController.text;
                           var password = passwordController.text;
+                         ApiNetworkingManager.loginUser(email, password, context);
 
-                         // ApiNetworkingManager.loginUser(email, password, context);
-                          AppNavigator.navigateToLauncherScreen(context);
                         },
                         child: Text(
                           "Login",

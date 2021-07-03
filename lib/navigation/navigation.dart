@@ -101,4 +101,10 @@ class AppNavigator{
   static void navigateBack(BuildContext context){
     Navigator.pop(context, false);
   }
+
+  //  static void navigateToBasedOnPopular(BuildContext context){
+  //   Navigator.push(context, MaterialPageRoute(builder: (context) => BasedOnPopular()));
+  // }
+
+ 
 }

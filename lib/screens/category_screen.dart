@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:trade_by_barter/constants.dart';
 import 'package:trade_by_barter/screens/bottom_nav_bar.dart';
 
 class Category extends StatefulWidget {
@@ -23,7 +24,9 @@ class _CategoryState extends State<Category> {
           )),
       body:  SingleChildScrollView(
         child: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
             children: [
+              
               SizedBox(height: 20),
               searchBox("Search"),
               SizedBox(height: 10),
@@ -57,32 +60,31 @@ class _CategoryState extends State<Category> {
   }
 
   Widget searchBox(String label) {
-    return Center(
-      child: Container(
-        height: 60,
-       margin: EdgeInsets.fromLTRB(10, 0, 10, 0),
+    return Container(
+      margin: EdgeInsets.fromLTRB(10, 0, 10, 5),
         child: Row(
+          mainAxisAlignment: MainAxisAlignment.start,
           children: [
             Expanded(
-              child: Container(
-               decoration: BoxDecoration(
-                 borderRadius: BorderRadius.circular(10),
-                 border: Border.all(color: Color(0xffa60000)),
-               ),
-                height: 50,
-                child: TextField(
+              child: 
+                 TextField(
                   decoration: InputDecoration(
-                    focusedBorder: OutlineInputBorder(
-                      borderRadius: BorderRadius.circular(10),
-                      //borderSide: BorderSide(color: Colors.grey),
-                    ),
+              
                     suffixIcon: Icon(
                       Icons.search,
                       color: Color(0xffa60000),
                     ),
                     hintText: label,
-                    border: OutlineInputBorder(
+                    focusedBorder: OutlineInputBorder(
                       borderRadius: BorderRadius.circular(10.0),
+                  borderSide: BorderSide(
+                    color: KProceedColor,
+                  ),
+                ),
+                    enabledBorder: OutlineInputBorder(
+                      borderRadius: BorderRadius.circular(10.0),
+                      borderSide: BorderSide(
+                    color: Color(0xFFFCE303),
                     ),
                   ),
                 ),
@@ -90,18 +92,17 @@ class _CategoryState extends State<Category> {
             ),
             SizedBox(width: 20.0),
             Container(
-                width: 40.0,
+                width: 50.0,
+                height: 50,
                 decoration: BoxDecoration(
                   borderRadius: BorderRadius.circular(10),
                   border: Border.all(color: Color(0xffa60000), width: 2),
                 ),
-                child: Image.asset(
-                  "images/filter.png",
-                  fit: BoxFit.contain,
-                )),
+                child:Icon(Icons.menu, color: KProceedColor),
+                ),
           ],
         ),
-      ),
+      
     );
   }
 
@@ -120,6 +121,7 @@ class _CategoryState extends State<Category> {
             child: TextButton(
               child: Text(
                 option,
+                textAlign: TextAlign.start,
                 style: TextStyle(
                   color: Colors.black,
                   fontSize: 18.0,

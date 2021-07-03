@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:trade_by_barter/models/User.dart';
 import 'package:trade_by_barter/navigation/navigation.dart';
 import 'package:trade_by_barter/networking/api_networking.dart';
 
@@ -12,8 +13,7 @@ class Signup extends StatefulWidget {
 class _SignupState extends State<Signup> {
   bool _obscureText = true;
   final userNameController = TextEditingController();
-  final firstNameController = TextEditingController();
-  final lastNameController = TextEditingController();
+  final fullNameController = TextEditingController();
   final emailController = TextEditingController();
   final phoneController = TextEditingController();
   final passwordController = TextEditingController();
@@ -22,8 +22,8 @@ class _SignupState extends State<Signup> {
   @override
   void dispose() {
     userNameController.dispose();
-    firstNameController.dispose();
-    lastNameController.dispose();
+    fullNameController.dispose();
+    emailController.dispose();
     passwordController.dispose();
     rePasswordController.dispose();
     super.dispose();
@@ -90,13 +90,13 @@ class _SignupState extends State<Signup> {
                             border: Border.all(color: Colors.white)),
                         height: 30,
                         child: TextField(
-                          controller: userNameController,
+                          controller: fullNameController,
                           textInputAction: TextInputAction.done,
                           autofocus: true,
                           cursorColor: Colors.black54,
                           decoration: InputDecoration(
                             contentPadding:
-                                EdgeInsets.only(left: 8, bottom: 16),
+                            EdgeInsets.only(left: 8, bottom: 16),
                             border: InputBorder.none,
                           ),
                         ),
@@ -121,13 +121,12 @@ class _SignupState extends State<Signup> {
                             border: Border.all(color: Colors.white)),
                         height: 30,
                         child: TextField(
-                          controller: firstNameController,
+                          controller: userNameController,
                           textInputAction: TextInputAction.done,
-                          autofocus: true,
                           cursorColor: Colors.black54,
                           decoration: InputDecoration(
                             contentPadding:
-                                EdgeInsets.only(left: 8, bottom: 16),
+                            EdgeInsets.only(left: 8, bottom: 16),
                             border: InputBorder.none,
                           ),
                         ),
@@ -155,13 +154,13 @@ class _SignupState extends State<Signup> {
                             border: Border.all(color: Colors.white)),
                         height: 30,
                         child: TextField(
-                          controller: lastNameController,
+                          controller: phoneController,
                           textInputAction: TextInputAction.done,
                           autofocus: true,
                           cursorColor: Colors.black54,
                           decoration: InputDecoration(
                             contentPadding:
-                                EdgeInsets.only(left: 8, bottom: 16),
+                            EdgeInsets.only(left: 8, bottom: 16),
                             border: InputBorder.none,
                           ),
                         ),
@@ -190,7 +189,7 @@ class _SignupState extends State<Signup> {
                           cursorColor: Colors.black54,
                           decoration: InputDecoration(
                             contentPadding:
-                                EdgeInsets.only(left: 8, bottom: 16),
+                            EdgeInsets.only(left: 8, bottom: 16),
                             border: InputBorder.none,
                           ),
                         ),
@@ -222,7 +221,7 @@ class _SignupState extends State<Signup> {
                           cursorColor: Colors.black54,
                           decoration: InputDecoration(
                             contentPadding:
-                                EdgeInsets.only(left: 8, bottom: 16),
+                            EdgeInsets.only(left: 8, bottom: 16),
                             suffixIcon: InkWell(
                               onTap: () {
                                 setState(() {
@@ -267,7 +266,7 @@ class _SignupState extends State<Signup> {
                           cursorColor: Colors.black54,
                           decoration: InputDecoration(
                             contentPadding:
-                                EdgeInsets.only(left: 8, bottom: 16),
+                            EdgeInsets.only(left: 8, bottom: 16),
                             suffixIcon: InkWell(
                               onTap: () {
                                 setState(() {
@@ -294,31 +293,23 @@ class _SignupState extends State<Signup> {
                           child: ElevatedButton(
                             style: ButtonStyle(
                               backgroundColor:
-                                  MaterialStateProperty.all(Color(0xffa60000)),
+                              MaterialStateProperty.all(Color(0xffa60000)),
                               shape: MaterialStateProperty.all(
                                   RoundedRectangleBorder(
-                                borderRadius: BorderRadius.circular(15.0),
-                              )),
+                                    borderRadius: BorderRadius.circular(15.0),
+                                  )),
                             ),
                             // color: Color(0xffa60000),
                             child: Text('Sign Up'),
                             onPressed: () {
-                              var userName = userNameController.text;
-                              var firstName = firstNameController.text;
-                              var lastName = lastNameController.text;
+                              var username = userNameController.text;
+                              var fullName = fullNameController.text;
                               var email = emailController.text;
                               var phone = phoneController.text;
                               var password = passwordController.text;
                               var rePassword = rePasswordController.text;
-                              ApiNetworkingManager.signUpUser(
-                                  userName,
-                                  firstName,
-                                  lastName,
-                                  email,
-                                  phone,
-                                  password,
-                                  rePassword,
-                                  context);
+                              User user = User(username, fullName, email, phone, password, rePassword);
+                              ApiNetworkingManager.signUpUser(user, context);
 
                               // AppNavigator.navigateToSignUpScreen(context);
                             },
@@ -334,7 +325,7 @@ class _SignupState extends State<Signup> {
                           children: [
                             Text('I\'m already a member,'),
                             GestureDetector(
-                              onTap: ()=> AppNavigator.navigateBack(context),
+                              onTap: () => AppNavigator.navigateBack(context),
                               child: Text(
                                 'Sign in',
                                 style: TextStyle(color: (Color(0xffA60000))),

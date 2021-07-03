@@ -13,28 +13,32 @@ class ApiNetworkingManager{
   static const  SIGN_UP_URL = "https://trade-app-zuri.herokuapp.com/auth/users/";
   static const  LOGIN_URL = "https://trade-app-zuri.herokuapp.com/auth/token/login";
   static const LOGOUT_URL = "https://trade-app-zuri.herokuapp.com/token/logout";
-  static const IS_LOGGED_IN_URL = "https://trade-app-zuri.herokuapp.com/auth/users/m";
+  static const IS_LOGGED_IN_URL = "https://trade-app-zuri.herokuapp.com/auth/users/me";
 
   static SharedPreferences _sharePref;
+  static SharedPreferences _userPref;
 
-  static Future<http.Response> signUpUser(String username, String firstname, String lastname, String email, String phone, String password, String repassword, BuildContext context) async {
+
+  static Future<http.Response> signUpUser(User user, BuildContext context) async {
     final response = await http.post(
       Uri.parse(SIGN_UP_URL),
       headers: <String, String>{
         'Content-Type': 'application/json; charset=UTF-8',
       },
       body: jsonEncode(<String, String>{
-        "username": username,
-        "first_name" : firstname,
-        "last_name" : lastname,
-        "email" : email,
-        "phone": phone,
-        "password": password,
-        "re_password": repassword
+        "username": user.username,
+        "full_name" : user.fullName,
+        "email" : user.email,
+        "phone": user.phone,
+        "password": user.password,
+        "re_password": user.rePassword
       }),
     );
    if (response.statusCode == 201){
      print("user created");
+     _userPref = await SharedPreferences.getInstance();
+     _userPref.setString("username", user.username);
+     print(_userPref.getString("username"));
      AppNavigator.navigateToLauncherScreen(context);
    }
    else {
@@ -71,8 +75,8 @@ class ApiNetworkingManager{
     }
   }
 
-  static Future<http.Response> isUserLoggedIn( BuildContext context) async{
-    final response = await http.post(
+  static Future<User> loggedInUser( BuildContext context) async{
+    final response = await http.get(
       Uri.parse(IS_LOGGED_IN_URL),
       headers: <String, String>{
         'Authorization: Token ${_sharePref.getString("auth_token")}'
@@ -81,6 +85,7 @@ class ApiNetworkingManager{
     );
     if (response.statusCode == 200){
       print(response.body);
+     return User.fromJson(jsonDecode(response.body));
     }
     else {
       print("User is not Logged In");
