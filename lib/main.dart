@@ -6,7 +6,6 @@ import 'package:trade_by_barter/screens/homepageScreen.dart';
 import 'package:trade_by_barter/screens/nearbyPeopleScreen.dart';
 import 'package:trade_by_barter/screens/pin-code.dart';
 import 'package:trade_by_barter/screens/reset_password.dart';
-
 import 'screens/onboardScreen.dart';
 import 'screens/trade_item_screen.dart';
 import 'screens/filterScreen.dart';
@@ -40,7 +39,7 @@ class _SplashScreenState extends State<SplashScreen> {
       Navigator.pushReplacement(
           context,
           MaterialPageRoute(
-            builder: (context) => ResetPassword(),
+            builder: (context) => VerifyScreen(),
           ));
     });
     super.initState();
@@ -53,7 +52,7 @@ class _SplashScreenState extends State<SplashScreen> {
       child: Container(
         decoration: BoxDecoration(
             image: DecorationImage(
-                image: AssetImage("images/splashscreenimage.png"),
+                image: AssetImage("images/welcomescreen2.png"),
                 fit: BoxFit.fill)),
       ),
     ));

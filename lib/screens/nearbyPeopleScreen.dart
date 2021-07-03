@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:google_maps_flutter/google_maps_flutter.dart';
-import 'package:trade_by_barter/screens/bottom_nav_bar.dart';
 
 // void main() => runApp(MyApp());
 
@@ -22,7 +21,6 @@ class _NearByPeopleState extends State<NearByPeople> {
   Widget build(BuildContext context) {
     return MaterialApp(
       home: Scaffold(
-        bottomNavigationBar: Launcher(),
         appBar: AppBar(
           title: Text('Based on Nearby People'),
           backgroundColor: Colors.brown,
