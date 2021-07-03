@@ -4,7 +4,9 @@ import 'package:trade_by_barter/models/product_model.dart';
 import 'package:trade_by_barter/screens/add_photos_screen.dart';
 import 'package:trade_by_barter/screens/bottom_nav_bar.dart';
 import 'package:trade_by_barter/screens/category_screen.dart';
+import 'package:trade_by_barter/screens/faqScreen.dart';
 import 'package:trade_by_barter/screens/filterScreen.dart';
+import 'package:trade_by_barter/screens/forgotPasswordScreen.dart';
 import 'package:trade_by_barter/screens/homepageScreen.dart';
 import 'package:trade_by_barter/screens/login-screen.dart';
 import 'package:trade_by_barter/screens/nearbyPeopleScreen.dart';
@@ -86,6 +88,14 @@ class AppNavigator{
   }
   static void navigateToAddPhotoScreen(BuildContext context){
     Navigator.push(context, MaterialPageRoute(builder: (context) => AddPhotos()));
+  }
+
+  static void navigateToFaqScreen(BuildContext context){
+    Navigator.push(context, MaterialPageRoute(builder: (context) => FaqScreen()));
+  }
+
+  static void navigateToForgotPasswordScreen(BuildContext context){
+    Navigator.push(context, MaterialPageRoute(builder: (context) => ForgotPasswordScreen ()));
   }
 
   static void navigateBack(BuildContext context){

@@ -1,3 +1,4 @@
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 import 'package:trade_by_barter/constants.dart';
@@ -23,6 +24,7 @@ class _ForgotPasswordScreenState extends State<ForgotPasswordScreen> {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
       home: Container(
+        margin: EdgeInsets.fromLTRB(0, 30, 0, 0),
         decoration: BoxDecoration(
           color: Colors.transparent,
           image: DecorationImage(
@@ -50,25 +52,25 @@ class _ForgotPasswordScreenState extends State<ForgotPasswordScreen> {
                     ),
                   ),
 
-                  SizedBox(height:20),
+                  SizedBox(height:10),
                   Container(
-                    child: Padding(
-                      padding:EdgeInsets.all(20),
-                      child: TextField(
+                    width: 350,
+                    child:
+                      TextField(
                         obscureText: true,
+                        keyboardType: TextInputType.number,
                         decoration: InputDecoration(
                           border: OutlineInputBorder(),
                           labelText: 'Phone Number',
                         ),
                       ),
-                    ),
+
                   ),
 
-                  SizedBox(height: 20,),
+                  SizedBox(height: 60,),
 
                   Container(
-                    margin: EdgeInsets.all(20),
-                    constraints: BoxConstraints.tightFor(width: 500, height: 60),
+                    constraints: BoxConstraints.tightFor(width: 500, height: 40),
                     child:OutlinedButton(
                       style: ButtonStyle(
                         backgroundColor: MaterialStateProperty.all(KfilterBorderColors ),
@@ -82,7 +84,7 @@ class _ForgotPasswordScreenState extends State<ForgotPasswordScreen> {
                       child: Text(
                         "Next",
                         style: TextStyle(
-                            color:  const Color(0xFFE0BF0F) ,
+                            color:  Colors.white ,
                             fontWeight: FontWeight.w500,
                             fontSize: 15),
                       ),

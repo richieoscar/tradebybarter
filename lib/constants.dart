@@ -16,7 +16,7 @@ const KVerEmail = TextStyle(
 );
 
 const KForgotPassword = TextStyle(
-  fontSize: 20, fontWeight: FontWeight.normal,
+  fontSize: 15, fontWeight: FontWeight.normal,
 );
 const KVerText = TextStyle(
   fontSize: 16, fontWeight: FontWeight.normal,

@@ -1,13 +1,10 @@
 import 'package:accordion/accordion.dart';
 import 'package:flutter/material.dart';
+import 'package:trade_by_barter/navigation/navigation.dart';
 import 'package:trade_by_barter/screens/bottom_nav_bar.dart';
 import 'package:hexcolor/hexcolor.dart';
 
-void main() async {
-  runApp(AccordionApp());
-}
-
-class AccordionApp extends StatelessWidget {
+class FaqScreen extends StatelessWidget {
   // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
@@ -18,15 +15,24 @@ class AccordionApp extends StatelessWidget {
   }
 }
 
-class FaqPage extends StatelessWidget //__
-{
+class FaqPage extends StatelessWidget {
   build(context) => Scaffold(
-        backgroundColor: Colors.white,
-        bottomNavigationBar: Launcher(),
-        appBar: AppBar(
-          title: Text('FAQ'),
-          centerTitle: true,
+    appBar: AppBar(
+      title: Center(
+        child: Text("FAQ",
+          style: TextStyle(
+          color: Colors.black,
         ),
+        ),
+      ),
+      leading: IconButton(
+        icon: Icon(Icons.arrow_back),
+        color: Colors.black,
+        onPressed: () => AppNavigator.navigateBack(context),
+      ),
+      elevation: 0.0,
+      backgroundColor: Colors.white,
+    ),
         body: SafeArea(
           child: ListView(
             children: [

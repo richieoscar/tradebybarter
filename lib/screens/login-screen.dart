@@ -1,3 +1,4 @@
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:trade_by_barter/components/remember-me.dart';
 import 'package:trade_by_barter/navigation/navigation.dart';
@@ -29,43 +30,49 @@ class _LoginState extends State<LoginScreen> {
           child: Padding(
             padding: EdgeInsets.all(15.0),
             child: Column(
+             crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 SizedBox(
                   height: 30,
                 ),
                 Positioned(
-                  child: Container(
-                    width: 292.0,
-                    height: 176.0,
-                    child: Hero(
-                      tag: "Sign in image",
-                      child: Image.asset("images/login.png"),
+                  child: SingleChildScrollView(
+                    child: Container(
+                      width: 292.0,
+                      height: 176.0,
+                      child: Hero(
+                        tag: "Sign in image",
+                        child: Image.asset("images/login.png"),
+                      ),
                     ),
                   ),
                   left: 49.0,
                   top: 111.0,
                 ),
                 SizedBox(
-                  height: 15,
+                  height: 60,
                 ),
                 Text(
-                  'Email',
+                  'Email Address',
                   style: TextStyle(
                     color: Colors.black45,
                   ),
                   textAlign: TextAlign.start,
                 ),
+                SizedBox(
+                  height: 10,
+                ),
                 Container(
                   decoration: BoxDecoration(
                       color: Colors.white,
                       borderRadius: BorderRadius.all(Radius.circular(10)),
-                      border: Border.all(color: Colors.white)),
-                  height: 30,
+                      border: Border.all(color: Colors.grey[300])),
+                  height: 50,
                   child: TextField(
                     controller: emailController,
                     textInputAction: TextInputAction.done,
-                    autofocus: true,
                     cursorColor: Colors.black54,
+                    cursorHeight: 30,
                     decoration: InputDecoration(
                       contentPadding: EdgeInsets.only(left: 8, bottom: 16),
                       border: InputBorder.none,
@@ -73,7 +80,7 @@ class _LoginState extends State<LoginScreen> {
                   ),
                 ),
                 SizedBox(
-                  height: 10,
+                  height: 20,
                 ),
                 Text(
                   'Password',
@@ -83,19 +90,19 @@ class _LoginState extends State<LoginScreen> {
                   textAlign: TextAlign.start,
                 ),
                 SizedBox(
-                  height: 20,
+                  height: 10,
                 ),
                 Container(
                   decoration: BoxDecoration(
                       color: Colors.white,
                       borderRadius: BorderRadius.all(Radius.circular(10)),
-                      border: Border.all(color: Colors.white)),
-                  height: 30,
+                      border: Border.all(color: Colors.grey[300])),
+                  height: 50,
                   child: TextField(
                     controller: passwordController,
                     obscureText: _obscureText,
                     textInputAction: TextInputAction.done,
-                    autofocus: true,
+                    cursorHeight: 30,
                     cursorColor: Colors.black54,
                     decoration: InputDecoration(
                       contentPadding: EdgeInsets.only(left: 8, bottom: 16),
@@ -109,37 +116,66 @@ class _LoginState extends State<LoginScreen> {
                           _obscureText
                               ? Icons.visibility
                               : Icons.visibility_off,
-                          color: Color(0xfffCE302),
+                          color: Colors.grey[300],
                         ),
                       ),
                       border: InputBorder.none,
                     ),
                   ),
                 ),
-                Container(
-                  width: 200,
-                  child: (OutlinedButton(
-                    style: ButtonStyle(
-                      backgroundColor:
-                          MaterialStateProperty.all(KfilterBorderColors),
-                      shape: MaterialStateProperty.all(RoundedRectangleBorder(
-                          borderRadius: BorderRadius.circular(20.0))),
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  children: [
+                    Row(
+                      mainAxisAlignment: MainAxisAlignment.start,
+                      children: [
+                        Checkbox(value: false,),
+                        Text("Remember Me",  style: TextStyle(
+                            color: Colors.black54,
+                            fontWeight: FontWeight.w500,
+                            fontSize: 12),
+                        ),
+                      ],
                     ),
-                    onPressed: () {
-                      print('Proceed clicked');
-                      var email = emailController.text;
-                      var password = passwordController.text;
-                     // ApiNetworkingManager.loginUser(email, password, context);
-                      AppNavigator.navigateToLauncherScreen(context);
-                    },
-                    child: Text(
-                      "Login",
+                    GestureDetector(child: Text("Forgot Password",
                       style: TextStyle(
-                          color: Colors.white,
+                          color: Colors.black54,
                           fontWeight: FontWeight.w500,
-                          fontSize: 15),
-                    ),
-                  )),
+                          fontSize: 12),),
+                    onTap: ()=> AppNavigator.navigateToForgotPasswordScreen(context))
+                  ],
+                ),
+                SizedBox(
+                  height: 30,
+                ),
+                Center(
+                  child: Container(
+                    width: 350,
+                    height: 40,
+                    child: (OutlinedButton(
+                      style: ButtonStyle(
+                        backgroundColor:
+                            MaterialStateProperty.all(KfilterBorderColors),
+                        shape: MaterialStateProperty.all(RoundedRectangleBorder(
+                            borderRadius: BorderRadius.circular(10.0))),
+                      ),
+                      onPressed: () {
+                        print('Proceed clicked');
+                        var email = emailController.text;
+                        var password = passwordController.text;
+                       // ApiNetworkingManager.loginUser(email, password, context);
+
+                        AppNavigator.navigateToLauncherScreen(context);
+                      },
+                      child: Text(
+                        "Login",
+                        style: TextStyle(
+                            color: Colors.white,
+                            fontWeight: FontWeight.w500,
+                            fontSize: 15),
+                      ),
+                    )),
+                  ),
                 ),
                 SizedBox(
                   height: 30,
@@ -147,14 +183,17 @@ class _LoginState extends State<LoginScreen> {
                 Row(
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
-                    Text(
-                      "New User? Register your Account Now",
-                      style: TextStyle(
-                        fontFamily: "Poppins",
-                        fontStyle: FontStyle.normal,
-                        fontWeight: FontWeight.normal,
-                        fontSize: 9.0,
+                    GestureDetector(
+                      child: Text(
+                        "New User? Register your Account Now",
+                        style: TextStyle(
+                          fontFamily: "Poppins",
+                          fontStyle: FontStyle.normal,
+                          fontWeight: FontWeight.normal,
+                          fontSize: 12.0,
+                        ),
                       ),
+                      onTap:()=> AppNavigator.navigateToSignUpScreen(context),
                     ),
                     Icon(
                       Icons.arrow_forward,

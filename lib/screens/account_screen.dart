@@ -170,7 +170,7 @@ class _AccountState extends State<Account> {
                 ),
               ),
               onPressed: () {
-                AppNavigator.navigateToAddPhotoScreen(context);
+                AppNavigator.navigateToFaqScreen(context);
               })),
     );
   }
