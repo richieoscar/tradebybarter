@@ -1,7 +1,9 @@
 import 'package:accordion/accordion.dart';
 import 'package:flutter/material.dart';
+
 import 'package:trade_by_barter/navigation/navigation.dart';
 import 'package:trade_by_barter/screens/bottom_nav_bar.dart';
+
 import 'package:hexcolor/hexcolor.dart';
 
 class FaqScreen extends StatelessWidget {

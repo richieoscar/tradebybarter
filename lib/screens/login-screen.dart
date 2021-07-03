@@ -30,7 +30,7 @@ class _LoginState extends State<LoginScreen> {
           child: Padding(
             padding: EdgeInsets.all(15.0),
             child: Column(
-             crossAxisAlignment: CrossAxisAlignment.start,
+              crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 SizedBox(
                   height: 30,
@@ -60,7 +60,7 @@ class _LoginState extends State<LoginScreen> {
                   textAlign: TextAlign.start,
                 ),
                 SizedBox(
-                  height: 10,
+                  height: 5,
                 ),
                 Container(
                   decoration: BoxDecoration(
@@ -90,12 +90,14 @@ class _LoginState extends State<LoginScreen> {
                   textAlign: TextAlign.start,
                 ),
                 SizedBox(
-                  height: 10,
+                  height: 5,
+
                 ),
                 Container(
                   decoration: BoxDecoration(
                       color: Colors.white,
                       borderRadius: BorderRadius.all(Radius.circular(10)),
+
                       border: Border.all(color: Colors.grey[300])),
                   height: 50,
                   child: TextField(
@@ -158,13 +160,13 @@ class _LoginState extends State<LoginScreen> {
                             MaterialStateProperty.all(KfilterBorderColors),
                         shape: MaterialStateProperty.all(RoundedRectangleBorder(
                             borderRadius: BorderRadius.circular(10.0))),
-                      ),
+                            ),
                       onPressed: () {
                         print('Proceed clicked');
                         var email = emailController.text;
                         var password = passwordController.text;
-                       // ApiNetworkingManager.loginUser(email, password, context);
 
+                       // ApiNetworkingManager.loginUser(email, password, context);
                         AppNavigator.navigateToLauncherScreen(context);
                       },
                       child: Text(
@@ -178,7 +180,7 @@ class _LoginState extends State<LoginScreen> {
                   ),
                 ),
                 SizedBox(
-                  height: 30,
+                  height: 10,
                 ),
                 Row(
                   mainAxisAlignment: MainAxisAlignment.center,
@@ -198,6 +200,7 @@ class _LoginState extends State<LoginScreen> {
                     Icon(
                       Icons.arrow_forward,
                       size: 18.0,
+                      color: Color(0xFFA60000),
                     )
                   ],
                 )
