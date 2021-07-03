@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:trade_by_barter/navigation/navigation.dart';
 import 'package:trade_by_barter/networking/api_networking.dart';
 
 class Signup extends StatefulWidget {
@@ -332,9 +333,12 @@ class _SignupState extends State<Signup> {
                           mainAxisAlignment: MainAxisAlignment.center,
                           children: [
                             Text('I\'m already a member,'),
-                            Text(
-                              'Sign in',
-                              style: TextStyle(color: (Color(0xffA60000))),
+                            GestureDetector(
+                              onTap: ()=> AppNavigator.navigateBack(context),
+                              child: Text(
+                                'Sign in',
+                                style: TextStyle(color: (Color(0xffA60000))),
+                              ),
                             )
                           ],
                         ),
