@@ -2,6 +2,7 @@ import 'dart:async';
 import 'package:flutter/material.dart';
 import 'package:trade_by_barter/screens/bottom_nav_bar.dart';
 import 'package:trade_by_barter/screens/category_screen.dart';
+import 'package:trade_by_barter/screens/forgotPasswordScreen.dart';
 import 'package:trade_by_barter/screens/homepageScreen.dart';
 import 'package:trade_by_barter/screens/nearbyPeopleScreen.dart';
 import 'package:trade_by_barter/screens/pin-code.dart';
@@ -39,7 +40,7 @@ class _SplashScreenState extends State<SplashScreen> {
       Navigator.pushReplacement(
           context,
           MaterialPageRoute(
-            builder: (context) => VerifyScreen(),
+            builder: (context) =>VerifyScreen(),
           ));
     });
     super.initState();
