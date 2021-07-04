@@ -2,11 +2,15 @@ import 'dart:convert';
 import 'dart:io';
 
 import 'package:flutter/cupertino.dart';
+import 'package:flutter/material.dart';
+import 'package:fluttertoast/fluttertoast.dart';
 import 'package:http/http.dart' as http;
 import 'package:shared_preferences/shared_preferences.dart';
 import 'package:trade_by_barter/models/User.dart';
 import 'package:trade_by_barter/models/auth.dart';
 import 'package:trade_by_barter/navigation/navigation.dart';
+
+import '../constants.dart';
 
 class ApiNetworkingManager {
   static const SIGN_UP_URL = "https://trade-app-zuri.herokuapp.com/auth/users/";
@@ -109,6 +113,12 @@ class ApiNetworkingManager {
     if (response.statusCode == 204) {
       print("user is logout");
       AppNavigator.logOut(context);
+      Fluttertoast.showToast(
+          msg: "Logged Out",
+          gravity: ToastGravity.BOTTOM,
+          textColor: Colors.black,
+          toastLength: Toast.LENGTH_SHORT,
+          backgroundColor: KProceedColor);
     } else {
       print("User is not logged out");
       print(response.statusCode);

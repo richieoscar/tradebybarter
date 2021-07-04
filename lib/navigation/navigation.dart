@@ -85,7 +85,7 @@ class AppNavigator{
   }
 
   static void logOut(BuildContext context){
-  Navigator.push(context, MaterialPageRoute(builder: (context) => LoginScreen()));
+  Navigator.pushReplacement(context, MaterialPageRoute(builder: (context) => LoginScreen()));
   
   }
 

@@ -28,16 +28,41 @@ class _AccountState extends State<Account> {
                   TextStyle(color: Colors.black, fontWeight: FontWeight.bold),
             ),
           )),
-      body: Column(
-        children: [
-          profileSection(url, name),
-          updateProfile("Update Profile"),
-          myCatalogue("My Catalogue"),
-          savedItems("Saved Items"),
-          settings("Settings"),
-          faqs("FAQs"),
-        ],
+      body: SingleChildScrollView(
+        child: Column(
+          children: [
+            profileSection(url, name),
+            updateProfile("Update Profile"),
+            myCatalogue("My Catalogue"),
+            savedItems("Saved Items"),
+            settings("Settings"),
+            faqs("FAQs"),
+            logOutButton(context)
+          ],
+        ),
       ),
+    ));
+  }
+   Widget logOutButton(BuildContext context) {
+    return (Container(
+      margin: EdgeInsets.all(10),
+      width: 330,
+      child: (ElevatedButton(
+        style: ButtonStyle(
+          backgroundColor: MaterialStateProperty.all(KProceedColor),
+          shape: MaterialStateProperty.all(RoundedRectangleBorder(
+              borderRadius: BorderRadius.circular(10.0))),
+        ),
+        onPressed: () {
+          print('Proceed clicked');
+          ApiNetworkingManager.logOut(context);
+        },
+        child: Text(
+          "Logout",
+          style: TextStyle(
+              color: Colors.black, fontWeight: FontWeight.w500, fontSize: 15),
+        ),
+      )),
     ));
   }
 

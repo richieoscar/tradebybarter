@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:trade_by_barter/constants.dart';
+import 'package:trade_by_barter/navigation/navigation.dart';
 import 'package:trade_by_barter/screens/bottom_nav_bar.dart';
 
 class Category extends StatefulWidget {
@@ -87,14 +88,17 @@ class _CategoryState extends State<Category> {
             ),
           ),
           SizedBox(width: 20.0),
-          Container(
-            width: 50.0,
-            height: 50,
-            decoration: BoxDecoration(
-              borderRadius: BorderRadius.circular(10),
-              border: Border.all(color: Color(0xffa60000), width: 2),
+          GestureDetector(
+            onTap: ()=> AppNavigator.navigateToFilterScreen(context),
+            child: Container(
+              width: 50.0,
+              height: 50,
+              decoration: BoxDecoration(
+                borderRadius: BorderRadius.circular(10),
+                border: Border.all(color: Color(0xffa60000), width: 2),
+              ),
+              child: Icon(Icons.menu, color: KProceedColor),
             ),
-            child: Icon(Icons.menu, color: KProceedColor),
           ),
         ],
       ),
