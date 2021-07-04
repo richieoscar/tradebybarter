@@ -9,6 +9,7 @@ import 'package:shared_preferences/shared_preferences.dart';
 import 'package:trade_by_barter/models/User.dart';
 import 'package:trade_by_barter/models/auth.dart';
 import 'package:trade_by_barter/navigation/navigation.dart';
+import 'package:trade_by_barter/screens/login-screen.dart';
 
 import '../constants.dart';
 
@@ -51,6 +52,13 @@ class ApiNetworkingManager {
       print(response.statusCode);
       print(response.body);
       print(response.contentLength);
+      Fluttertoast.showToast(
+          msg: response.body,
+          gravity: ToastGravity.BOTTOM,
+          textColor: Colors.black,
+          toastLength: Toast.LENGTH_LONG,
+          backgroundColor: KProceedColor);
+      
     }
   }
 
@@ -76,6 +84,12 @@ class ApiNetworkingManager {
       print(response.statusCode);
       print(response.body);
       print(response.contentLength);
+      Fluttertoast.showToast(
+          msg: "Invalid Login Details",
+          gravity: ToastGravity.BOTTOM,
+          textColor: Colors.black,
+          toastLength: Toast.LENGTH_SHORT,
+          backgroundColor: KProceedColor);
     }
   }
 

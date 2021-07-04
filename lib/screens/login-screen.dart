@@ -18,19 +18,20 @@ class _LoginState extends State<LoginScreen> {
   bool _obscureText = true;
   final emailController = TextEditingController();
   final passwordController = TextEditingController();
-  bool show = false;
+  bool _show = false;
+  String _emailError = "Email is required";
+  String _passwordError = "Password is required";
+  bool _visbile = false;
 
-  load(){
-    if(show == false){
+  load() {
+    if (_show == false) {
       setState(() {
-        show = true;
+        _show = true;
       });
-    }
-    else{
+    } else {
       setState(() {
-       show = false; 
+        _show = false;
       });
-      
     }
   }
 
@@ -45,17 +46,15 @@ class _LoginState extends State<LoginScreen> {
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                 
                   Positioned(
-                    child:  Container(
-                        width: 292.0,
-                        height: 176.0,
-                        child: Hero(
-                          tag: "Sign in image",
-                          child: Image.asset("images/login.png"),
-                        ),
+                    child: Container(
+                      width: 292.0,
+                      height: 176.0,
+                      child: Hero(
+                        tag: "Sign in image",
+                        child: Image.asset("images/login.png"),
                       ),
-
+                    ),
                     left: 49.0,
                     top: 111.0,
                   ),
@@ -90,6 +89,15 @@ class _LoginState extends State<LoginScreen> {
                     ),
                   ),
                   SizedBox(
+                    height: 5,
+                  ),
+                  Visibility(
+                      visible: _visbile,
+                      child: Text(
+                        _emailError,
+                        style: TextStyle(color: KBrandColors, fontSize: 10.0),
+                      )),
+                  SizedBox(
                     height: 20,
                   ),
                   Text(
@@ -101,13 +109,11 @@ class _LoginState extends State<LoginScreen> {
                   ),
                   SizedBox(
                     height: 5,
-
                   ),
                   Container(
                     decoration: BoxDecoration(
                         color: Colors.white,
                         borderRadius: BorderRadius.all(Radius.circular(10)),
-
                         border: Border.all(color: Colors.grey[300])),
                     height: 50,
                     child: TextField(
@@ -135,26 +141,42 @@ class _LoginState extends State<LoginScreen> {
                       ),
                     ),
                   ),
+                  SizedBox(height: 5),
+                  Visibility(
+                      visible: _visbile,
+                      child: Text(_passwordError,
+                          style:
+                              TextStyle(color: KBrandColors, fontSize: 10.0))),
+                  SizedBox(height: 10),
                   Row(
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: [
                       Row(
                         mainAxisAlignment: MainAxisAlignment.start,
                         children: [
-                          Checkbox(value: false,),
-                          Text("Remember Me",  style: TextStyle(
-                              color: Colors.black54,
-                              fontWeight: FontWeight.w500,
-                              fontSize: 12),
+                          Checkbox(
+                            value: false,
+                          ),
+                          Text(
+                            "Remember Me",
+                            style: TextStyle(
+                                color: Colors.black54,
+                                fontWeight: FontWeight.w500,
+                                fontSize: 12),
                           ),
                         ],
                       ),
-                      GestureDetector(child: Text("Forgot Password",
-                        style: TextStyle(
-                            color: Colors.black54,
-                            fontWeight: FontWeight.w500,
-                            fontSize: 12),),
-                      onTap: ()=> AppNavigator.navigateToForgotPasswordScreen(context))
+                      GestureDetector(
+                          child: Text(
+                            "Forgot Password",
+                            style: TextStyle(
+                                color: Colors.black54,
+                                fontWeight: FontWeight.w500,
+                                fontSize: 12),
+                          ),
+                          onTap: () =>
+                              AppNavigator.navigateToForgotPasswordScreen(
+                                  context))
                     ],
                   ),
                   SizedBox(
@@ -168,17 +190,35 @@ class _LoginState extends State<LoginScreen> {
                         style: ButtonStyle(
                           backgroundColor:
                               MaterialStateProperty.all(KfilterBorderColors),
-                          shape: MaterialStateProperty.all(RoundedRectangleBorder(
-                              borderRadius: BorderRadius.circular(10.0))),
-                              ),
+                          shape: MaterialStateProperty.all(
+                              RoundedRectangleBorder(
+                                  borderRadius: BorderRadius.circular(10.0))),
+                        ),
                         onPressed: () {
-                        load();
+                          load();
                           print('Proceed clicked');
                           var email = emailController.text;
                           var password = passwordController.text;
-                        var res = ApiNetworkingManager.loginUser(email, password, context);
-                        res.whenComplete(() => hideProgressBar());
+                          if (email.isEmpty) {
+                            setState(() {
+                              _visbile = true;
+                              _show = false;
+                            });
+                            return;
+                          }
+                          if (password.isEmpty) {
+                            setState(() {
+                              _visbile = true;
+                              _show = false;
+                            });
+                            return;
+                          }
 
+                          ApiNetworkingManager.loginUser(
+                                  email, password, context)
+                              .whenComplete(() => setState(() {
+                                    _show = false;
+                                  }));
                         },
                         child: Text(
                           "Login",
@@ -206,7 +246,8 @@ class _LoginState extends State<LoginScreen> {
                             fontSize: 12.0,
                           ),
                         ),
-                        onTap:()=> AppNavigator.navigateToSignUpScreen(context),
+                        onTap: () =>
+                            AppNavigator.navigateToSignUpScreen(context),
                       ),
                       Icon(
                         Icons.arrow_forward,
@@ -215,7 +256,7 @@ class _LoginState extends State<LoginScreen> {
                       )
                     ],
                   ),
-                  SizedBox(height:20),
+                  SizedBox(height: 20),
                   showProgressBar(),
                 ],
               ),
@@ -226,18 +267,17 @@ class _LoginState extends State<LoginScreen> {
     );
   }
 
-
- Widget hideProgressBar(){
-   return Visibility(
+  Widget hideProgressBar() {
+    return Visibility(
       visible: false,
       child: CircularProgressIndicator(),
     );
   }
 
-  Widget showProgressBar(){
+  Widget showProgressBar() {
     return Center(
       child: Visibility(
-        visible: show,
+        visible: _show,
         child: CircularProgressIndicator(
           color: KfilterBorderColors,
         ),
