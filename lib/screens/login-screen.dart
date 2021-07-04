@@ -135,7 +135,7 @@ class _LoginState extends State<LoginScreen> {
                                 ? Icons.visibility
                                 : Icons.visibility_off,
                             color: Colors.grey[300],
-                          ),
+                          ), 
                         ),
                         border: InputBorder.none,
                       ),
