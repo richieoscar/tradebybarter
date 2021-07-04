@@ -1,50 +1,89 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:fluttertoast/fluttertoast.dart';
+import 'package:shared_preferences/shared_preferences.dart';
+import 'package:trade_by_barter/navigation/navigation.dart';
 
 import '../constants.dart';
 import 'bottom_nav_bar.dart';
 
-//void main() => runApp(const FilterScreen());
+class FilterScreen extends StatefulWidget{
 
-/// This is the stateless widget that the main application instantiates.
-class FilterScreen extends StatelessWidget {
-  const FilterScreen({Key key}) : super(key: key);
+  @override
+  _FilterState createState() {
+    return _FilterState();
+  }
+}
 
+class _FilterState extends State<FilterScreen> {
+
+  String _filter;
+  Color color =KfilterRectangles ;
+  Color textColor = Colors.black;
+  Color lcolor = KfilterRectangles;
+  Color ltextColor = Colors.black;
+   Color catcolor = KfilterRectangles;
+  Color cattextColor = Colors.black;
+   Color popcolor = KfilterRectangles;
+  Color poptextColor = Colors.black;
+   Color nearcolor = KfilterRectangles;
+  Color neartextColor = Colors.black;
+
+   
+ 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      appBar: AppBar(
+      title: Center(
+        child: Text("Select Filter",
+          style: TextStyle(
+          color: Colors.black,
+        ),
+        ),
+      ),
+      leading: IconButton(
+        icon: Icon(Icons.arrow_back),
+        color: Colors.black,
+        onPressed: () => AppNavigator.navigateBack(context),
+      ),
+      elevation: 0.0,
+      backgroundColor: Colors.white,
+    ),
       body: Center(
         child: Container(
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.center,
             children: [
-              SizedBox(height: 70),
-              Text(
-                "Select Filter",
-                style: TextStyle(
-                    color: Colors.black,
-                    fontWeight: FontWeight.bold,
-                    fontSize: 22),
-              ),
-              SizedBox(height: 70),
+              SizedBox(height: 40),
               Container(
                 // height: 200,
                 child: myLayoutWidget(),
               ),
               SizedBox(height: 60),
               Container(
-                width: 200,
+                width: 300,
+                height: 40,
                 child: (OutlinedButton(
                   style: ButtonStyle(
-                    backgroundColor: MaterialStateProperty.all(KProceedColor),
+                    backgroundColor: MaterialStateProperty.all( KProceedColor),
                     shape: MaterialStateProperty.all(RoundedRectangleBorder(
-                        borderRadius: BorderRadius.circular(20.0))),
+                        borderRadius: BorderRadius.circular(15.0))),
                   ),
                   onPressed: () {
-                    print('Proceed clicked');
+                    setState(() {
+                      apply();
+                    });
+                    Fluttertoast.showToast(msg: "Filter Selcted",
+                    gravity: ToastGravity.BOTTOM,
+                    textColor: Colors.black,
+                    toastLength: Toast.LENGTH_SHORT,
+                    backgroundColor: KProceedColor
+                    );
+                    Navigator.pop(context);
                   },
                   child: Text(
-                    "Proceed",
+                    "Apply",
                     style: TextStyle(
                         color: Colors.black,
                         fontWeight: FontWeight.w500,
@@ -56,43 +95,144 @@ class FilterScreen extends StatelessWidget {
           ),
         ),
       ),
-      //bottomNavigationBar: BottomNavBar(),
+     
     );
   }
-}
+
+  void apply()async{
+    SharedPreferences filterPref = await SharedPreferences.getInstance();
+    filterPref.setString("filter", _filter);
+    print(filterPref.getString("filter"));
+  }
+
 
 Widget myLayoutWidget() {
   return SingleChildScrollView(
     child: (Column(
       crossAxisAlignment: CrossAxisAlignment.center,
       children: <Widget>[
-        outlineButton("By Category"),
-        outlineButton("By Location"),
-        outlineButton("By Popular Demand"),
-        outlineButton("By NearBy People"),
+        categoryButton("By Category"),
+        locationButton("By Location"),
+        popularButton("By Popular Demand"),
+        nearByButton("By NearBy People"),
       ],
     )),
   );
 }
 
-Widget outlineButton(String text) {
-  return (Container(
-      margin: EdgeInsets.all(20),
-      constraints: BoxConstraints.expand(width: 500, height: 60),
-      child: OutlinedButton(
-        style: ButtonStyle(
-            backgroundColor: MaterialStateProperty.all(KfilterRectangles),
-            shape: MaterialStateProperty.all(RoundedRectangleBorder(
-                borderRadius: BorderRadius.circular(15.0))),
-            side: MaterialStateProperty.all(
-                BorderSide(color: Color(0xffa60000), width: 1.0))),
-        onPressed: () {
-          print('By Popular Demand Clicked');
-        },
-        child: Text(
-          text.toUpperCase(),
-          style: TextStyle(
-              color: Colors.black, fontWeight: FontWeight.normal, fontSize: 20),
-        ),
-      )));
+
+
+Widget locationButton(String text) {
+    return (Container(
+        margin: EdgeInsets.all(20),
+        constraints: BoxConstraints.expand(width: 500, height: 60),
+        child: OutlinedButton(
+          style: ButtonStyle(
+              backgroundColor: MaterialStateProperty.all(lcolor),
+              shape: MaterialStateProperty.all(RoundedRectangleBorder(
+                  borderRadius: BorderRadius.circular(15.0))),
+              side: MaterialStateProperty.all(
+                  BorderSide(color: Color(0xffa60000), width: 1.0))),
+          onPressed: () {
+            // print('By Popular Demand Clicked');
+                setState(() {
+                  _filter = "location";
+                  lcolor = KfilterBorderColors;
+                  ltextColor = Colors.white;
+                });
+          },
+          
+          child: Text(
+            text.toUpperCase(),
+            style: TextStyle(
+                color: ltextColor, fontWeight: FontWeight.normal, fontSize: 20),
+          ),
+        )));
+  }
+
+ Widget categoryButton(String text) {
+    return (Container(
+        margin: EdgeInsets.all(20),
+        constraints: BoxConstraints.expand(width: 500, height: 60),
+        child: OutlinedButton(
+          style: ButtonStyle(
+              backgroundColor: MaterialStateProperty.all(catcolor),
+              shape: MaterialStateProperty.all(RoundedRectangleBorder(
+                  borderRadius: BorderRadius.circular(15.0))),
+              side: MaterialStateProperty.all(
+                  BorderSide(color: Color(0xffa60000), width: 1.0))),
+          onPressed: () {
+            // print('By Popular Demand Clicked');
+            setState(() {
+              _filter = "category";
+              catcolor = KfilterBorderColors;
+              cattextColor = Colors.white;
+            });
+          },
+          child: Text(
+            text.toUpperCase(),
+            style: TextStyle(
+                color: cattextColor, fontWeight: FontWeight.normal, fontSize: 20),
+          ),
+        )));
+  }
+
+Widget popularButton(String text) {
+    return (Container(
+        margin: EdgeInsets.all(20),
+        constraints: BoxConstraints.expand(width: 500, height: 60),
+        child: OutlinedButton(
+          style: ButtonStyle(
+              backgroundColor: MaterialStateProperty.all(popcolor),
+              shape: MaterialStateProperty.all(RoundedRectangleBorder(
+                  borderRadius: BorderRadius.circular(15.0))),
+              side: MaterialStateProperty.all(
+                  BorderSide(color: Color(0xffa60000), width: 1.0))),
+          onPressed: () {
+            // print('By Popular Demand Clicked');
+            setState(() {
+              _filter = "popular";
+              popcolor = KfilterBorderColors;
+              poptextColor = Colors.white;
+            });
+          },
+          child: Text(
+            text.toUpperCase(),
+            style: TextStyle(
+                color: poptextColor,
+                fontWeight: FontWeight.normal,
+                fontSize: 20),
+          ),
+        )));
+  }
+
+  Widget nearByButton(String text) {
+    return (Container(
+        margin: EdgeInsets.all(20),
+        constraints: BoxConstraints.expand(width: 500, height: 60),
+        child: OutlinedButton(
+          style: ButtonStyle(
+              backgroundColor: MaterialStateProperty.all(nearcolor),
+              shape: MaterialStateProperty.all(RoundedRectangleBorder(
+                  borderRadius: BorderRadius.circular(15.0))),
+              side: MaterialStateProperty.all(
+                  BorderSide(color: Color(0xffa60000), width: 1.0))),
+          onPressed: () {
+            // print('By Popular Demand Clicked');
+            setState(() {
+              _filter = "nearby";
+              nearcolor = KfilterBorderColors;
+              neartextColor = Colors.white;
+            });
+          },
+          child: Text(
+            text.toUpperCase(),
+            style: TextStyle(
+                color: neartextColor,
+                fontWeight: FontWeight.normal,
+                fontSize: 20),
+          ),
+        )));
+  }
+  
 }

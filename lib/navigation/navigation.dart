@@ -4,16 +4,18 @@ import 'package:trade_by_barter/models/product_model.dart';
 import 'package:trade_by_barter/screens/add_photos_screen.dart';
 import 'package:trade_by_barter/screens/bottom_nav_bar.dart';
 import 'package:trade_by_barter/screens/category_screen.dart';
+import 'package:trade_by_barter/screens/faqScreen.dart';
 import 'package:trade_by_barter/screens/filterScreen.dart';
+import 'package:trade_by_barter/screens/forgotPasswordScreen.dart';
 import 'package:trade_by_barter/screens/homepageScreen.dart';
 import 'package:trade_by_barter/screens/login-screen.dart';
 import 'package:trade_by_barter/screens/nearbyPeopleScreen.dart';
+import 'package:trade_by_barter/screens/notification_screen.dart';
 import 'package:trade_by_barter/screens/settings_screen.dart';
 import 'package:trade_by_barter/screens/signUp.dart';
 import 'package:trade_by_barter/screens/signup_login_screen.dart';
 import 'package:trade_by_barter/screens/trade_screen.dart';
-import 'package:trade_by_barter/screens/welcomeScreen.dart';
-import 'package:trade_by_barter/screens/notification_screen.dart';
+import 'package:trade_by_barter/screens/verificationScreen.dart';
 
 class AppNavigator {
   static const INITIAL_ROUTE = '/';
@@ -91,10 +93,20 @@ class AppNavigator {
     Navigator.push(context, MaterialPageRoute(builder: (context) => Signup()));
   }
 
-  static void navigateToFilterScreen(BuildContext context) {
-    Navigator.push(
-        context, MaterialPageRoute(builder: (context) => FilterScreen()));
+
+  static void navigateToVerificationScreen(BuildContext context){
+    Navigator.push(context, MaterialPageRoute(builder: (context) => VerifyScreen()));
   }
+
+  static void logOut(BuildContext context){
+  Navigator.pushReplacement(context, MaterialPageRoute(builder: (context) => LoginScreen()));
+  
+  }
+
+  static void navigateToFilterScreen(BuildContext context){
+    Navigator.push(context, MaterialPageRoute(builder: (context) => FilterScreen()));
+  }
+  
 
   static void navigateToSettingsScreen(BuildContext context) {
     Navigator.push(
@@ -111,7 +123,18 @@ class AppNavigator {
         context, MaterialPageRoute(builder: (context) => NotificationScreen()));
   }
 
-  static void navigateBack(BuildContext context) {
+
+  static void navigateToFaqScreen(BuildContext context){
+    Navigator.push(context, MaterialPageRoute(builder: (context) => FaqScreen()));
+  }
+
+  static void navigateToForgotPasswordScreen(BuildContext context){
+    Navigator.push(context, MaterialPageRoute(builder: (context) => ForgotPasswordScreen ()));
+  }
+
+  static void navigateBack(BuildContext context){
     Navigator.pop(context, false);
   }
+
 }
+

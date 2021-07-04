@@ -1,12 +1,7 @@
-import 'package:flutter/gestures.dart';
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:trade_by_barter/constants.dart';
-import 'package:trade_by_barter/constants.dart';
 import 'package:trade_by_barter/navigation/navigation.dart';
-import 'package:url_launcher/link.dart';
-import 'package:url_launcher/url_launcher.dart';
-import 'package:flutter_otp_text_field/flutter_otp_text_field.dart';
-import 'package:pin_code_text_field/pin_code_text_field.dart';
 
 
 class ForgotPasswordScreen extends StatefulWidget{

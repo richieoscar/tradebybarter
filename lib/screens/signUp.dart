@@ -1,5 +1,9 @@
 import 'package:flutter/material.dart';
+import 'package:trade_by_barter/models/User.dart';
+import 'package:trade_by_barter/navigation/navigation.dart';
 import 'package:trade_by_barter/networking/api_networking.dart';
+
+import '../constants.dart';
 
 class Signup extends StatefulWidget {
   const Signup({Key key}) : super(key: key);
@@ -10,21 +14,40 @@ class Signup extends StatefulWidget {
 
 class _SignupState extends State<Signup> {
   bool _obscureText = true;
-  final userNameController = TextEditingController();
-  final firstNameController = TextEditingController();
-  final lastNameController = TextEditingController();
-  final emailController = TextEditingController();
-  final phoneController = TextEditingController();
-  final passwordController = TextEditingController();
-  final rePasswordController = TextEditingController();
+  final _userNameController = TextEditingController();
+  final _fullNameController = TextEditingController();
+  final _emailController = TextEditingController();
+  final _phoneController = TextEditingController();
+  final _passwordController = TextEditingController();
+  final _rePasswordController = TextEditingController();
+  String _emailError = "Email is required";
+  String _fullNameError = "Full Name Required";
+  String _userNameError = "Password Required";
+  String _phoneError = "Phone Number Required";
+  String _passwordError = "Password is required";
+  String _repasswordError = "Password Required";
+  bool _visbile = false;
+  bool _show = false;
+
+  load() {
+    if (_show == false) {
+      setState(() {
+        _show = true;
+      });
+    } else {
+      setState(() {
+        _show = false;
+      });
+    }
+  }
 
   @override
   void dispose() {
-    userNameController.dispose();
-    firstNameController.dispose();
-    lastNameController.dispose();
-    passwordController.dispose();
-    rePasswordController.dispose();
+    _userNameController.dispose();
+    _fullNameController.dispose();
+    _emailController.dispose();
+    _passwordController.dispose();
+    _rePasswordController.dispose();
     super.dispose();
   }
 
@@ -89,7 +112,7 @@ class _SignupState extends State<Signup> {
                             border: Border.all(color: Colors.white)),
                         height: 30,
                         child: TextField(
-                          controller: userNameController,
+                          controller: _fullNameController,
                           textInputAction: TextInputAction.done,
                           autofocus: true,
                           cursorColor: Colors.black54,
@@ -101,8 +124,16 @@ class _SignupState extends State<Signup> {
                         ),
                       ),
                       SizedBox(
-                        height: 10,
+                        height: 5,
                       ),
+                      Visibility(
+                          visible: _visbile,
+                          child: Text(
+                            _fullNameError,
+                            style:
+                                TextStyle(color: KBrandColors, fontSize: 10.0),
+                          )),
+                      SizedBox(height: 10),
                       Text(
                         'User Name',
                         style: TextStyle(
@@ -120,9 +151,8 @@ class _SignupState extends State<Signup> {
                             border: Border.all(color: Colors.white)),
                         height: 30,
                         child: TextField(
-                          controller: firstNameController,
+                          controller: _userNameController,
                           textInputAction: TextInputAction.done,
-                          autofocus: true,
                           cursorColor: Colors.black54,
                           decoration: InputDecoration(
                             contentPadding:
@@ -131,6 +161,16 @@ class _SignupState extends State<Signup> {
                           ),
                         ),
                       ),
+                      SizedBox(
+                        height: 5,
+                      ),
+                      Visibility(
+                          visible: _visbile,
+                          child: Text(
+                            _userNameError,
+                            style:
+                                TextStyle(color: KBrandColors, fontSize: 10.0),
+                          )),
                       SizedBox(
                         height: 10,
                       ),
@@ -154,7 +194,7 @@ class _SignupState extends State<Signup> {
                             border: Border.all(color: Colors.white)),
                         height: 30,
                         child: TextField(
-                          controller: lastNameController,
+                          controller: _phoneController,
                           textInputAction: TextInputAction.done,
                           autofocus: true,
                           cursorColor: Colors.black54,
@@ -166,6 +206,14 @@ class _SignupState extends State<Signup> {
                         ),
                       ),
                       SizedBox(height: 5),
+                      Visibility(
+                          visible: _visbile,
+                          child: Text(
+                            _phoneError,
+                            style:
+                                TextStyle(color: KBrandColors, fontSize: 10.0),
+                          )),
+                      SizedBox(height: 10),
                       Text(
                         'Email Address',
                         style: TextStyle(
@@ -183,7 +231,7 @@ class _SignupState extends State<Signup> {
                             border: Border.all(color: Colors.white)),
                         height: 30,
                         child: TextField(
-                          controller: emailController,
+                          controller: _emailController,
                           textInputAction: TextInputAction.done,
                           autofocus: true,
                           cursorColor: Colors.black54,
@@ -195,8 +243,16 @@ class _SignupState extends State<Signup> {
                         ),
                       ),
                       SizedBox(
-                        height: 10,
+                        height: 5,
                       ),
+                      Visibility(
+                          visible: _visbile,
+                          child: Text(
+                            _emailError,
+                            style:
+                                TextStyle(color: KBrandColors, fontSize: 10.0),
+                          )),
+                      SizedBox(height: 10),
                       Text(
                         'Password',
                         style: TextStyle(
@@ -214,7 +270,7 @@ class _SignupState extends State<Signup> {
                             border: Border.all(color: Colors.white)),
                         height: 30,
                         child: TextField(
-                          controller: passwordController,
+                          controller: _passwordController,
                           obscureText: _obscureText,
                           textInputAction: TextInputAction.done,
                           autofocus: true,
@@ -239,6 +295,16 @@ class _SignupState extends State<Signup> {
                           ),
                         ),
                       ),
+                      SizedBox(
+                        height: 5,
+                      ),
+                      Visibility(
+                          visible: _visbile,
+                          child: Text(
+                            _passwordError,
+                            style:
+                                TextStyle(color: KBrandColors, fontSize: 10.0),
+                          )),
                       SizedBox(
                         height: 10,
                       ),
@@ -259,7 +325,7 @@ class _SignupState extends State<Signup> {
                             border: Border.all(color: Colors.white)),
                         height: 30,
                         child: TextField(
-                          controller: rePasswordController,
+                          controller: _rePasswordController,
                           obscureText: _obscureText,
                           textInputAction: TextInputAction.done,
                           autofocus: true,
@@ -285,8 +351,16 @@ class _SignupState extends State<Signup> {
                         ),
                       ),
                       SizedBox(
-                        height: 20,
+                        height: 5,
                       ),
+                      Visibility(
+                          visible: _visbile,
+                          child: Text(
+                            _repasswordError,
+                            style:
+                                TextStyle(color: KBrandColors, fontSize: 10.0),
+                          )),
+                      SizedBox(height: 20),
                       Center(
                         child: Container(
                           width: 250.0,
@@ -302,22 +376,64 @@ class _SignupState extends State<Signup> {
                             // color: Color(0xffa60000),
                             child: Text('Sign Up'),
                             onPressed: () {
-                              var userName = userNameController.text;
-                              var firstName = firstNameController.text;
-                              var lastName = lastNameController.text;
-                              var email = emailController.text;
-                              var phone = phoneController.text;
-                              var password = passwordController.text;
-                              var rePassword = rePasswordController.text;
-                              ApiNetworkingManager.signUpUser(
-                                  userName,
-                                  firstName,
-                                  lastName,
-                                  email,
-                                  phone,
-                                  password,
-                                  rePassword,
-                                  context);
+                              load();
+                              var username = _userNameController.text;
+                              var fullName = _fullNameController.text;
+                              var email = _emailController.text;
+                              var phone = _phoneController.text;
+                              var password = _passwordController.text;
+                              var rePassword = _rePasswordController.text;
+                              //validate details
+                              if (username.isEmpty) {
+                                setState(() {
+                                  _visbile = true;
+                                  _show = false;
+                                });
+                                return;
+                              }
+                              if (fullName.isEmpty) {
+                                setState(() {
+                                  _visbile = true;
+                                  _show = false;
+                                });
+                                return;
+                              }
+                              if (email.isEmpty) {
+                                setState(() {
+                                  _visbile = true;
+                                  _show = false;
+                                });
+                                return;
+                              }
+                              if (phone.isEmpty) {
+                                setState(() {
+                                  _visbile = true;
+                                  _show = false;
+                                });
+                                return;
+                              }
+                              if (password.isEmpty) {
+                                setState(() {
+                                  _visbile = true;
+                                  _show = false;
+                                });
+                                return;
+                              }
+                              if (rePassword.isEmpty) {
+                                setState(() {
+                                  _visbile = true;
+                                  _show = false;
+                                });
+                                return;
+                              }
+
+                              User user = User(username, fullName, email, phone,
+                                  password, rePassword);
+                              _clear();
+                              ApiNetworkingManager.signUpUser(user, context)
+                                  .whenComplete(() => setState(() {
+                                        _show = false;
+                                      }));
 
                               // AppNavigator.navigateToSignUpScreen(context);
                             },
@@ -332,13 +448,18 @@ class _SignupState extends State<Signup> {
                           mainAxisAlignment: MainAxisAlignment.center,
                           children: [
                             Text('I\'m already a member,'),
-                            Text(
-                              'Sign in',
-                              style: TextStyle(color: (Color(0xffA60000))),
+                            GestureDetector(
+                              onTap: () => AppNavigator.navigateBack(context),
+                              child: Text(
+                                'Sign in',
+                                style: TextStyle(color: (Color(0xffA60000))),
+                              ),
                             )
                           ],
                         ),
-                      )
+                      ),
+                      SizedBox(height: 10),
+                      showProgressBar(),
                     ],
                   ),
                 ),
@@ -348,5 +469,25 @@ class _SignupState extends State<Signup> {
         ),
       ),
     );
+  }
+
+  Widget showProgressBar() {
+    return Center(
+      child: Visibility(
+        visible: _show,
+        child: CircularProgressIndicator(
+          color: KfilterBorderColors,
+        ),
+      ),
+    );
+  }
+
+  _clear() {
+    _userNameController.clear();
+    _fullNameController.clear();
+    _emailController.clear();
+    _passwordController.clear();
+    _rePasswordController.clear();
+    _phoneController.clear();
   }
 }

@@ -1,30 +1,31 @@
 import 'package:accordion/accordion.dart';
 import 'package:flutter/material.dart';
+
+import 'package:trade_by_barter/navigation/navigation.dart';
+import 'package:trade_by_barter/screens/bottom_nav_bar.dart';
+
 import 'package:hexcolor/hexcolor.dart';
 
-void main() async {
-  runApp(AccordionApp());
-}
 
-class AccordionApp extends StatelessWidget {
-  // This widget is the root of your application.
-  @override
-  Widget build(BuildContext context) {
-    return MaterialApp(
-      title: 'FAQ',
-      home: FaqPage(),
-    );
-  }
-}
 
-class FaqPage extends StatelessWidget //__
-{
+class FaqScreen extends StatelessWidget {
   build(context) => Scaffold(
-        backgroundColor: Colors.white,
-        appBar: AppBar(
-          title: Text('FAQ'),
-          centerTitle: true,
+    appBar: AppBar(
+      title: Center(
+        child: Text("FAQ",
+          style: TextStyle(
+          color: Colors.black,
         ),
+        ),
+      ),
+      leading: IconButton(
+        icon: Icon(Icons.arrow_back),
+        color: Colors.black,
+        onPressed: () => AppNavigator.navigateBack(context),
+      ),
+      elevation: 0.0,
+      backgroundColor: Colors.white,
+    ),
         body: SafeArea(
           child: ListView(
             children: [

@@ -1,10 +1,41 @@
+
 import "package:flutter/material.dart";
 import 'package:flutter/widgets.dart';
 import 'package:hexcolor/hexcolor.dart';
+import 'package:shared_preferences/shared_preferences.dart';
+import 'package:trade_by_barter/models/User.dart';
+import 'package:trade_by_barter/navigation/navigation.dart';
+import 'package:trade_by_barter/networking/api_networking.dart';
 
-class HomeScreen extends StatelessWidget {
+
+class HomeScreen extends StatefulWidget {
+
+  @override
+   _HomeScreenState createState() => _HomeScreenState();
+
+}
+
+class _HomeScreenState extends State<HomeScreen> {
+   String username;
+   Future<User> user;
+
+   getUserName() async{
+      SharedPreferences sp = await SharedPreferences.getInstance();
+          username = sp.getString("username");
+   }
+  
+   
+
+   @override
+   void initState() {
+     super.initState();
+     getUserName();
+
+   }
+  
   @override
   Widget build(BuildContext context) {
+   // user = ApiNetworkingManager.loggedInUser(context);
     return SafeArea(
       child: Container(
         child: ListView(children: [
@@ -15,17 +46,18 @@ class HomeScreen extends StatelessWidget {
               left: 10.0,
             ),
             child: Row(children: [
-              Text(
-                'Hi Temilola',
-                textAlign: TextAlign.left,
-                textDirection: TextDirection.ltr,
-                style: TextStyle(
-                  fontSize: 15,
-                  color: Colors.black,
-                  fontWeight: FontWeight.bold,
-                ),
-              ),
-            ]),
+               Text(
+                      'Hi',
+                      textAlign: TextAlign.left,
+                      textDirection: TextDirection.ltr,
+                      style: TextStyle(
+                        fontSize: 15,
+                        color: Colors.black,
+                        fontWeight: FontWeight.bold,
+                      ),
+               )
+            ]
+            ),
           ),
           SearchWidget(),
           Container(
@@ -52,11 +84,14 @@ class HomeScreen extends StatelessWidget {
                     padding: const EdgeInsets.only(
                       right: 15.0,
                     ),
-                    child: Text(
-                      'See All',
-                      textDirection: TextDirection.ltr,
-                      style: TextStyle(
-                        color: Color(0xFFA60000),
+                    child: GestureDetector(
+                        onTap: ()=> AppNavigator.navigateToCategoryScreen(context),
+                        child: Text(
+                        'See All',
+                        textDirection: TextDirection.ltr,
+                        style: TextStyle(
+                          color: Color(0xFFA60000),
+                        ),
                       ),
                     ),
                   ),
@@ -118,11 +153,14 @@ class HomeScreen extends StatelessWidget {
                   ),
                   Padding(
                     padding: const EdgeInsets.only(right: 10.0),
-                    child: Text(
-                      'See All',
-                      textDirection: TextDirection.ltr,
-                      style: TextStyle(
-                        color: Color(0xFFA60000),
+                    child: GestureDetector(
+                      onTap: () => AppNavigator.navigateToNearByPeopleScreen(context),
+                         child: Text(
+                        'See All',
+                        textDirection: TextDirection.ltr,
+                        style: TextStyle(
+                          color: Color(0xFFA60000),
+                        ),
                       ),
                     ),
                   ),
@@ -154,7 +192,25 @@ class HomeScreen extends StatelessWidget {
       ),
     );
   }
+
+
+  String displayUsername() {
+    String userName;
+    FutureBuilder<User>(
+      future: user,
+      builder: (context, snapshot) {
+        if (snapshot.hasData) {
+           userName = snapshot.data.username;
+        } else if (snapshot.hasError) {
+          userName = snapshot.error;
+        }
+      },
+    );
+    return userName;
+  }
 }
+
+
 
 //Search Section
 class SearchWidget extends StatelessWidget {
@@ -208,19 +264,22 @@ class SearchWidget extends StatelessWidget {
               left: 50.0,
               right: 10.0,
             ),
-            child: Container(
-              // margin: const EdgeInsets.all(30.0),
-              padding: const EdgeInsets.all(10.0),
-              decoration: BoxDecoration(
-                border: Border.all(
-                  width: 2,
-                  color: HexColor("#A60000"),
+            child: GestureDetector(
+              onTap:()=> AppNavigator.navigateToFilterScreen(context),
+                          child: Container(
+                // margin: const EdgeInsets.all(30.0),
+                padding: const EdgeInsets.all(10.0),
+                decoration: BoxDecoration(
+                  border: Border.all(
+                    width: 2,
+                    color: HexColor("#A60000"),
+                  ),
+                  borderRadius: BorderRadius.all(Radius.circular(5.0)),
                 ),
-                borderRadius: BorderRadius.all(Radius.circular(5.0)),
-              ),
-              child: Icon(
-                Icons.menu,
-                color: HexColor("#FCE303"),
+                child: Icon(
+                  Icons.menu,
+                  color: HexColor("#FCE303"),
+                ),
               ),
             ),
           ),
