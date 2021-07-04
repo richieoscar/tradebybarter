@@ -22,32 +22,24 @@ class _VerifyScreenState extends State<VerifyScreen> {
           height: MediaQuery.of(context).size.height,
           child: SingleChildScrollView(
             child: Padding(
-              padding: const EdgeInsets.all(8.0),
+              padding: const EdgeInsets.all(20.0),
               child: Container(
                 height: MediaQuery.of(context).size.height,
                 decoration: BoxDecoration(
                   image: DecorationImage(
                       image: AssetImage('images/verificationbg.png'),
                       fit: BoxFit.cover)),
+
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
-                    SizedBox(height: 20,),
+                    SizedBox(height: 120,),
                     Container(
 
                       child: Center(
                         child: Column(
 
                           children: [
-                            Container(
-                              alignment: Alignment.topLeft,
-                              height: 120,
-                              decoration: BoxDecoration(
-                                  image: DecorationImage(
-                                      image: AssetImage('images/vericon.png'),
-                                      fit: BoxFit.contain)),
-                            ),
-
                             Container(
                               child: Text("Verification Code", style: KPageViewTextStyle,),
                             ),
@@ -121,7 +113,6 @@ class _VerifyScreenState extends State<VerifyScreen> {
                    ),
                     SizedBox(height:20),
 
-                    Expanded(child:
                     Center(
                       child: Container(
                         child: GestureDetector(
@@ -130,7 +121,7 @@ class _VerifyScreenState extends State<VerifyScreen> {
                         ),
                           onTap: (){},
                       )),
-                    ),),
+                    ),
                 SizedBox(height: 100)
                   ],
                 ),
