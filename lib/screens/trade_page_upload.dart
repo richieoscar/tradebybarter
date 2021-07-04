@@ -44,23 +44,6 @@ class _PageuploadState extends State<Pageupload> {
                 SizedBox(
                   height: 10,
                 ),
-                Row(
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  children: [
-                    Upload(),
-                    SizedBox(
-                      width: 10,
-                    ),
-                    Upload(),
-                    SizedBox(
-                      width: 10,
-                    ),
-                    Upload()
-                  ],
-                ),
-                SizedBox(
-                  height: 10,
-                ),
                 UploadText(
                   label: 'Product Value/Description:',
                 ),
@@ -152,6 +135,20 @@ class _PageuploadState extends State<Pageupload> {
                 ),
                 SizedBox(
                   height: 20,
+                ),
+                Center(
+                  child: Column(
+                    children: [
+                      Text(
+                        'Upload on spot selfie with product',
+                        style: TextStyle(color: Colors.grey.shade400),
+                      ),
+                      SizedBox(
+                        height: 5,
+                      ),
+                      Upload(),
+                    ],
+                  ),
                 ),
                 Container(
                   width: MediaQuery.of(context).size.width,
