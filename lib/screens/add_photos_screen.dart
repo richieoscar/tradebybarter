@@ -2,6 +2,8 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:trade_by_barter/navigation/navigation.dart';
 
+
+
 import '../constants.dart';
 
 class AddPhotos extends StatefulWidget {
@@ -10,6 +12,8 @@ class AddPhotos extends StatefulWidget {
 }
 
 class _AddPhotosState extends State<AddPhotos> {
+
+  
   @override
   Widget build(BuildContext context) {
     return Scaffold(

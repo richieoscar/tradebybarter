@@ -155,6 +155,7 @@ class _LoginState extends State<LoginScreen> {
                         mainAxisAlignment: MainAxisAlignment.start,
                         children: [
                           Checkbox(
+
                             value: false,
                           ),
                           Text(
