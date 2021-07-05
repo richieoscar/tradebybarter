@@ -27,7 +27,7 @@ List<Widget> pageView(BuildContext context) {
           height: MediaQuery.of(context).size.height,
           decoration: BoxDecoration(
               image: DecorationImage(
-                  image: AssetImage('images/onb1.png'),
+                  image: AssetImage('images/onb4.png'),
                   fit: BoxFit.cover)),
           child: Column(
             children: [
@@ -90,7 +90,7 @@ List<Widget> pageView(BuildContext context) {
           height: MediaQuery.of(context).size.height,
           decoration: BoxDecoration(
               image: DecorationImage(
-                  image: AssetImage('images/onb2.png'),
+                  image: AssetImage('images/onb5.png'),
                   fit: BoxFit.cover)),
           child: Column(
             children: [
@@ -151,7 +151,7 @@ List<Widget> pageView(BuildContext context) {
           height: MediaQuery.of(context).size.height,
           decoration: BoxDecoration(
               image: DecorationImage(
-                  image: AssetImage('images/onb3.png'),
+                  image: AssetImage('images/onb6.png'),
                   fit: BoxFit.cover)),
           child: Column(
             children: [
@@ -208,6 +208,7 @@ class _OnBoardScreenState extends State<OnBoardScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      
       backgroundColor: Colors.transparent,
 
       body: SafeArea(
