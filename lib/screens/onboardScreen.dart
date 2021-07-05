@@ -32,22 +32,24 @@ List<Widget> pageView(BuildContext context) {
           child: Column(
             children: [
 
-              SizedBox(height: 320,),
+              SizedBox(height: 350,),
               Padding(
                 padding: const EdgeInsets.all(16.0),
-                child: Text("Barter Your Unneeded Items Instantly.",
-                    style: KPageViewTextStyle, textAlign: TextAlign.center),
+                child: Center(
+                  child: Text("Barter Your Unneeded Items Instantly.",
+                      style: KPageViewTextStyle, textAlign: TextAlign.center),
+                ),
               ),
               SizedBox(
                 height: 20,
               ),
               Text("Swap your items and",
-                  style: KPageViewTextStyle2, textAlign: TextAlign.center),
+                  style: KOnboardText, textAlign: TextAlign.center),
               SizedBox(
-                height: 20,
+                height: 5,
               ),
-              Text("meet your real time needs",
-                  style: KPageViewTextStyle2, textAlign: TextAlign.center),
+              Text("meet your real time needs.",
+                  style: KOnboardText, textAlign: TextAlign.center),
               SizedBox(height: 100),
               Container(
                 width: 100,
@@ -93,7 +95,7 @@ List<Widget> pageView(BuildContext context) {
           child: Column(
             children: [
 
-              SizedBox(height: 320,),
+              SizedBox(height: 350,),
               Padding(
                 padding: const EdgeInsets.all(16.0),
                 child: Text("Get Equal Value of Your Items.",
@@ -103,12 +105,12 @@ List<Widget> pageView(BuildContext context) {
                 height: 20,
               ),
               Text("Exchange your items for",
-                  style: KPageViewTextStyle2, textAlign: TextAlign.center),
+                  style: KOnboardText, textAlign: TextAlign.center),
               SizedBox(
-                height: 20,
+                height: 5,
               ),
               Text("commensurate alternatives.",
-                  style: KPageViewTextStyle2, textAlign: TextAlign.center),
+                  style: KOnboardText, textAlign: TextAlign.center),
               SizedBox(height: 100),
               Container(
                 width: 100,
@@ -154,30 +156,32 @@ List<Widget> pageView(BuildContext context) {
           child: Column(
             children: [
 
-              SizedBox(height: 320,),
+              SizedBox(height: 350,),
               Text("Barter with Ease.",
                   style: KPageViewTextStyle, textAlign: TextAlign.center),
               SizedBox(
                 height: 20,
               ),
               Text("Login to trade conveniently,",
-                  style: KPageViewTextStyle2, textAlign: TextAlign.center),
+                  style: KOnboardText, textAlign: TextAlign.center),
               SizedBox(
-                height: 20,
+                height: 5,
               ),
               Text("fast and secured",
-                  style: KPageViewTextStyle2, textAlign: TextAlign.center),
+                  style: KOnboardText, textAlign: TextAlign.center),
               SizedBox(height: 100),
               Container(
                 width: 200,
+                margin: EdgeInsets.all(8),
+                constraints: BoxConstraints.expand( height: 30),
                 child: (OutlinedButton(
                   style: ButtonStyle(
-                    backgroundColor: MaterialStateProperty.all(KProceedColor  ),
+                    backgroundColor: MaterialStateProperty.all(KBrandColors),
                     shape: MaterialStateProperty.all(RoundedRectangleBorder(
                         borderRadius: BorderRadius.circular(20.0))),
                   ),
                   onPressed: () {
-                    print('Proceed clicked');
+                    print('Get started clicked');
                     AppNavigator.navigateToWelcomeScreen(context);
                   },
                   child: Text(
