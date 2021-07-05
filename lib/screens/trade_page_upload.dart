@@ -1,9 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:csc_picker/csc_picker.dart';
+import 'package:trade_by_barter/navigation/navigation.dart';
 
 class Pageupload extends StatefulWidget {
   Pageupload({Key key}) : super(key: key);
-  String _selectedCountry = "";
+  String _selectedCountry = ""; 
   String _selectedState = "";
   String _selectedcityValue = "";
 
@@ -86,7 +87,8 @@ class _PageuploadState extends State<Pageupload> {
                   ///DropdownDialog Item style [OPTIONAL PARAMETER]
                   dropdownItemStyle: TextStyle(
                     color: Colors.black,
-                    fontSize: 14,
+                    fontSize: 
+                    14,
                   ),
 
                   ///Dialog box radius [OPTIONAL PARAMETER]
@@ -233,7 +235,6 @@ class UploadText extends StatelessWidget {
       height: 40,
       child: TextField(
         textInputAction: TextInputAction.done,
-        autofocus: true,
         cursorColor: Colors.black54,
         decoration: InputDecoration(
           fillColor: Color(0xffC4C4C4),
@@ -247,61 +248,65 @@ class UploadText extends StatelessWidget {
 }
 
 class Upload extends StatelessWidget {
-  const Upload({this.label1});
   final String label1;
+  const Upload({this.label1});
+  
 
   @override
   Widget build(BuildContext context) {
-    return Container(
-      height: 83,
-      width: 94,
-      decoration: BoxDecoration(
-          color: Colors.grey.shade50,
-          borderRadius: BorderRadius.all(Radius.circular(10)),
-          border: Border.all(color: Color(0xffA60000))),
-      child: Column(
-        children: [
-          Expanded(
-            child: Container(
-              child: Center(
-                child: Icon(
-                  Icons.add_circle,
-                  color: Color(0xffA60000),
+    return GestureDetector(
+      onTap: ()=> AppNavigator.navigateToAddPhotoScreen(context),
+      child: Container(
+        height: 83,
+        width: 94,
+        decoration: BoxDecoration(
+            color: Colors.grey.shade50,
+            borderRadius: BorderRadius.all(Radius.circular(10)),
+            border: Border.all(color: Color(0xffA60000))),
+        child: Column(
+          children: [
+            Expanded(
+              child: Container(
+                child: Center(
+                  child: Icon(
+                    Icons.add_circle,
+                    color: Color(0xffA60000),
+                  ),
                 ),
               ),
             ),
-          ),
-          Expanded(
-            child: Container(
-              child: Column(
-                crossAxisAlignment: CrossAxisAlignment.end,
-                mainAxisAlignment: MainAxisAlignment.center,
-                children: [
-                  Expanded(
-                    child: Container(
-                      width: MediaQuery.of(context).size.width,
-                      decoration: BoxDecoration(
-                        color: Color(0xffCA6666),
-                        border: Border.all(
-                          color: Color(0xffA60000),
-                        ),
-                      ),
-                      child: Center(child: Text('ADD IMAGE')),
-                    ),
-                  ),
-                  Expanded(
+            Expanded(
+              child: Container(
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.end,
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: [
+                    Expanded(
                       child: Container(
-                    child: Icon(
-                      Icons.cancel,
-                      color: Color(0xffA60000),
-                      size: 20,
+                        width: MediaQuery.of(context).size.width,
+                        decoration: BoxDecoration(
+                          color: Color(0xffCA6666),
+                          border: Border.all(
+                            color: Color(0xffA60000),
+                          ),
+                        ),
+                        child: Center(child: Text('ADD IMAGE')),
+                      ),
                     ),
-                  ))
-                ],
+                    Expanded(
+                        child: Container(
+                      child: Icon(
+                        Icons.cancel,
+                        color: Color(0xffA60000),
+                        size: 20,
+                      ),
+                    ))
+                  ],
+                ),
               ),
-            ),
-          )
-        ],
+            )
+          ],
+        ),
       ),
     );
   }

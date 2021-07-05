@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:trade_by_barter/constants.dart';
 import 'package:trade_by_barter/navigation/navigation.dart';
+import 'package:trade_by_barter/networking/api_networking.dart';
 
 class Settings extends StatelessWidget {
   @override
@@ -32,39 +33,14 @@ class Settings extends StatelessWidget {
             privacyPolicy(),
             about(),
             SizedBox(height: 30),
-            button(context)
+            
           ],
         ),
       ),
     );
   }
 
-  Widget button(BuildContext context) {
-    return (
-        Container(
-          margin: EdgeInsets.all(10),
-          width: 330,
-          child: (ElevatedButton(
-            style: ButtonStyle(
-              backgroundColor:
-              MaterialStateProperty.all(KProceedColor),
-              shape: MaterialStateProperty.all(RoundedRectangleBorder(
-                  borderRadius: BorderRadius.circular(10.0))),
-            ),
-            onPressed: () {
-              print('Proceed clicked');
-            },
-            child: Text(
-              "Logout",
-              style: TextStyle(
-                  color: Colors.black,
-                  fontWeight: FontWeight.w500,
-                  fontSize: 15),
-            ),
-          )),
-        )
-    );
-  }
+ 
 }
 
 Widget profileSettings() {
