@@ -17,22 +17,20 @@ final _controller = PageController(
 
 List<Widget> pageView(BuildContext context) {
   List<Widget> pages = [
-
     Container(
       decoration: BoxDecoration(color: Colors.white),
       height: MediaQuery.of(context).size.height,
       child: SingleChildScrollView(
-
         child: Container(
           height: MediaQuery.of(context).size.height,
           decoration: BoxDecoration(
               image: DecorationImage(
-                  image: AssetImage('images/onb1.png'),
-                  fit: BoxFit.cover)),
+                  image: AssetImage('images/onb1.png'), fit: BoxFit.cover)),
           child: Column(
             children: [
-
-              SizedBox(height: 320,),
+              SizedBox(
+                height: 320,
+              ),
               Padding(
                 padding: const EdgeInsets.all(16.0),
                 child: Text("Barter Your Unneeded Items Instantly.",
@@ -53,10 +51,10 @@ List<Widget> pageView(BuildContext context) {
                 width: 100,
                 child: Container(
                   margin: EdgeInsets.all(8),
-                  constraints: BoxConstraints.expand( height: 30),
+                  constraints: BoxConstraints.expand(height: 30),
                   child: (OutlinedButton(
                     style: ButtonStyle(
-                      backgroundColor: MaterialStateProperty.all(KProceedColor  ),
+                      backgroundColor: MaterialStateProperty.all(KProceedColor),
                       shape: MaterialStateProperty.all(RoundedRectangleBorder(
                           borderRadius: BorderRadius.circular(20.0))),
                     ),
@@ -83,17 +81,16 @@ List<Widget> pageView(BuildContext context) {
       decoration: BoxDecoration(color: Colors.white),
       height: MediaQuery.of(context).size.height,
       child: SingleChildScrollView(
-
         child: Container(
           height: MediaQuery.of(context).size.height,
           decoration: BoxDecoration(
               image: DecorationImage(
-                  image: AssetImage('images/onb2.png'),
-                  fit: BoxFit.cover)),
+                  image: AssetImage('images/onb2.png'), fit: BoxFit.cover)),
           child: Column(
             children: [
-
-              SizedBox(height: 320,),
+              SizedBox(
+                height: 320,
+              ),
               Padding(
                 padding: const EdgeInsets.all(16.0),
                 child: Text("Get Equal Value of Your Items.",
@@ -114,10 +111,10 @@ List<Widget> pageView(BuildContext context) {
                 width: 100,
                 child: Container(
                   margin: EdgeInsets.all(8),
-                  constraints: BoxConstraints.expand( height: 30),
+                  constraints: BoxConstraints.expand(height: 30),
                   child: (OutlinedButton(
                     style: ButtonStyle(
-                      backgroundColor: MaterialStateProperty.all(KProceedColor  ),
+                      backgroundColor: MaterialStateProperty.all(KProceedColor),
                       shape: MaterialStateProperty.all(RoundedRectangleBorder(
                           borderRadius: BorderRadius.circular(20.0))),
                     ),
@@ -144,17 +141,16 @@ List<Widget> pageView(BuildContext context) {
       decoration: BoxDecoration(color: Colors.white),
       height: MediaQuery.of(context).size.height,
       child: SingleChildScrollView(
-
         child: Container(
           height: MediaQuery.of(context).size.height,
           decoration: BoxDecoration(
               image: DecorationImage(
-                  image: AssetImage('images/onb3.png'),
-                  fit: BoxFit.cover)),
+                  image: AssetImage('images/onb3.png'), fit: BoxFit.cover)),
           child: Column(
             children: [
-
-              SizedBox(height: 320,),
+              SizedBox(
+                height: 320,
+              ),
               Text("Barter with Ease.",
                   style: KPageViewTextStyle, textAlign: TextAlign.center),
               SizedBox(
@@ -172,7 +168,7 @@ List<Widget> pageView(BuildContext context) {
                 width: 200,
                 child: (OutlinedButton(
                   style: ButtonStyle(
-                    backgroundColor: MaterialStateProperty.all(KProceedColor  ),
+                    backgroundColor: MaterialStateProperty.all(KProceedColor),
                     shape: MaterialStateProperty.all(RoundedRectangleBorder(
                         borderRadius: BorderRadius.circular(20.0))),
                   ),
@@ -203,9 +199,7 @@ class _OnBoardScreenState extends State<OnBoardScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: Colors.transparent,
-
       body: SafeArea(
-
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
@@ -220,9 +214,7 @@ class _OnBoardScreenState extends State<OnBoardScreen> {
                 },
               ),
             ),
-
             Container(
-
               decoration: BoxDecoration(color: Colors.white),
               alignment: Alignment(0.0, -1.0),
               child: new DotsIndicator(
@@ -236,9 +228,6 @@ class _OnBoardScreenState extends State<OnBoardScreen> {
                 ),
               ),
             ),
-
-
-
           ],
         ),
       ),
