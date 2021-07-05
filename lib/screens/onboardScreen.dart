@@ -52,7 +52,7 @@ List<Widget> pageView(BuildContext context) {
                   style: KOnboardText, textAlign: TextAlign.center),
               SizedBox(height: 100),
               Container(
-                width: 100,
+                width: MediaQuery.of(context).size.width,
                 child: Container(
                   margin: EdgeInsets.all(8),
                   constraints: BoxConstraints.expand( height: 30),
@@ -69,7 +69,7 @@ List<Widget> pageView(BuildContext context) {
                     child: Text(
                       "Skip",
                       style: TextStyle(
-                          color: Colors.white,
+                          color: Colors.black,
                           fontWeight: FontWeight.w500,
                           fontSize: 15),
                     ),
@@ -113,7 +113,7 @@ List<Widget> pageView(BuildContext context) {
                   style: KOnboardText, textAlign: TextAlign.center),
               SizedBox(height: 100),
               Container(
-                width: 100,
+                width: MediaQuery.of(context).size.width,
                 child: Container(
                   margin: EdgeInsets.all(8),
                   constraints: BoxConstraints.expand( height: 30),
@@ -130,7 +130,7 @@ List<Widget> pageView(BuildContext context) {
                     child: Text(
                       "Skip",
                       style: TextStyle(
-                          color: Colors.white,
+                          color: Colors.black,
                           fontWeight: FontWeight.w500,
                           fontSize: 15),
                     ),
@@ -171,27 +171,29 @@ List<Widget> pageView(BuildContext context) {
                   style: KOnboardText, textAlign: TextAlign.center),
               SizedBox(height: 100),
               Container(
-                width: 200,
-                margin: EdgeInsets.all(8),
-                constraints: BoxConstraints.expand( height: 30),
-                child: (OutlinedButton(
-                  style: ButtonStyle(
-                    backgroundColor: MaterialStateProperty.all(KBrandColors),
-                    shape: MaterialStateProperty.all(RoundedRectangleBorder(
-                        borderRadius: BorderRadius.circular(20.0))),
-                  ),
-                  onPressed: () {
-                    print('Get started clicked');
-                    AppNavigator.navigateToWelcomeScreen(context);
-                  },
-                  child: Text(
-                    "Let's Get Started!",
-                    style: TextStyle(
-                        color: Colors.white,
-                        fontWeight: FontWeight.w500,
-                        fontSize: 15),
-                  ),
-                )),
+                width: MediaQuery.of(context).size.width,
+                child: Container(
+                  margin: EdgeInsets.all(8),
+                  constraints: BoxConstraints.expand( height: 30),
+                  child: (OutlinedButton(
+                    style: ButtonStyle(
+                      backgroundColor: MaterialStateProperty.all(KProceedColor  ),
+                      shape: MaterialStateProperty.all(RoundedRectangleBorder(
+                          borderRadius: BorderRadius.circular(20.0))),
+                    ),
+                    onPressed: () {
+                      print('Get Started clicked');
+                      AppNavigator.navigateToWelcomeScreen(context);
+                    },
+                    child: Text(
+                      "Let's Get Started",
+                      style: TextStyle(
+                          color: Colors.black,
+                          fontWeight: FontWeight.w500,
+                          fontSize: 15),
+                    ),
+                  )),
+                ),
               ),
             ],
           ),
