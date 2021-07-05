@@ -1,9 +1,9 @@
+import 'dart:io';
+
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:trade_by_barter/navigation/navigation.dart';
-
-
-
+import 'package:image_picker/image_picker.dart';
 import '../constants.dart';
 
 class AddPhotos extends StatefulWidget {
@@ -13,7 +13,67 @@ class AddPhotos extends StatefulWidget {
 
 class _AddPhotosState extends State<AddPhotos> {
 
-  
+  final _picker = ImagePicker();
+ File _imageFile;
+ PickedFile _image;
+
+  _openGallery() async{
+     PickedFile image = await _picker.getImage(source: ImageSource.gallery);
+     setState(() {
+       _image = image;
+     });
+
+     _handlePickedFile(_image);
+  }
+
+  _openCamera() async{
+    PickedFile image = await _picker.getImage(source: ImageSource.camera);
+    setState(() {
+      _image = image;
+    });
+
+    _handlePickedFile(_image);
+  }
+
+   _handlePickedFile(PickedFile pickedImage){
+   File image = File(pickedImage.path);
+   setState(() {
+     _imageFile = image; 
+   });
+  }
+
+  _showImagePicker(ccontext){
+    showModalBottomSheet(context: context, builder:(BuildContext ctx){
+       return SafeArea(
+         child:Container(
+           child: Wrap(
+             children: [
+               ListTile(
+                 leading: Icon(Icons.photo_library),
+                 title: Text("Pick From Library"),
+                 onTap:(){
+                   _openGallery();
+                   AppNavigator.navigateBack(context);
+                 } 
+               ),
+               Container(
+                 color: KBrandColors,
+                 child: ListTile(
+                   leading: Icon(Icons.photo_camera, color: Colors.white),
+                   title: Text("Take A Photo", style: TextStyle(color: Colors.white)),
+                   onTap: (){
+                     _openCamera();
+                     AppNavigator.navigateBack(context);
+                   },
+                 ),
+               ),
+              
+             ],
+           ),
+         ) );
+    });
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -37,6 +97,7 @@ class _AddPhotosState extends State<AddPhotos> {
                     CircleAvatar(
                       radius: 50,
                       backgroundImage: AssetImage("images/camera.jpeg"),
+                      child: Image.file(_imageFile),
 
                     )
                   ),
@@ -193,6 +254,7 @@ class _AddPhotosState extends State<AddPhotos> {
             ),
             onPressed: () {
               print('Proceed clicked');
+              _showImagePicker(context);
             },
             child: Text(
               "+Add Photos",

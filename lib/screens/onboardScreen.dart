@@ -25,12 +25,91 @@ List<Widget> pageView(BuildContext context) {
           height: MediaQuery.of(context).size.height,
           decoration: BoxDecoration(
               image: DecorationImage(
+                  image: AssetImage('images/onb4.png'),
+                  fit: BoxFit.cover)),
+          child: Column(
+            children: [
+
+              SizedBox(height: 350,),
+              Padding(
+                padding: const EdgeInsets.all(16.0),
+                child: Center(
+                  child: Text("Barter Your Unneeded Items Instantly.",
+                      style: KPageViewTextStyle, textAlign: TextAlign.center),
+                ),
+              ),
+              SizedBox(
+                height: 20,
               ),
               Text("Swap your items and",
+                  style: KOnboardText, textAlign: TextAlign.center),
               SizedBox(
                 height: 5,
               ),
               Text("meet your real time needs.",
+                  style: KOnboardText, textAlign: TextAlign.center),
+              SizedBox(height: 100),
+              Container(
+                width: MediaQuery.of(context).size.width,
+                child: Container(
+                  margin: EdgeInsets.all(8),
+                  constraints: BoxConstraints.expand( height: 40),
+
+                  child: (OutlinedButton(
+                    style: ButtonStyle(
+                      backgroundColor: MaterialStateProperty.all(KProceedColor),
+                      shape: MaterialStateProperty.all(RoundedRectangleBorder(
+                          borderRadius: BorderRadius.circular(15.0))),
+                    ),
+                    onPressed: () {
+                      print('skip clicked');
+                      AppNavigator.navigateToWelcomeScreen(context);
+                    },
+                    child: Text(
+                      "Skip",
+                      style: TextStyle(
+                          color: Colors.black,
+                          fontWeight: FontWeight.w500,
+                          fontSize: 15),
+                    ),
+                  )),
+                ),
+              ),
+            ],
+          ),
+        ),
+      ),
+    ),
+    Container(
+      decoration: BoxDecoration(color: Colors.white),
+      height: MediaQuery.of(context).size.height,
+      child: SingleChildScrollView(
+        child: Container(
+          height: MediaQuery.of(context).size.height,
+          decoration: BoxDecoration(
+              image: DecorationImage(
+
+                  image: AssetImage('images/onb5.png'),
+                  fit: BoxFit.cover)),
+
+          child: Column(
+            children: [
+
+              SizedBox(height: 350,),
+              Padding(
+                padding: const EdgeInsets.all(16.0),
+                child: Text("Get Equal Value of Your Items.",
+                    style: KPageViewTextStyle, textAlign: TextAlign.center),
+              ),
+              SizedBox(
+                height: 20,
+              ),
+              Text("Exchange your items for",
+                  style: KOnboardText, textAlign: TextAlign.center),
+              SizedBox(
+                height: 5,
+              ),
+              Text("commensurate alternatives.",
                   style: KOnboardText, textAlign: TextAlign.center),
               SizedBox(height: 100),
               Container(
@@ -71,68 +150,17 @@ List<Widget> pageView(BuildContext context) {
           height: MediaQuery.of(context).size.height,
           decoration: BoxDecoration(
               image: DecorationImage(
-                  image: AssetImage('images/onb5.png'),
+                  image: AssetImage('images/onb6.png'),
                   fit: BoxFit.cover)),
+
           child: Column(
             children: [
 
               SizedBox(height: 350,),
-              Padding(
-                padding: const EdgeInsets.all(16.0),
-                child: Text("Get Equal Value of Your Items.",
-                    style: KPageViewTextStyle, textAlign: TextAlign.center),
-              ),
-              SizedBox(
-                height: 20,
-              ),
-              Text("Exchange your items for",
-                  style: KOnboardText, textAlign: TextAlign.center),
-              SizedBox(
-                height: 5,
-              ),
-              Text("commensurate alternatives.",
-                  style: KOnboardText, textAlign: TextAlign.center),
-              SizedBox(height: 100),
-              Container(
-                width: MediaQuery.of(context).size.width,
-                child: Container(
-                  margin: EdgeInsets.all(8),
-                  constraints: BoxConstraints.expand( height: 40),
-                          borderRadius: BorderRadius.circular(15.0))),
-                    ),
-                    onPressed: () {
-                      print('skip clicked');
-                      AppNavigator.navigateToWelcomeScreen(context);
-                    },
-                    child: Text(
-                      "Skip",
-                      style: TextStyle(
-                          color: Colors.black,
-                          fontWeight: FontWeight.w500,
-                          fontSize: 15),
-                    ),
-                  )),
-                ),
-              ),
-            ],
-          ),
-        ),
-      ),
-    ),
-    Container(
-      decoration: BoxDecoration(color: Colors.white),
-      height: MediaQuery.of(context).size.height,
-      child: SingleChildScrollView(
-        child: Container(
-          height: MediaQuery.of(context).size.height,
-          decoration: BoxDecoration(
-              image: DecorationImage(
-                  image: AssetImage('images/onb6.png'),
-                  fit: BoxFit.cover)),
-          child: Column(
-            children: [
+              Text("Barter with Ease.",
                   style: KPageViewTextStyle, textAlign: TextAlign.center),
               SizedBox(
+                height: 20,
               ),
               Text("Login to trade conveniently,",
                   style: KOnboardText, textAlign: TextAlign.center),
