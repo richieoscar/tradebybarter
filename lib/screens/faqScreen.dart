@@ -1,31 +1,29 @@
 import 'package:accordion/accordion.dart';
 import 'package:flutter/material.dart';
+import 'package:trade_by_barter/constants.dart';
 
 import 'package:trade_by_barter/navigation/navigation.dart';
 import 'package:trade_by_barter/screens/bottom_nav_bar.dart';
 
-import 'package:hexcolor/hexcolor.dart';
-
-
-
 class FaqScreen extends StatelessWidget {
   build(context) => Scaffold(
-    appBar: AppBar(
-      title: Center(
-        child: Text("FAQ",
-          style: TextStyle(
-          color: Colors.black,
+        appBar: AppBar(
+          title: Center(
+            child: Text(
+              "FAQ",
+              style: TextStyle(
+                color: Colors.black,
+              ),
+            ),
+          ),
+          leading: IconButton(
+            icon: Icon(Icons.arrow_back),
+            color: Colors.black,
+            onPressed: () => AppNavigator.navigateBack(context),
+          ),
+          elevation: 0.0,
+          backgroundColor: Colors.white,
         ),
-        ),
-      ),
-      leading: IconButton(
-        icon: Icon(Icons.arrow_back),
-        color: Colors.black,
-        onPressed: () => AppNavigator.navigateBack(context),
-      ),
-      elevation: 0.0,
-      backgroundColor: Colors.white,
-    ),
         body: SafeArea(
           child: ListView(
             children: [
@@ -63,14 +61,12 @@ class SearchWidget extends StatelessWidget {
                 ),
                 focusedBorder: OutlineInputBorder(
                   borderSide: BorderSide(
-                    color: HexColor("#A60000"),
+                    color: KBrandColors,
                   ),
                 ),
                 suffixIcon: Icon(
                   Icons.search,
-                  color: HexColor(
-                    ("#A60000"),
-                  ),
+                  color: KBrandColors,
                 ),
                 border: InputBorder.none,
                 hintText: "Search",
@@ -104,7 +100,7 @@ class AccordionWidget extends StatelessWidget {
             height: 450.0,
             child: Accordion(
               maxOpenSections: 1,
-              headerBackgroundColor: HexColor('#C4C4C4'),
+              headerBackgroundColor: Colors.grey[200],
               headerPadding: EdgeInsets.only(
                 top: 5.0,
                 bottom: 5.0,
@@ -112,7 +108,7 @@ class AccordionWidget extends StatelessWidget {
               headerBorderRadius: 5.0,
               rightIcon: Icon(
                 Icons.arrow_drop_down,
-                color: HexColor('#A60000'),
+                color: KBrandColors,
                 size: 30.0,
               ),
               headerTextStyle: TextStyle(
@@ -225,7 +221,7 @@ class ButtonWidget extends StatelessWidget {
             margin: EdgeInsets.only(bottom: 20),
             child: ElevatedButton(
               style: ElevatedButton.styleFrom(
-                primary: HexColor("#FCE303"),
+                primary: KProceedColor,
               ),
               onPressed: () {},
               child: const Text('Ask your questions'),
