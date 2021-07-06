@@ -15,31 +15,32 @@ class _AddPhotosState extends State<AddPhotos> {
 
   final _picker = ImagePicker();
  File _imageFile;
- PickedFile _image;
+
 
   _openGallery() async{
-     PickedFile image = await _picker.getImage(source: ImageSource.gallery);
-     setState(() {
-       _image = image;
-     });
-
-     _handlePickedFile(_image);
+    if(_imageFile == null){
+ PickedFile image = await _picker.getImage(source: ImageSource.gallery);
+     _handlePickedFile(image);
+    }
+    
   }
 
   _openCamera() async{
-    PickedFile image = await _picker.getImage(source: ImageSource.camera);
-    setState(() {
-      _image = image;
-    });
-
-    _handlePickedFile(_image);
+    if(_imageFile == null){
+  PickedFile image = await _picker.getImage(source: ImageSource.camera);
+    _handlePickedFile(image);
+    }
+  
   }
 
    _handlePickedFile(PickedFile pickedImage){
-   File image = File(pickedImage.path);
+     if(pickedImage!= null){
+ File image = File(pickedImage.path);
    setState(() {
      _imageFile = image; 
    });
+     }
+  
   }
 
   _showImagePicker(ccontext){
@@ -74,6 +75,20 @@ class _AddPhotosState extends State<AddPhotos> {
     });
   }
 
+  Widget _displayNoImageSelected(){
+    return CircleAvatar(
+      radius: 50,
+      child: Image.asset("images/camera.jpeg"),
+    );
+  }
+
+  Widget _displaySelectedImage(){
+    return CircleAvatar(
+      radius: 50,
+      child: Image.file(_imageFile),
+    );
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -93,13 +108,9 @@ class _AddPhotosState extends State<AddPhotos> {
               child: Column(
                 children: [
                   SizedBox(height: 30,),
-                  Center(child:
-                    CircleAvatar(
-                      radius: 50,
-                      backgroundImage: AssetImage("images/camera.jpeg"),
-                      child: Image.file(_imageFile),
-
-                    )
+                  Center(
+                    child:_imageFile == null ?_displayNoImageSelected():_displaySelectedImage(),
+                   
                   ),
                   SizedBox(height: 20),
                   Center(child: Text("You can add up to 5(five) photos.")),
