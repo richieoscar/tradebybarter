@@ -1,4 +1,3 @@
-import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 import 'package:pin_code_fields/pin_code_fields.dart';
 import 'package:trade_by_barter/constants.dart';
@@ -43,6 +42,13 @@ class _VerifyScreenState extends State<VerifyScreen> {
                               style: KPageViewTextStyle,
                             ),
                           ),
+                          SizedBox(height: 20),
+                          Container(
+                            child: Text(
+                              "We have sent a verification code to",
+                              style: KVerText,
+                            ),
+                          ),
                           SizedBox(height: 10),
                           Container(
                             child: Text(
@@ -82,30 +88,7 @@ class _VerifyScreenState extends State<VerifyScreen> {
                           selectedColor: Colors.amberAccent),
                     ),
                   ),
-                  SizedBox(height: 40),
-                  Container(
-                    margin: EdgeInsets.all(20),
-                    constraints: BoxConstraints.expand(width: 500, height: 40),
-                    child: OutlinedButton(
-                      style: ButtonStyle(
-                        backgroundColor:
-                            MaterialStateProperty.all(KfilterBorderColors),
-                        shape: MaterialStateProperty.all(RoundedRectangleBorder(
-                            borderRadius: BorderRadius.circular(10.0))),
-                      ),
-                      onPressed: () {
-                        print('verify clicked');
-                        AppNavigator.navigateToWelcomeScreen(context);
-                      },
-                      child: Text(
-                        "Verify",
-                        style: TextStyle(
-                            color: const Color(0xFFFFFFFF),
-                            fontWeight: FontWeight.w500,
-                            fontSize: 15),
-                      ),
-                    ),
-                  ),
+                
                   SizedBox(height: 40),
                   Container(
                     margin: EdgeInsets.all(20),
@@ -134,15 +117,15 @@ class _VerifyScreenState extends State<VerifyScreen> {
                   Center(
                     child: Container(
                         child: GestureDetector(
-                      child: Text("Click here to resend",
-                          style: TextStyle(
-                            color: const Color(0xFFE0BF0F),
-                            fontSize: 16,
-                            fontWeight: FontWeight.bold,
-                            decoration: TextDecoration.underline,
-                          )),
-                      onTap: () {},
-                    )),
+                          child: Text("Click here to resend",
+                              style: TextStyle(
+                                color: const Color(0xFFE0BF0F),
+                                fontSize: 16,
+                                fontWeight: FontWeight.bold,
+                                decoration: TextDecoration.underline,
+                              )),
+                          onTap: () {},
+                        )),
                   ),
                   SizedBox(height: 100)
                 ],

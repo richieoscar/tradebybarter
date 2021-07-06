@@ -69,26 +69,54 @@ class _NotificationScreenState extends State<NotificationScreen> {
                   ),
                   Row(
                     children: [
-                      imageSection("images/notification1.png"),
-                      topSection("Offer Request", "New"),
+                      Column(
+                        children: [
+                          imageSection("images/notification1.png"),
+                        ],
+                      ),
+                      Expanded(
+                        child: Column(
+                          children: [
+                            Row(
+                              children: [
+                                topSection("Offer Request", "New"),
+                              ],
+                            ),
+                            middleSection("Benjamin Francis ",
+                                "wants to barter your  Necklace with Itel 2750."),
+                            bottomSection("1hour ago", 'Reject', 'Accept'),
+                          ],
+                        ),
+                      ),
                     ],
                   ),
-                  middleSection("Benjamin Francis ",
-                      "wants to barter your  Necklace with Itel 2750."),
-                  bottomSection("1hour ago", 'Reject', 'Accept'),
                   divider(),
 
                   //Device Location Section
                   Row(
                     children: [
-                      imageSection("images/notification2.png"),
-                      topSection("Device Location", "New"),
+                      Column(
+                        children: [
+                          imageSection("images/notification2.png"),
+                        ],
+                      ),
+                      Expanded(
+                        child: Column(
+                          children: [
+                            Row(
+                              children: [
+                                topSection("Device Location", "New"),
+                              ],
+                            ),
+                            secondMiddleSection(
+                                "Please turn on your current device location to trade better"),
+                            secondBottomSection("1hour ago", "Enable"),
+                          ],
+                        ),
+                      ),
                     ],
                   ),
-                  secondMiddleSection(
-                      "Please turn on your current device location to trade better"),
 
-                  secondBottomSection("1hour ago", "Enable"),
                   divider(),
 
                   //Last Seven Days Section - First Notification
@@ -110,37 +138,81 @@ class _NotificationScreenState extends State<NotificationScreen> {
                   ),
                   Row(
                     children: [
-                      imageSection("images/notification1.png"),
-                      topSection("Refund Request", "Old"),
+                      Column(
+                        children: [
+                          imageSection("images/notification1.png"),
+                        ],
+                      ),
+                      Expanded(
+                        child: Column(
+                          children: [
+                            Row(
+                              children: [
+                                topSection("Refund Request", "Old"),
+                              ],
+                            ),
+                            secondMiddleSection(
+                                "Please respond to the refund request sent to you."),
+                            secondBottomSection("4 days ago", 'Details'),
+                          ],
+                        ),
+                      ),
                     ],
                   ),
-                  secondMiddleSection(
-                      "Please respond to the refund request sent to you."),
-                  secondBottomSection("4 days ago", 'Details'),
+
                   divider(),
 
                   //Last Seven Days Section - Second Notification
                   Row(
                     children: [
-                      imageSection("images/notification3.png"),
-                      topSection("Refund Request", "Old"),
+                      Column(
+                        children: [
+                          imageSection("images/notification3.png"),
+                        ],
+                      ),
+                      Expanded(
+                        child: Column(
+                          children: [
+                            Row(
+                              children: [
+                                topSection("Refund Request", "Old"),
+                              ],
+                            ),
+                            middleSection("Eno Akpan ",
+                                "wants to return an item she\'s not satisfied with."),
+                            secondBottomSection("4 days ago", 'Details'),
+                          ],
+                        ),
+                      ),
                     ],
                   ),
-                  middleSection("Eno Akpan ",
-                      "wants to return an item she\'s not satisfied with."),
-                  secondBottomSection("4 days ago", 'Details'),
+
                   divider(),
 
                   //Last Seven Days Section - Third Notification
                   Row(
                     children: [
-                      imageSection("images/notification4.png"),
-                      topSection("Refund Request", "Old"),
+                      Column(
+                        children: [
+                          imageSection("images/notification4.png"),
+                        ],
+                      ),
+                      Expanded(
+                        child: Column(
+                          children: [
+                            Row(
+                              children: [
+                                topSection("Offer Request", "Old"),
+                              ],
+                            ),
+                            middleSection("Eniola Badmus ",
+                                "wants to barter your Iphone 6 with 2 items."),
+                            thirdBottomSection("4 days ago", "Accepted"),
+                          ],
+                        ),
+                      ),
                     ],
                   ),
-                  middleSection("Eniola Badmus ",
-                      "wants to barter your Iphone 6 with 2 items."),
-                  thirdBottomSection("4 days ago", "Accepted"),
                 ],
               ),
             ]),
@@ -153,7 +225,10 @@ class _NotificationScreenState extends State<NotificationScreen> {
 
 // Image Section
 Widget imageSection(String imageURL) {
-  return Image.asset("$imageURL");
+  return Align(
+    alignment: Alignment.bottomCenter,
+    child: Image.asset("$imageURL"),
+  );
 }
 
 //Top Section
@@ -203,8 +278,7 @@ Widget middleSection(String name, String otherText) {
             Expanded(
               child: Padding(
                 padding: const EdgeInsets.only(
-                  left: 50.0,
-                  right: 15.0,
+                  top: 5.0,
                 ),
                 child: RichText(
                   text: TextSpan(
@@ -244,8 +318,7 @@ Widget secondMiddleSection(String text) {
             Expanded(
               child: Padding(
                 padding: const EdgeInsets.only(
-                  left: 50.0,
-                  right: 15.0,
+                  top: 5.0,
                 ),
                 child: Text("$text"),
               ),
@@ -257,15 +330,15 @@ Widget secondMiddleSection(String text) {
   );
 }
 
-//Bottom Section with two buttons, Accept and Rejedt Buttons
+//Bottom Section with two buttons, Accept and Reject Buttons
 Widget bottomSection(String time, String status, String secondStatus) {
   return Row(
     children: [
       Expanded(
         child: Padding(
           padding: const EdgeInsets.only(
-            top: 0,
-            left: 60.0,
+            top: 10.0,
+            left: 10.0,
             right: 15.0,
           ),
           child: Container(
@@ -334,8 +407,8 @@ Widget secondBottomSection(String time, String title) {
       Expanded(
         child: Padding(
           padding: const EdgeInsets.only(
-            top: 0,
-            left: 60.0,
+            top: 10.0,
+            left: 10.0,
             right: 15.0,
           ),
           child: Container(
@@ -382,8 +455,8 @@ Widget thirdBottomSection(String time, String status) {
       Expanded(
         child: Padding(
           padding: const EdgeInsets.only(
-            top: 0,
-            left: 60.0,
+            top: 10.0,
+            left: 10.0,
             right: 15.0,
           ),
           child: Container(
@@ -417,7 +490,6 @@ Widget thirdBottomSection(String time, String status) {
   );
 }
 
-//Divider
 Widget divider() {
   return Row(
     children: [
