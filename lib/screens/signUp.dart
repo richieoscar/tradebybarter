@@ -476,7 +476,7 @@ class _SignupState extends State<Signup> {
       child: Visibility(
         visible: _show,
         child: CircularProgressIndicator(
-          color: KfilterBorderColors,
+          //color: KfilterBorderColors,
         ),
       ),
     );

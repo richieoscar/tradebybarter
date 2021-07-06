@@ -10,6 +10,11 @@ const KPageViewTextStyle2 = TextStyle(
   fontSize: 15, fontWeight: FontWeight.w700,
 );
 
+//Page View Text Style on the onboard screen page
+const KOnboardText = TextStyle(
+  fontSize: 16, fontWeight: FontWeight.normal,
+);
+
 // Text Style for mail on the verification  page
 const KVerEmail = TextStyle(
   fontSize: 16, fontWeight: FontWeight.bold,

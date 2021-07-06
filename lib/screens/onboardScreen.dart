@@ -27,38 +27,40 @@ List<Widget> pageView(BuildContext context) {
           height: MediaQuery.of(context).size.height,
           decoration: BoxDecoration(
               image: DecorationImage(
-                  image: AssetImage('images/onb1.png'),
+                  image: AssetImage('images/onb4.png'),
                   fit: BoxFit.cover)),
           child: Column(
             children: [
 
-              SizedBox(height: 320,),
+              SizedBox(height: 350,),
               Padding(
                 padding: const EdgeInsets.all(16.0),
-                child: Text("Barter Your Unneeded Items Instantly.",
-                    style: KPageViewTextStyle, textAlign: TextAlign.center),
+                child: Center(
+                  child: Text("Barter Your Unneeded Items Instantly.",
+                      style: KPageViewTextStyle, textAlign: TextAlign.center),
+                ),
               ),
               SizedBox(
                 height: 20,
               ),
               Text("Swap your items and",
-                  style: KPageViewTextStyle2, textAlign: TextAlign.center),
+                  style: KOnboardText, textAlign: TextAlign.center),
               SizedBox(
-                height: 20,
+                height: 5,
               ),
-              Text("meet your real time needs",
-                  style: KPageViewTextStyle2, textAlign: TextAlign.center),
+              Text("meet your real time needs.",
+                  style: KOnboardText, textAlign: TextAlign.center),
               SizedBox(height: 100),
               Container(
-                width: 100,
+                width: MediaQuery.of(context).size.width,
                 child: Container(
                   margin: EdgeInsets.all(8),
-                  constraints: BoxConstraints.expand( height: 30),
+                  constraints: BoxConstraints.expand( height: 40),
                   child: (OutlinedButton(
                     style: ButtonStyle(
-                      backgroundColor: MaterialStateProperty.all(KProceedColor  ),
+                      backgroundColor: MaterialStateProperty.all(KProceedColor),
                       shape: MaterialStateProperty.all(RoundedRectangleBorder(
-                          borderRadius: BorderRadius.circular(20.0))),
+                          borderRadius: BorderRadius.circular(15.0))),
                     ),
                     onPressed: () {
                       print('skip clicked');
@@ -67,7 +69,7 @@ List<Widget> pageView(BuildContext context) {
                     child: Text(
                       "Skip",
                       style: TextStyle(
-                          color: Colors.white,
+                          color: Colors.black,
                           fontWeight: FontWeight.w500,
                           fontSize: 15),
                     ),
@@ -88,12 +90,12 @@ List<Widget> pageView(BuildContext context) {
           height: MediaQuery.of(context).size.height,
           decoration: BoxDecoration(
               image: DecorationImage(
-                  image: AssetImage('images/onb2.png'),
+                  image: AssetImage('images/onb5.png'),
                   fit: BoxFit.cover)),
           child: Column(
             children: [
 
-              SizedBox(height: 320,),
+              SizedBox(height: 350,),
               Padding(
                 padding: const EdgeInsets.all(16.0),
                 child: Text("Get Equal Value of Your Items.",
@@ -103,23 +105,23 @@ List<Widget> pageView(BuildContext context) {
                 height: 20,
               ),
               Text("Exchange your items for",
-                  style: KPageViewTextStyle2, textAlign: TextAlign.center),
+                  style: KOnboardText, textAlign: TextAlign.center),
               SizedBox(
-                height: 20,
+                height: 5,
               ),
               Text("commensurate alternatives.",
-                  style: KPageViewTextStyle2, textAlign: TextAlign.center),
+                  style: KOnboardText, textAlign: TextAlign.center),
               SizedBox(height: 100),
               Container(
-                width: 100,
+                width: MediaQuery.of(context).size.width,
                 child: Container(
                   margin: EdgeInsets.all(8),
-                  constraints: BoxConstraints.expand( height: 30),
+                  constraints: BoxConstraints.expand( height: 40),
                   child: (OutlinedButton(
                     style: ButtonStyle(
-                      backgroundColor: MaterialStateProperty.all(KProceedColor  ),
+                      backgroundColor: MaterialStateProperty.all(KProceedColor),
                       shape: MaterialStateProperty.all(RoundedRectangleBorder(
-                          borderRadius: BorderRadius.circular(20.0))),
+                          borderRadius: BorderRadius.circular(15.0))),
                     ),
                     onPressed: () {
                       print('skip clicked');
@@ -128,7 +130,7 @@ List<Widget> pageView(BuildContext context) {
                     child: Text(
                       "Skip",
                       style: TextStyle(
-                          color: Colors.white,
+                          color: Colors.black,
                           fontWeight: FontWeight.w500,
                           fontSize: 15),
                     ),
@@ -149,45 +151,49 @@ List<Widget> pageView(BuildContext context) {
           height: MediaQuery.of(context).size.height,
           decoration: BoxDecoration(
               image: DecorationImage(
-                  image: AssetImage('images/onb3.png'),
+                  image: AssetImage('images/onb6.png'),
                   fit: BoxFit.cover)),
           child: Column(
             children: [
 
-              SizedBox(height: 320,),
+              SizedBox(height: 350,),
               Text("Barter with Ease.",
                   style: KPageViewTextStyle, textAlign: TextAlign.center),
               SizedBox(
                 height: 20,
               ),
               Text("Login to trade conveniently,",
-                  style: KPageViewTextStyle2, textAlign: TextAlign.center),
+                  style: KOnboardText, textAlign: TextAlign.center),
               SizedBox(
-                height: 20,
+                height: 5,
               ),
               Text("fast and secured",
-                  style: KPageViewTextStyle2, textAlign: TextAlign.center),
+                  style: KOnboardText, textAlign: TextAlign.center),
               SizedBox(height: 100),
               Container(
-                width: 200,
-                child: (OutlinedButton(
-                  style: ButtonStyle(
-                    backgroundColor: MaterialStateProperty.all(KProceedColor  ),
-                    shape: MaterialStateProperty.all(RoundedRectangleBorder(
-                        borderRadius: BorderRadius.circular(20.0))),
-                  ),
-                  onPressed: () {
-                    print('Proceed clicked');
-                    AppNavigator.navigateToWelcomeScreen(context);
-                  },
-                  child: Text(
-                    "Let's Get Started!",
-                    style: TextStyle(
-                        color: Colors.white,
-                        fontWeight: FontWeight.w500,
-                        fontSize: 15),
-                  ),
-                )),
+                width: MediaQuery.of(context).size.width,
+                child: Container(
+                  margin: EdgeInsets.all(8),
+                  constraints: BoxConstraints.expand( height: 40),
+                  child: (OutlinedButton(
+                    style: ButtonStyle(
+                      backgroundColor: MaterialStateProperty.all(KBrandColors),
+                      shape: MaterialStateProperty.all(RoundedRectangleBorder(
+                          borderRadius: BorderRadius.circular(15.0))),
+                    ),
+                    onPressed: () {
+                      print('Get Started clicked');
+                      AppNavigator.navigateToWelcomeScreen(context);
+                    },
+                    child: Text(
+                      "Let's Get Started",
+                      style: TextStyle(
+                          color: Colors.white,
+                          fontWeight: FontWeight.w500,
+                          fontSize: 15),
+                    ),
+                  )),
+                ),
               ),
             ],
           ),
@@ -202,6 +208,7 @@ class _OnBoardScreenState extends State<OnBoardScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      
       backgroundColor: Colors.transparent,
 
       body: SafeArea(
