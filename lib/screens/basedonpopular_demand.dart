@@ -26,7 +26,7 @@ class _BasedOnPopularDemandState extends State<BasedOnPopularDemand> {
       _country = "USA";
       _state = "Califonia";
       _image = "images/populardemand4.png";
-      color = KProceedColor;
+     // color = KProceedColor;
       _isvisible = true;
     });
   }
@@ -51,33 +51,36 @@ class _BasedOnPopularDemandState extends State<BasedOnPopularDemand> {
         elevation: 0.0,
         backgroundColor: Colors.white,
       ),
-      body: Padding(
-        padding: const EdgeInsets.all(8.0),
-        child: Container(
-          decoration: BoxDecoration(color: Colors.grey[200]),
-          child: Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: [
-              SizedBox(height: 15),
-              imageGrid(),
-              SizedBox(
-                height: 40,
-              ),
-              Padding(
-                padding: const EdgeInsets.all(10.0),
-                child: Visibility(
-                    visible: _isvisible,
-                    child: Text("Selected Item",
-                        style: TextStyle(
-                            fontSize: 17, fontWeight: FontWeight.w500))),
-              ),
-              SizedBox(height: 20),
-              SelectedItem(),
-              SizedBox(
-                height: 10,
-              ),
-              exchangeButton(context),
-            ],
+      backgroundColor: Colors.grey[200] ,
+      body: SingleChildScrollView(
+        child: Padding(
+          padding: const EdgeInsets.all(8.0),
+          child: Container(
+           // decoration: BoxDecoration(color: Colors.grey[200]),
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                SizedBox(height: 15),
+                imageGrid(),
+                SizedBox(
+                  height: 40,
+                ),
+                Padding(
+                  padding: const EdgeInsets.all(10.0),
+                  child: Visibility(
+                      visible: _isvisible,
+                      child: Text("Selected Item",
+                          style: TextStyle(
+                              fontSize: 17, fontWeight: FontWeight.w500))),
+                ),
+                SizedBox(height: 20),
+                SelectedItem(),
+                SizedBox(
+                  height: 10,
+                ),
+                exchangeButton(context),
+              ],
+            ),
           ),
         ),
       ),
