@@ -88,6 +88,7 @@ class _VerifyScreenState extends State<VerifyScreen> {
                           selectedColor: Colors.amberAccent),
                     ),
                   ),
+                
                   SizedBox(height: 40),
                   Container(
                     margin: EdgeInsets.all(20),
@@ -95,7 +96,7 @@ class _VerifyScreenState extends State<VerifyScreen> {
                     child: OutlinedButton(
                       style: ButtonStyle(
                         backgroundColor:
-                        MaterialStateProperty.all(KfilterBorderColors),
+                            MaterialStateProperty.all(KfilterBorderColors),
                         shape: MaterialStateProperty.all(RoundedRectangleBorder(
                             borderRadius: BorderRadius.circular(10.0))),
                       ),

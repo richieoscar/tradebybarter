@@ -4,7 +4,7 @@ import 'package:trade_by_barter/navigation/navigation.dart';
 
 class Pageupload extends StatefulWidget {
   Pageupload({Key key}) : super(key: key);
-  String _selectedCountry = ""; 
+  String _selectedCountry = "";
   String _selectedState = "";
   String _selectedcityValue = "";
 
@@ -71,6 +71,10 @@ class _PageuploadState extends State<Pageupload> {
                       borderRadius: BorderRadius.all(Radius.circular(10)),
                       color: Colors.grey,
                       border: Border.all(color: Color(0xffa60000), width: 1)),
+                  disabledDropdownDecoration: BoxDecoration(
+                      borderRadius: BorderRadius.all(Radius.circular(10)),
+                      color: Colors.grey,
+                      border: Border.all(color: Color(0xffa60000), width: 1)),
 
                   ///selected item style [OPTIONAL PARAMETER]
                   selectedItemStyle: TextStyle(
@@ -87,8 +91,7 @@ class _PageuploadState extends State<Pageupload> {
                   ///DropdownDialog Item style [OPTIONAL PARAMETER]
                   dropdownItemStyle: TextStyle(
                     color: Colors.black,
-                    fontSize: 
-                    14,
+                    fontSize: 14,
                   ),
 
                   ///Dialog box radius [OPTIONAL PARAMETER]
@@ -250,12 +253,11 @@ class UploadText extends StatelessWidget {
 class Upload extends StatelessWidget {
   final String label1;
   const Upload({this.label1});
-  
 
   @override
   Widget build(BuildContext context) {
     return GestureDetector(
-      onTap: ()=> AppNavigator.navigateToAddPhotoScreen(context),
+      onTap: () => AppNavigator.navigateToAddPhotoScreen(context),
       child: Container(
         height: 83,
         width: 94,
