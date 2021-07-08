@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:trade_by_barter/main.dart';
 import 'package:trade_by_barter/models/product_model.dart';
 import 'package:trade_by_barter/screens/add_photos_screen.dart';
+import 'package:trade_by_barter/screens/basedonpopular_demand.dart';
 import 'package:trade_by_barter/screens/bottom_nav_bar.dart';
 import 'package:trade_by_barter/screens/category_screen.dart';
 import 'package:trade_by_barter/screens/faqScreen.dart';
@@ -63,6 +64,11 @@ class AppNavigator {
   static void navigateToCategoryScreen(BuildContext context) {
     Navigator.push(
         context, MaterialPageRoute(builder: (context) => Category()));
+  }
+
+   static void navigateToPopularDemandScreen(BuildContext context) {
+    Navigator.push(
+        context, MaterialPageRoute(builder: (context) => BasedOnPopularDemand()));
   }
 
   static void navigateToLocationScreen(BuildContext context) {

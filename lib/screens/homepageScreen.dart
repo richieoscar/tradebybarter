@@ -1,41 +1,35 @@
-
 import "package:flutter/material.dart";
 import 'package:flutter/widgets.dart';
 import 'package:hexcolor/hexcolor.dart';
 import 'package:shared_preferences/shared_preferences.dart';
+import 'package:trade_by_barter/constants.dart';
 import 'package:trade_by_barter/models/User.dart';
 import 'package:trade_by_barter/navigation/navigation.dart';
 import 'package:trade_by_barter/networking/api_networking.dart';
 
-
 class HomeScreen extends StatefulWidget {
-
   @override
-   _HomeScreenState createState() => _HomeScreenState();
-
+  _HomeScreenState createState() => _HomeScreenState();
 }
 
 class _HomeScreenState extends State<HomeScreen> {
-   String username;
-   Future<User> user;
+  String username;
+  Future<User> user;
 
-   getUserName() async{
-      SharedPreferences sp = await SharedPreferences.getInstance();
-          username = sp.getString("username");
-   }
-  
-   
+  getUserName() async {
+    SharedPreferences sp = await SharedPreferences.getInstance();
+    username = sp.getString("username");
+  }
 
-   @override
-   void initState() {
-     super.initState();
-     getUserName();
+  @override
+  void initState() {
+    super.initState();
+    getUserName();
+  }
 
-   }
-  
   @override
   Widget build(BuildContext context) {
-   // user = ApiNetworkingManager.loggedInUser(context);
+    // user = ApiNetworkingManager.loggedInUser(context);
     return SafeArea(
       child: Container(
         child: ListView(children: [
@@ -46,18 +40,17 @@ class _HomeScreenState extends State<HomeScreen> {
               left: 10.0,
             ),
             child: Row(children: [
-               Text(
-                      'Hi',
-                      textAlign: TextAlign.left,
-                      textDirection: TextDirection.ltr,
-                      style: TextStyle(
-                        fontSize: 15,
-                        color: Colors.black,
-                        fontWeight: FontWeight.bold,
-                      ),
-               )
-            ]
-            ),
+              Text(
+                'Hi',
+                textAlign: TextAlign.left,
+                textDirection: TextDirection.ltr,
+                style: TextStyle(
+                  fontSize: 15,
+                  color: Colors.black,
+                  fontWeight: FontWeight.bold,
+                ),
+              )
+            ]),
           ),
           SearchWidget(),
           Container(
@@ -85,12 +78,13 @@ class _HomeScreenState extends State<HomeScreen> {
                       right: 15.0,
                     ),
                     child: GestureDetector(
-                        onTap: ()=> AppNavigator.navigateToCategoryScreen(context),
-                        child: Text(
+                      onTap: () =>
+                          AppNavigator.navigateToCategoryScreen(context),
+                      child: Text(
                         'See All',
                         textDirection: TextDirection.ltr,
                         style: TextStyle(
-                          color: Color(0xFFA60000),
+                          color: KBrandColors,
                         ),
                       ),
                     ),
@@ -120,11 +114,14 @@ class _HomeScreenState extends State<HomeScreen> {
                   ),
                   Padding(
                     padding: const EdgeInsets.only(right: 10.0),
-                    child: Text(
-                      'See All',
-                      textDirection: TextDirection.ltr,
-                      style: TextStyle(
-                        color: Color(0xFFA60000),
+                    child: GestureDetector(
+                      onTap: ()=> AppNavigator.navigateToPopularDemandScreen(context),
+                      child: Text(
+                        'See All',
+                        textDirection: TextDirection.ltr,
+                        style: TextStyle(
+                          color: Color(0xFFA60000),
+                        ),
                       ),
                     ),
                   ),
@@ -154,12 +151,13 @@ class _HomeScreenState extends State<HomeScreen> {
                   Padding(
                     padding: const EdgeInsets.only(right: 10.0),
                     child: GestureDetector(
-                      onTap: () => AppNavigator.navigateToNearByPeopleScreen(context),
-                         child: Text(
+                      onTap: () =>
+                          AppNavigator.navigateToNearByPeopleScreen(context),
+                      child: Text(
                         'See All',
                         textDirection: TextDirection.ltr,
                         style: TextStyle(
-                          color: Color(0xFFA60000),
+                          color: KBrandColors,
                         ),
                       ),
                     ),
@@ -193,14 +191,13 @@ class _HomeScreenState extends State<HomeScreen> {
     );
   }
 
-
   String displayUsername() {
     String userName;
     FutureBuilder<User>(
       future: user,
       builder: (context, snapshot) {
         if (snapshot.hasData) {
-           userName = snapshot.data.username;
+          userName = snapshot.data.username;
         } else if (snapshot.hasError) {
           userName = snapshot.error;
         }
@@ -209,8 +206,6 @@ class _HomeScreenState extends State<HomeScreen> {
     return userName;
   }
 }
-
-
 
 //Search Section
 class SearchWidget extends StatelessWidget {
@@ -234,19 +229,17 @@ class SearchWidget extends StatelessWidget {
               decoration: InputDecoration(
                 enabledBorder: const OutlineInputBorder(
                   borderSide: BorderSide(
-                    color: Color(0xFFFCE303),
+                    color: KProceedColor,
                   ),
                 ),
                 focusedBorder: OutlineInputBorder(
                   borderSide: BorderSide(
-                    color: HexColor("#A60000"),
+                    color: KBrandColors,
                   ),
                 ),
                 suffixIcon: Icon(
                   Icons.search,
-                  color: HexColor(
-                    ("#A60000"),
-                  ),
+                  color: KBrandColors,
                 ),
                 border: InputBorder.none,
                 hintText: "Search",
@@ -265,20 +258,20 @@ class SearchWidget extends StatelessWidget {
               right: 10.0,
             ),
             child: GestureDetector(
-              onTap:()=> AppNavigator.navigateToFilterScreen(context),
-                          child: Container(
+              onTap: () => AppNavigator.navigateToFilterScreen(context),
+              child: Container(
                 // margin: const EdgeInsets.all(30.0),
                 padding: const EdgeInsets.all(10.0),
                 decoration: BoxDecoration(
                   border: Border.all(
                     width: 2,
-                    color: HexColor("#A60000"),
+                    color: KBrandColors,
                   ),
                   borderRadius: BorderRadius.all(Radius.circular(5.0)),
                 ),
                 child: Icon(
                   Icons.menu,
-                  color: HexColor("#FCE303"),
+                  color: KProceedColor,
                 ),
               ),
             ),
@@ -529,7 +522,7 @@ class WhatsNewWidget extends StatelessWidget {
                                 textAlign: TextAlign.left,
                                 textDirection: TextDirection.ltr,
                                 style: TextStyle(
-                                  color: HexColor("#FCE303"),
+                                  color: KProceedColor,
                                   fontSize: 15.0,
                                 ),
                               ),

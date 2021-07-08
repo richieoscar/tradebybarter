@@ -23,7 +23,7 @@ class _NearByPeopleState extends State<NearByPeople> {
       home: Scaffold(
         appBar: AppBar(
           title: Text('Based on Nearby People'),
-          backgroundColor: Colors.brown,
+          backgroundColor: Colors.white,
         ),
         body: GoogleMap(
           onMapCreated: _onMapCreated,
