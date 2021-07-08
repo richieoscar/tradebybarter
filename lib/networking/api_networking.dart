@@ -20,13 +20,14 @@ class ApiNetworkingManager {
   static const LOGOUT_URL = "https://trade-app-zuri.herokuapp.com/token/logout";
   static const IS_LOGGED_IN_URL =
       "https://trade-app-zuri.herokuapp.com/auth/users/me";
+      static const ACTIVATE_USER = "https://trade-app-zuri.herokuapp.com/auth/users/activation/";
 
   static SharedPreferences _sharePref;
   static SharedPreferences _userPref;
-  static SharedPreferences  _token;
+  static SharedPreferences _token;
+  static SharedPreferences _userIdPref;
 
-  static Future<http.Response> signUpUser(
-      User user, BuildContext context) async {
+  static Future<http.Response> signUpUser( User user, BuildContext context) async {
     final response = await http.post(
       Uri.parse(SIGN_UP_URL),
       headers: <String, String>{
@@ -36,9 +37,9 @@ class ApiNetworkingManager {
         "username": user.username,
         "full_name": user.fullName,
         "email": user.email,
-        "phone": user.phone,
+        "phone_number": user.phone,
         "password": user.password,
-        "re_password": user.rePassword
+        "re_password": user.rePassword,
       }),
     );
     if (response.statusCode == 201) {
@@ -46,6 +47,20 @@ class ApiNetworkingManager {
       _userPref = await SharedPreferences.getInstance();
       _userPref.setString("username", user.username);
       print(_userPref.getString("username"));
+      var obj = jsonDecode(response.body);
+      User signUpuser = User.fromJson(obj);
+      int id = signUpuser.userId;
+      _userIdPref = await SharedPreferences.getInstance();
+      _userIdPref.setInt("userId", id);
+       String token = _token.getString("tokKey");
+      
+      
+      Fluttertoast.showToast(
+          msg: "Sign Up Successful",
+          gravity: ToastGravity.BOTTOM,
+          textColor: Colors.black,
+          toastLength: Toast.LENGTH_LONG,
+          backgroundColor: KProceedColor);
       AppNavigator.navigateToVerificationScreen(context);
     } else {
       print("not successful");
@@ -58,7 +73,6 @@ class ApiNetworkingManager {
           textColor: Colors.black,
           toastLength: Toast.LENGTH_LONG,
           backgroundColor: KProceedColor);
-      
     }
   }
 
@@ -69,7 +83,8 @@ class ApiNetworkingManager {
       headers: <String, String>{
         'Content-Type': 'application/json; charset=UTF-8',
       },
-      body: jsonEncode(<String, String>{"email": email, "password": password}),
+      body: jsonEncode(<String, String>{
+        "email": email, "password": password}),
     );
     if (response.statusCode == 200) {
       print("user Logged in");
@@ -77,7 +92,7 @@ class ApiNetworkingManager {
       var ob = jsonDecode(response.body);
       Auth userToken = Auth.fromJson(ob);
       print(userToken.authToken);
-      _token.setString("tokKey", userToken.authToken );
+      _token.setString("tokKey", userToken.authToken);
       AppNavigator.navigateToLauncherScreen(context);
     } else {
       print("not successful");
@@ -98,8 +113,8 @@ class ApiNetworkingManager {
     final response = await http.get(
       Uri.parse(IS_LOGGED_IN_URL),
       headers: <String, String>{
-        'Authorization' : 'Token $token',
-            'Content-Type': 'application/json; charset=UTF-8',
+        'Authorization': 'Token $token',
+        'Content-Type': 'application/json; charset=UTF-8',
       },
     );
     if (response.statusCode == 200) {
@@ -121,7 +136,7 @@ class ApiNetworkingManager {
       Uri.parse(LOGOUT_URL),
       headers: <String, String>{
         'Authorization': 'Token $token',
-            'Content-Type': 'application/json; charset=UTF-8',
+        'Content-Type': 'application/json; charset=UTF-8',
       },
     );
     if (response.statusCode == 204) {
@@ -135,6 +150,39 @@ class ApiNetworkingManager {
           backgroundColor: KProceedColor);
     } else {
       print("User is not logged out");
+      print(response.statusCode);
+      print(response.body);
+      print(response.contentLength);
+    }
+  }
+
+  static Future<http.Response> verifyUSer(String id, String token, BuildContext context) async {
+  
+    print(token);
+    print(id);
+    final response = await http.post(
+      Uri.parse(ACTIVATE_USER),
+      headers: <String, String>{
+        
+        'Content-Type': 'application/json; charset=UTF-8',
+      },
+       body: jsonEncode(<String, String>{
+         "uid": id.toString(),
+          "token": token
+          }),
+    );
+   
+    if (response.statusCode == 200) {
+      print("user is activated");
+      AppNavigator.navigateToLoginScreen(context);
+      Fluttertoast.showToast(
+          msg: "Your Account has been Activated",
+          gravity: ToastGravity.BOTTOM,
+          textColor: Colors.black,
+          toastLength: Toast.LENGTH_SHORT,
+          backgroundColor: Colors.green);
+    } else {
+      print("Account not activated");
       print(response.statusCode);
       print(response.body);
       print(response.contentLength);
