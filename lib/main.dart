@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:trade_by_barter/screens/antiques.dart';
 import 'package:trade_by_barter/screens/bottom_nav_bar.dart';
 import 'package:trade_by_barter/screens/category_screen.dart';
+import 'package:trade_by_barter/screens/comingSoon.dart';
 import 'package:trade_by_barter/screens/fashion.dart';
 import 'package:trade_by_barter/screens/forgotPasswordScreen.dart';
 import 'package:trade_by_barter/screens/homepageScreen.dart';
@@ -44,7 +45,7 @@ class _SplashScreenState extends State<SplashScreen> {
       Navigator.pushReplacement(
           context,
           MaterialPageRoute(
-            builder: (context) => FashionScreen(),
+            builder: (context) => Comingsoon(),
           ));
     });
     super.initState();
