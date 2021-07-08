@@ -20,7 +20,7 @@ class _AntiquesSreenState extends State<AntiquesSreen> {
           ),
           onPressed: () {},
         ),
-        titleSpacing: 80,
+        centerTitle: true,
         backgroundColor: Colors.white60,
         title: Text(
           'Antiques',
