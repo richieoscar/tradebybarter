@@ -20,7 +20,7 @@ class _FashionScreenState extends State<FashionScreen> {
           ),
           onPressed: () {},
         ),
-        titleSpacing: 80,
+        centerTitle: true,
         backgroundColor: Colors.white60,
         title: Text(
           'Fashion',

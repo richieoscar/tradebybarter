@@ -121,7 +121,7 @@ class Antiquesitem extends StatelessWidget {
               border: Border.all(
                 color: Color(0xffa60000),
               )),
-          height: 40,
+          height: 45,
           child: Center(
             child: Text(label),
           )),
