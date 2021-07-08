@@ -1,7 +1,10 @@
 import 'package:flutter/material.dart';
+import 'package:fluttertoast/fluttertoast.dart';
 import 'package:pin_code_fields/pin_code_fields.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 import 'package:trade_by_barter/constants.dart';
 import 'package:trade_by_barter/navigation/navigation.dart';
+import 'package:trade_by_barter/networking/api_networking.dart';
 
 class VerifyScreen extends StatefulWidget {
   const VerifyScreen({Key key}) : super(key: key);
@@ -10,6 +13,8 @@ class VerifyScreen extends StatefulWidget {
 }
 
 class _VerifyScreenState extends State<VerifyScreen> {
+
+  var _verifyController = TextEditingController();
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -68,6 +73,7 @@ class _VerifyScreenState extends State<VerifyScreen> {
                       right: 30.0,
                     ),
                     child: PinCodeTextField(
+                      controller: _verifyController,
                       appContext: context,
                       length: 5,
                       onChanged: (value) {
@@ -100,9 +106,18 @@ class _VerifyScreenState extends State<VerifyScreen> {
                         shape: MaterialStateProperty.all(RoundedRectangleBorder(
                             borderRadius: BorderRadius.circular(10.0))),
                       ),
-                      onPressed: () {
+                      onPressed: () async {
+                        
+                          SharedPreferences pref  =  await SharedPreferences.getInstance();
+                          String token  = pref.getString("tokKey");
+                          int id  = pref.getInt("userId");
+                          print(token);
+                          print(id);
+                          String userid = id.toString();
+                          ApiNetworkingManager.verifyUSer(userid ,token, context);
+            
                         print('verify clicked');
-                        AppNavigator.navigateToWelcomeScreen(context);
+                       // AppNavigator.navigateToWelcomeScreen(context);
                       },
                       child: Text(
                         "Verify",

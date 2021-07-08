@@ -5,9 +5,12 @@ class User {
   String _phone;
   String _password;
   String _rePassword;
+  int _userId;
 
   User(this._username, this._fullName, this._email, this._phone, this._password,
       this._rePassword);
+  User.withUserId(this._username, this._fullName, this._email, this._phone,
+      this._password, this._rePassword, this._userId);
 
   String get username => _username;
 
@@ -25,6 +28,10 @@ class User {
 
   set phone(String phone) => _phone = phone;
 
+  set userId(int id) => _userId = id;
+
+  int get userId => _userId;
+
   String get password => _password;
 
   set password(String password) => _password = password;
@@ -40,6 +47,7 @@ class User {
     _phone = json['phone'];
     _password = json['password'];
     _rePassword = json['re_password'];
+    _userId = json['uid'];
   }
 
   Map<String, dynamic> toJson() {

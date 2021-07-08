@@ -13,12 +13,12 @@ class HomeScreen extends StatefulWidget {
 }
 
 class _HomeScreenState extends State<HomeScreen> {
-  String username;
+  String _username;
   Future<User> user;
 
   getUserName() async {
     SharedPreferences sp = await SharedPreferences.getInstance();
-    username = sp.getString("username");
+    _username = sp.getString("username");
   }
 
   @override
@@ -26,6 +26,8 @@ class _HomeScreenState extends State<HomeScreen> {
     super.initState();
     getUserName();
   }
+
+ 
 
   @override
   Widget build(BuildContext context) {
@@ -41,7 +43,7 @@ class _HomeScreenState extends State<HomeScreen> {
             ),
             child: Row(children: [
               Text(
-                'Hi',
+                _username,
                 textAlign: TextAlign.left,
                 textDirection: TextDirection.ltr,
                 style: TextStyle(
