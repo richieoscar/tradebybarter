@@ -136,9 +136,7 @@ Widget locationButton(String text) {
           onPressed: () {
             // print('By Popular Demand Clicked');
                 setState(() {
-                  _filter = "location";
-                  lcolor = KfilterBorderColors;
-                  ltextColor = Colors.white;
+                  initLocationButtonState();
                 });
           },
           
@@ -149,6 +147,18 @@ Widget locationButton(String text) {
           ),
         )));
   }
+
+void initLocationButtonState() {
+   _filter = "location";
+  lcolor = KfilterBorderColors;
+  ltextColor = Colors.white;
+  popcolor = color;
+  poptextColor = Colors.black;
+  catcolor = color;
+  cattextColor = Colors.black;
+  nearcolor = color;
+  neartextColor = Colors.black;
+}
 
  Widget categoryButton(String text) {
     return (Container(
@@ -164,9 +174,8 @@ Widget locationButton(String text) {
           onPressed: () {
             // print('By Popular Demand Clicked');
             setState(() {
-              _filter = "category";
-              catcolor = KfilterBorderColors;
-              cattextColor = Colors.white;
+              initCatButtonState();
+
             });
           },
           child: Text(
@@ -176,6 +185,18 @@ Widget locationButton(String text) {
           ),
         )));
   }
+
+ void initCatButtonState() {
+    _filter = "category";
+   catcolor = KfilterBorderColors;
+   cattextColor = Colors.white;
+   lcolor = color;
+   ltextColor = Colors.black;
+   popcolor = color;
+   poptextColor = Colors.black;
+   nearcolor = color;
+   neartextColor = Colors.black;
+ }
 
 Widget popularButton(String text) {
     return (Container(
@@ -191,9 +212,7 @@ Widget popularButton(String text) {
           onPressed: () {
             // print('By Popular Demand Clicked');
             setState(() {
-              _filter = "popular";
-              popcolor = KfilterBorderColors;
-              poptextColor = Colors.white;
+              initPopularButtonState();
             });
           },
           child: Text(
@@ -205,6 +224,18 @@ Widget popularButton(String text) {
           ),
         )));
   }
+
+void initPopularButtonState() {
+  _filter = "popular";
+  popcolor = KfilterBorderColors;
+  poptextColor = Colors.white;
+  catcolor =color;
+  cattextColor = Colors.black;
+  lcolor = color;
+  ltextColor = Colors.black;
+  nearcolor = color;
+  neartextColor = Colors.black;
+}
 
   Widget nearByButton(String text) {
     return (Container(
@@ -220,9 +251,8 @@ Widget popularButton(String text) {
           onPressed: () {
             // print('By Popular Demand Clicked');
             setState(() {
-              _filter = "nearby";
-              nearcolor = KfilterBorderColors;
-              neartextColor = Colors.white;
+              initNearByButtonState();
+            
             });
           },
           child: Text(
@@ -233,6 +263,18 @@ Widget popularButton(String text) {
                 fontSize: 20),
           ),
         )));
+  }
+
+  void initNearByButtonState() {
+     _filter = "nearby";
+    nearcolor = KfilterBorderColors;
+    neartextColor = Colors.white;
+    lcolor = color;
+    ltextColor = Colors.black;
+    popcolor = color;
+    poptextColor = Colors.black;
+    catcolor = color;
+    cattextColor = Colors.black;
   }
   
 }

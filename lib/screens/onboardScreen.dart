@@ -17,12 +17,10 @@ final _controller = PageController(
 
 List<Widget> pageView(BuildContext context) {
   List<Widget> pages = [
-
     Container(
       decoration: BoxDecoration(color: Colors.white),
       height: MediaQuery.of(context).size.height,
       child: SingleChildScrollView(
-
         child: Container(
           height: MediaQuery.of(context).size.height,
           decoration: BoxDecoration(
@@ -56,6 +54,7 @@ List<Widget> pageView(BuildContext context) {
                 child: Container(
                   margin: EdgeInsets.all(8),
                   constraints: BoxConstraints.expand( height: 40),
+
                   child: (OutlinedButton(
                     style: ButtonStyle(
                       backgroundColor: MaterialStateProperty.all(KProceedColor),
@@ -85,13 +84,14 @@ List<Widget> pageView(BuildContext context) {
       decoration: BoxDecoration(color: Colors.white),
       height: MediaQuery.of(context).size.height,
       child: SingleChildScrollView(
-
         child: Container(
           height: MediaQuery.of(context).size.height,
           decoration: BoxDecoration(
               image: DecorationImage(
+
                   image: AssetImage('images/onb5.png'),
                   fit: BoxFit.cover)),
+
           child: Column(
             children: [
 
@@ -146,13 +146,13 @@ List<Widget> pageView(BuildContext context) {
       decoration: BoxDecoration(color: Colors.white),
       height: MediaQuery.of(context).size.height,
       child: SingleChildScrollView(
-
         child: Container(
           height: MediaQuery.of(context).size.height,
           decoration: BoxDecoration(
               image: DecorationImage(
                   image: AssetImage('images/onb6.png'),
                   fit: BoxFit.cover)),
+
           child: Column(
             children: [
 
@@ -210,9 +210,7 @@ class _OnBoardScreenState extends State<OnBoardScreen> {
     return Scaffold(
       
       backgroundColor: Colors.transparent,
-
       body: SafeArea(
-
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
@@ -227,9 +225,7 @@ class _OnBoardScreenState extends State<OnBoardScreen> {
                 },
               ),
             ),
-
             Container(
-
               decoration: BoxDecoration(color: Colors.white),
               alignment: Alignment(0.0, -1.0),
               child: new DotsIndicator(
@@ -243,9 +239,6 @@ class _OnBoardScreenState extends State<OnBoardScreen> {
                 ),
               ),
             ),
-
-
-
           ],
         ),
       ),

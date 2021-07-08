@@ -114,11 +114,14 @@ class _HomeScreenState extends State<HomeScreen> {
                   ),
                   Padding(
                     padding: const EdgeInsets.only(right: 10.0),
-                    child: Text(
-                      'See All',
-                      textDirection: TextDirection.ltr,
-                      style: TextStyle(
-                        color: KBrandColors,
+                    child: GestureDetector(
+                      onTap: ()=> AppNavigator.navigateToPopularDemandScreen(context),
+                      child: Text(
+                        'See All',
+                        textDirection: TextDirection.ltr,
+                        style: TextStyle(
+                          color: Color(0xFFA60000),
+                        ),
                       ),
                     ),
                   ),
