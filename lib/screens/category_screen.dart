@@ -29,14 +29,14 @@ class _CategoryState extends State<Category> {
             SizedBox(height: 20),
             searchBox("Search"),
             SizedBox(height: 10),
-            categoryOption("Antiques"),
-            categoryOption("Books"),
-            categoryOption("Computing"),
-            categoryOption("Electronics"),
-            categoryOption("Fashion"),
-            categoryOption("Health & Beauty"),
-            categoryOption("Home Appliances"),
-            categoryOption("Office Furnitures"),
+            antiquesCategory("Antiques"),
+            booksCategory("Books"),
+            computingCategory("Computing"),
+            electronicsCategory("Electronics"),
+            fashionCategory("Fashion"),
+            healthBeautyCategory("Health & Beauty"),
+            homeApplaincCategory("Home Appliances"),
+            furnitureCategory("Office Furnitures"),
           ],
         ),
       ),
@@ -89,7 +89,7 @@ class _CategoryState extends State<Category> {
           ),
           SizedBox(width: 20.0),
           GestureDetector(
-            onTap: ()=> AppNavigator.navigateToFilterScreen(context),
+            onTap: () => AppNavigator.navigateToFilterScreen(context),
             child: Container(
               width: 50.0,
               height: 50,
@@ -105,7 +105,7 @@ class _CategoryState extends State<Category> {
     );
   }
 
-  Widget categoryOption(String option) {
+  Widget antiquesCategory(String option) {
     return Center(
       child: Container(
           width: 350,
@@ -127,10 +127,213 @@ class _CategoryState extends State<Category> {
                 fontWeight: FontWeight.w400,
               ),
             ),
-            onPressed: _openSelected,
+            onPressed:() =>{
+              // do stuff here
+            },
           )),
     );
   }
 
-  _openSelected() {}
+  Widget booksCategory(String option) {
+    return Center(
+      child: Container(
+          width: 350,
+          height: 50,
+          // padding: EdgeInsets.all(10),
+          margin: EdgeInsets.all(10),
+          decoration: BoxDecoration(
+            color: Colors.grey[300],
+            borderRadius: BorderRadius.circular(10),
+            border: Border.all(color: Color(0xffa60000), width: 1),
+          ),
+          child: TextButton(
+            child: Text(
+              option,
+              textAlign: TextAlign.start,
+              style: TextStyle(
+                color: Colors.black,
+                fontSize: 18.0,
+                fontWeight: FontWeight.w400,
+              ),
+            ),
+            onPressed: ()=>{
+              //do dtuff here
+            },
+          )),
+    );
+  }
+
+  Widget computingCategory(String option) {
+    return Center(
+      child: Container(
+          width: 350,
+          height: 50,
+          // padding: EdgeInsets.all(10),
+          margin: EdgeInsets.all(10),
+          decoration: BoxDecoration(
+            color: Colors.grey[300],
+            borderRadius: BorderRadius.circular(10),
+            border: Border.all(color: Color(0xffa60000), width: 1),
+          ),
+          child: TextButton(
+            child: Text(
+              option,
+              textAlign: TextAlign.start,
+              style: TextStyle(
+                color: Colors.black,
+                fontSize: 18.0,
+                fontWeight: FontWeight.w400,
+              ),
+            ),
+            onPressed: () => {
+              //do dtuff here
+            },
+          )),
+    );
+  }
+
+  Widget electronicsCategory(String option) {
+    return Center(
+      child: Container(
+          width: 350,
+          height: 50,
+          // padding: EdgeInsets.all(10),
+          margin: EdgeInsets.all(10),
+          decoration: BoxDecoration(
+            color: Colors.grey[300],
+            borderRadius: BorderRadius.circular(10),
+            border: Border.all(color: Color(0xffa60000), width: 1),
+          ),
+          child: TextButton(
+            child: Text(
+              option,
+              textAlign: TextAlign.start,
+              style: TextStyle(
+                color: Colors.black,
+                fontSize: 18.0,
+                fontWeight: FontWeight.w400,
+              ),
+            ),
+           onPressed: () => {
+              //do dtuff here
+            },
+          )),
+    );
+  }
+
+  Widget fashionCategory(String option) {
+    return Center(
+      child: Container(
+          width: 350,
+          height: 50,
+          // padding: EdgeInsets.all(10),
+          margin: EdgeInsets.all(10),
+          decoration: BoxDecoration(
+            color: Colors.grey[300],
+            borderRadius: BorderRadius.circular(10),
+            border: Border.all(color: Color(0xffa60000), width: 1),
+          ),
+          child: TextButton(
+            child: Text(
+              option,
+              textAlign: TextAlign.start,
+              style: TextStyle(
+                color: Colors.black,
+                fontSize: 18.0,
+                fontWeight: FontWeight.w400,
+              ),
+            ),
+            onPressed: () => {
+              //do dtuff here
+            },
+          )),
+    );
+  }
+
+  Widget healthBeautyCategory(String option) {
+    return Center(
+      child: Container(
+          width: 350,
+          height: 50,
+          // padding: EdgeInsets.all(10),
+          margin: EdgeInsets.all(10),
+          decoration: BoxDecoration(
+            color: Colors.grey[300],
+            borderRadius: BorderRadius.circular(10),
+            border: Border.all(color: Color(0xffa60000), width: 1),
+          ),
+          child: TextButton(
+            child: Text(
+              option,
+              textAlign: TextAlign.start,
+              style: TextStyle(
+                color: Colors.black,
+                fontSize: 18.0,
+                fontWeight: FontWeight.w400,
+              ),
+            ),
+           onPressed: () => {
+              //do dtuff here
+            },
+          )),
+    );
+  }
+
+  Widget homeApplaincCategory(String option) {
+    return Center(
+      child: Container(
+          width: 350,
+          height: 50,
+          // padding: EdgeInsets.all(10),
+          margin: EdgeInsets.all(10),
+          decoration: BoxDecoration(
+            color: Colors.grey[300],
+            borderRadius: BorderRadius.circular(10),
+            border: Border.all(color: Color(0xffa60000), width: 1),
+          ),
+          child: TextButton(
+            child: Text(
+              option,
+              textAlign: TextAlign.start,
+              style: TextStyle(
+                color: Colors.black,
+                fontSize: 18.0,
+                fontWeight: FontWeight.w400,
+              ),
+            ),
+            onPressed: () => {
+              //do dtuff here
+            },
+          )),
+    );
+  }
+
+  Widget furnitureCategory(String option) {
+    return Center(
+      child: Container(
+          width: 350,
+          height: 50,
+          // padding: EdgeInsets.all(10),
+          margin: EdgeInsets.all(10),
+          decoration: BoxDecoration(
+            color: Colors.grey[300],
+            borderRadius: BorderRadius.circular(10),
+            border: Border.all(color: Color(0xffa60000), width: 1),
+          ),
+          child: TextButton(
+            child: Text(
+              option,
+              textAlign: TextAlign.start,
+              style: TextStyle(
+                color: Colors.black,
+                fontSize: 18.0,
+                fontWeight: FontWeight.w400,
+              ),
+            ),
+           onPressed: () => {
+              //do dtuff here
+            },
+          )),
+    );
+  }
 }
