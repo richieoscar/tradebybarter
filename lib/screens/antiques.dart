@@ -20,7 +20,7 @@ class _AntiquesSreenState extends State<AntiquesSreen> {
           ),
           onPressed: () {},
         ),
-        titleSpacing: 80,
+        centerTitle: true,
         backgroundColor: Colors.white60,
         title: Text(
           'Antiques',
@@ -121,7 +121,7 @@ class Antiquesitem extends StatelessWidget {
               border: Border.all(
                 color: Color(0xffa60000),
               )),
-          height: 40,
+          height: 45,
           child: Center(
             child: Text(label),
           )),
