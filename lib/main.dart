@@ -8,6 +8,7 @@ import 'package:trade_by_barter/screens/computingScreen.dart';
 import 'package:trade_by_barter/screens/fashion.dart';
 import 'package:trade_by_barter/screens/forgotPasswordScreen.dart';
 import 'package:trade_by_barter/screens/homepageScreen.dart';
+import 'package:trade_by_barter/screens/myItemScreen.dart';
 import 'package:trade_by_barter/screens/nearbyPeopleScreen.dart';
 import 'package:trade_by_barter/screens/pin-code.dart';
 import 'package:trade_by_barter/screens/reset_password.dart';
@@ -45,7 +46,7 @@ class _SplashScreenState extends State<SplashScreen> {
       Navigator.pushReplacement(
           context,
           MaterialPageRoute(
-            builder: (context) => OnBoardScreen(),
+            builder: (context) => MyItemScreen(),
           ));
     });
     super.initState();
