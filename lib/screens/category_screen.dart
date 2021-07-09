@@ -129,6 +129,7 @@ class _CategoryState extends State<Category> {
             ),
             onPressed:() =>{
               // do stuff here
+            AppNavigator.navigateToAntiquesScreen(context)
             },
           )),
     );
@@ -158,6 +159,7 @@ class _CategoryState extends State<Category> {
             ),
             onPressed: ()=>{
               //do dtuff here
+            AppNavigator.navigateToBooksScreen(context)
             },
           )),
     );
@@ -187,6 +189,7 @@ class _CategoryState extends State<Category> {
             ),
             onPressed: () => {
               //do dtuff here
+            AppNavigator.navigateToComputingScreen(context)
             },
           )),
     );
@@ -245,6 +248,7 @@ class _CategoryState extends State<Category> {
             ),
             onPressed: () => {
               //do dtuff here
+            AppNavigator.navigateToFashionScreen(context)
             },
           )),
     );
@@ -274,6 +278,7 @@ class _CategoryState extends State<Category> {
             ),
            onPressed: () => {
               //do dtuff here
+           AppNavigator.navigateToHealthAndBeautyScreen(context)
             },
           )),
     );
@@ -331,6 +336,7 @@ class _CategoryState extends State<Category> {
               ),
             ),
            onPressed: () => {
+
               //do dtuff here
             },
           )),
