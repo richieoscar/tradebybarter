@@ -1,4 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:trade_by_barter/navigation/navigation.dart';
+import 'package:trade_by_barter/navigation/navigation.dart';
+import 'package:trade_by_barter/navigation/navigation.dart';
 
 class BooksScreen extends StatefulWidget {
   BooksScreen({Key key}) : super(key: key);
@@ -39,70 +42,70 @@ class _BooksScreenState extends State<BooksScreen> {
                   ),
                   _Booksitem(
                     label: 'Biography',
-                    Onpressed: () {},
+                    Onpressed: () { AppNavigator.navigateToComingSoonScreen(context);},
                   ),
                   SizedBox(
                     height: 15,
                   ),
                  _Booksitem(
                     label: 'Drama',
-                    Onpressed: () {},
+                    Onpressed: () {AppNavigator.navigateToComingSoonScreen(context);},
                   ),
                   SizedBox(
                     height: 15,
                   ),
                   _Booksitem(
                     label: 'Fairy-tale',
-                    Onpressed: () {},
+                    Onpressed: () {AppNavigator.navigateToComingSoonScreen(context);},
                   ),
                   SizedBox(
                     height: 15,
                   ),
                   _Booksitem(
                     label: 'Fiction',
-                    Onpressed: () {},
+                    Onpressed: () {AppNavigator.navigateToComingSoonScreen(context);},
                   ),
                   SizedBox(
                     height: 15,
                   ),
                   _Booksitem(
                     label: 'History',
-                    Onpressed: () {},
+                    Onpressed: () {AppNavigator.navigateToComingSoonScreen(context);},
                   ),
                   SizedBox(
                     height: 15,
                   ),
                   _Booksitem(
                     label: 'Myth',
-                    Onpressed: () {},
+                    Onpressed: () {AppNavigator.navigateToComingSoonScreen(context);},
                   ),
                   SizedBox(
                     height: 15,
                   ),
                   _Booksitem(
                     label: 'Non-Fiction',
-                    Onpressed: () {},
+                    Onpressed: () {AppNavigator.navigateToComingSoonScreen(context);},
                   ),
                   SizedBox(
                     height: 15,
                   ),
                   _Booksitem(
                     label: 'Poems',
-                    Onpressed: () {},
+                    Onpressed: () {AppNavigator.navigateToComingSoonScreen(context);},
                   ),
                   SizedBox(
                     height: 15,
                   ),
                   _Booksitem(
                     label: 'Romance',
-                    Onpressed: () {},
+                    Onpressed: () {AppNavigator.navigateToComingSoonScreen(context);},
                   ),
                   SizedBox(
                     height: 15,
                   ),
                   _Booksitem(
                     label: 'Western',
-                    Onpressed: () {},
+                    Onpressed: () {AppNavigator.navigateToComingSoonScreen(context);},
                   ),
                   SizedBox(
                     height: 10,
@@ -128,6 +131,7 @@ class _Booksitem extends StatelessWidget {
   Widget build(BuildContext context) {
     return GestureDetector(
       onTap: Onpressed,
+
       child: Container(
           decoration: BoxDecoration(
               color: Colors.grey[200],

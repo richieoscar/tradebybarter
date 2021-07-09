@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:trade_by_barter/navigation/navigation.dart';
 
 class ComputingScreen extends StatefulWidget {
   ComputingScreen({Key key}) : super(key: key);
@@ -39,56 +40,56 @@ class _ComputingScreenState extends State<ComputingScreen> {
                   ),
                   _ComputingItem(
                     label: 'Adapters',
-                    Onpressed: () {},
+                    Onpressed: () {AppNavigator.navigateToComingSoonScreen(context);},
                   ),
                   SizedBox(
                     height: 15,
                   ),
                   _ComputingItem(
                     label: 'Batteries',
-                    Onpressed: () {},
+                    Onpressed: () {AppNavigator.navigateToComingSoonScreen(context);},
                   ),
                   SizedBox(
                     height: 15,
                   ),
                   _ComputingItem(
                     label: 'Computers & Laptops',
-                    Onpressed: () {},
+                    Onpressed: () {AppNavigator.navigateToComingSoonScreen(context);},
                   ),
                   SizedBox(
                     height: 15,
                   ),
                   _ComputingItem(
                     label: 'Drives',
-                    Onpressed: () {},
+                    Onpressed: () {AppNavigator.navigateToComingSoonScreen(context);},
                   ),
                   SizedBox(
                     height: 15,
                   ),
                   _ComputingItem(
                     label: 'Laptop Cases and Bags',
-                    Onpressed: () {},
+                    Onpressed: () {AppNavigator.navigateToComingSoonScreen(context);},
                   ),
                   SizedBox(
                     height: 15,
                   ),
                   _ComputingItem (
                     label: 'USB Hubs',
-                    Onpressed: () {},
+                    Onpressed: () {AppNavigator.navigateToComingSoonScreen(context);},
                   ),
                   SizedBox(
                     height: 15,
                   ),
                   _ComputingItem(
                     label: 'VGA Cables',
-                    Onpressed: () {},
+                    Onpressed: () {AppNavigator.navigateToComingSoonScreen(context);},
                   ),
                   SizedBox(
                     height: 15,
                   ),
                   _ComputingItem(
                     label: 'Webcams',
-                    Onpressed: () {},
+                    Onpressed: () {AppNavigator.navigateToComingSoonScreen(context);},
                   ),
                   SizedBox(
                     height: 15,

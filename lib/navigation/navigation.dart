@@ -2,12 +2,19 @@ import 'package:flutter/material.dart';
 import 'package:trade_by_barter/main.dart';
 import 'package:trade_by_barter/models/product_model.dart';
 import 'package:trade_by_barter/screens/add_photos_screen.dart';
+import 'package:trade_by_barter/screens/antiques.dart';
 import 'package:trade_by_barter/screens/basedonpopular_demand.dart';
+import 'package:trade_by_barter/screens/booksScreen.dart';
 import 'package:trade_by_barter/screens/bottom_nav_bar.dart';
 import 'package:trade_by_barter/screens/category_screen.dart';
+import 'package:trade_by_barter/screens/comingSoon.dart';
+import 'package:trade_by_barter/screens/computingScreen.dart';
+import 'package:trade_by_barter/screens/electronicsScreen.dart';
 import 'package:trade_by_barter/screens/faqScreen.dart';
+import 'package:trade_by_barter/screens/fashion.dart';
 import 'package:trade_by_barter/screens/filterScreen.dart';
 import 'package:trade_by_barter/screens/forgotPasswordScreen.dart';
+import 'package:trade_by_barter/screens/healthAndBeautyScreen.dart';
 import 'package:trade_by_barter/screens/homepageScreen.dart';
 import 'package:trade_by_barter/screens/login-screen.dart';
 import 'package:trade_by_barter/screens/nearbyPeopleScreen.dart';
@@ -138,6 +145,31 @@ class AppNavigator {
     Navigator.push(context, MaterialPageRoute(builder: (context) => ForgotPasswordScreen ()));
   }
 
+  static void navigateToBooksScreen(BuildContext context){
+    Navigator.push(context, MaterialPageRoute(builder: (context) => BooksScreen ()));
+  }
+
+  static void navigateToComputingScreen(BuildContext context){
+    Navigator.push(context, MaterialPageRoute(builder: (context) => ComputingScreen ()));
+  }
+
+  static void navigateToFashionScreen(BuildContext context){
+    Navigator.push(context, MaterialPageRoute(builder: (context) => FashionScreen ()));
+  }
+  static void navigateToHealthAndBeautyScreen(BuildContext context){
+    Navigator.push(context, MaterialPageRoute(builder: (context) => HealthandBeautyPage()));
+  }
+
+  static void navigateToelectronicsScreen(BuildContext context){
+    Navigator.push(context, MaterialPageRoute(builder: (context) => ElectronicsPage ()));
+  }
+  static void navigateToAntiquesScreen(BuildContext context){
+    Navigator.push(context, MaterialPageRoute(builder: (context) => AntiquesSreen ()));
+  }
+
+  static void navigateToComingSoonScreen(BuildContext context){
+    Navigator.push(context, MaterialPageRoute(builder: (context) => Comingsoon ()));
+  }
   static void navigateBack(BuildContext context){
     Navigator.pop(context, false);
   }
