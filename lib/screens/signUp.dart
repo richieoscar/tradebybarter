@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:trade_by_barter/models/User.dart';
 import 'package:trade_by_barter/navigation/navigation.dart';
 import 'package:trade_by_barter/networking/api_networking.dart';
-
+import 'package:fluttertoast/fluttertoast.dart';
 import '../constants.dart';
 
 class Signup extends StatefulWidget {
@@ -433,6 +433,16 @@ class _SignupState extends State<Signup> {
                               ApiNetworkingManager.signUpUser(user, context)
                                   .whenComplete(() => setState(() {
                                         _show = false;
+                                        AppNavigator
+                                            .navigateToVerificationScreen(
+                                                context);
+
+                                        Fluttertoast.showToast(
+                                            msg: "Sign Up Successful",
+                                            gravity: ToastGravity.BOTTOM,
+                                            textColor: Colors.black,
+                                            toastLength: Toast.LENGTH_LONG,
+                                            backgroundColor: KProceedColor);
                                       }));
 
                               // AppNavigator.navigateToSignUpScreen(context);
@@ -476,8 +486,8 @@ class _SignupState extends State<Signup> {
       child: Visibility(
         visible: _show,
         child: CircularProgressIndicator(
-          //color: KfilterBorderColors,
-        ),
+            //color: KfilterBorderColors,
+            ),
       ),
     );
   }

@@ -20,11 +20,24 @@ class _HomeScreenState extends State<HomeScreen> {
     SharedPreferences sp = await SharedPreferences.getInstance();
     _username = sp.getString("username");
   }
+ 
 
   @override
   void initState() {
     super.initState();
-    getUserName();
+   
+  }
+   _displayUserName() async{
+    SharedPreferences pref =  await SharedPreferences.getInstance();
+         var  user = pref.getString("username");
+          setState(() {
+            _username = user;
+          });
+  }
+
+  String _displayNoUserName(){
+    return _username = "Hi User";
+
   }
 
  
@@ -43,7 +56,8 @@ class _HomeScreenState extends State<HomeScreen> {
             ),
             child: Row(children: [
               Text(
-                _username,
+                _username == null ? _displayNoUserName():_displayUserName(),
+                //ApiNetworkingManager.getUsername(),
                 textAlign: TextAlign.left,
                 textDirection: TextDirection.ltr,
                 style: TextStyle(

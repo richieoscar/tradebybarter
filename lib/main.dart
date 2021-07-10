@@ -46,7 +46,7 @@ class _SplashScreenState extends State<SplashScreen> {
       Navigator.pushReplacement(
           context,
           MaterialPageRoute(
-            builder: (context) => MyItemScreen(),
+            builder: (context) => OnBoardScreen(),
           ));
     });
     super.initState();

@@ -8,24 +8,38 @@ import 'package:http/http.dart' as http;
 import 'package:shared_preferences/shared_preferences.dart';
 import 'package:trade_by_barter/models/User.dart';
 import 'package:trade_by_barter/models/auth.dart';
+import 'package:trade_by_barter/models/item.dart';
 import 'package:trade_by_barter/navigation/navigation.dart';
 import 'package:trade_by_barter/screens/login-screen.dart';
 
 import '../constants.dart';
 
 class ApiNetworkingManager {
-  static const SIGN_UP_URL = "https://trade-app-zuri.herokuapp.com/auth/users/";
+  static const SIGN_UP_URL = "https://trade-app-zuri.herokuapp.com/register/";
   static const LOGIN_URL =
       "https://trade-app-zuri.herokuapp.com/auth/token/login";
   static const LOGOUT_URL = "https://trade-app-zuri.herokuapp.com/token/logout";
   static const IS_LOGGED_IN_URL =
       "https://trade-app-zuri.herokuapp.com/auth/users/me";
       static const ACTIVATE_USER = "https://trade-app-zuri.herokuapp.com/auth/users/activation/";
+     static const CREATE_ITEM = "https://trade-app-zuri.herokuapp.com/item-create/";
 
   static SharedPreferences _sharePref;
   static SharedPreferences _userPref;
   static SharedPreferences _token;
   static SharedPreferences _userIdPref;
+  static String _userName;
+  static String _userEmail;
+
+
+  static String getUsername(){
+    return _userName = _userPref.getString("username");
+  }
+
+  static String getUserEmail(){
+    return _userEmail;
+  }
+
 
   static Future<http.Response> signUpUser( User user, BuildContext context) async {
     final response = await http.post(
@@ -44,24 +58,19 @@ class ApiNetworkingManager {
     );
     if (response.statusCode == 201) {
       print("user created");
-      _userPref = await SharedPreferences.getInstance();
-      _userPref.setString("username", user.username);
-      print(_userPref.getString("username"));
       var obj = jsonDecode(response.body);
       User signUpuser = User.fromJson(obj);
       int id = signUpuser.userId;
+      print("user id $id");
+       _userPref = await SharedPreferences.getInstance();
+      _userPref.setString("username", signUpuser.username);
+      _userName = user.username;
+      _userEmail = signUpuser.email;
       _userIdPref = await SharedPreferences.getInstance();
       _userIdPref.setInt("userId", id);
        String token = _token.getString("tokKey");
-      
-      
-      Fluttertoast.showToast(
-          msg: "Sign Up Successful",
-          gravity: ToastGravity.BOTTOM,
-          textColor: Colors.black,
-          toastLength: Toast.LENGTH_LONG,
-          backgroundColor: KProceedColor);
-      AppNavigator.navigateToVerificationScreen(context);
+       
+     
     } else {
       print("not successful");
       print(response.statusCode);
@@ -188,4 +197,8 @@ class ApiNetworkingManager {
       print(response.contentLength);
     }
   }
+//FROM HERE WE HAVE API METHODS FOR THE ITEMS
+
+
+   
 }

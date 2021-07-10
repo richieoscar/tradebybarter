@@ -13,6 +13,7 @@ class VerifyScreen extends StatefulWidget {
 }
 
 class _VerifyScreenState extends State<VerifyScreen> {
+  String _email;
 
   var _verifyController = TextEditingController();
   @override
@@ -57,7 +58,7 @@ class _VerifyScreenState extends State<VerifyScreen> {
                           SizedBox(height: 10),
                           Container(
                             child: Text(
-                              "eunice@gmail.com",
+                              _email == null? "Your Email"  :  ApiNetworkingManager.getUserEmail(),
                               style: KVerEmail,
                             ),
                           ),
@@ -108,16 +109,16 @@ class _VerifyScreenState extends State<VerifyScreen> {
                       ),
                       onPressed: () async {
                         
-                          SharedPreferences pref  =  await SharedPreferences.getInstance();
-                          String token  = pref.getString("tokKey");
-                          int id  = pref.getInt("userId");
-                          print(token);
-                          print(id);
-                          String userid = id.toString();
-                          ApiNetworkingManager.verifyUSer(userid ,token, context);
+                          // SharedPreferences pref  =  await SharedPreferences.getInstance();
+                          // String token  = pref.getString("tokKey");
+                          // int id  = pref.getInt("userId");
+                          // print(token);
+                          // print(id);
+                          // String userid = id.toString();
+                         // ApiNetworkingManager.verifyUSer(userid ,token, context);
             
                         print('verify clicked');
-                       // AppNavigator.navigateToWelcomeScreen(context);
+                        AppNavigator.navigateToLoginScreen(context);
                       },
                       child: Text(
                         "Verify",
