@@ -10,8 +10,16 @@ class Item {
   String _image;
   int _author;
 
-  Item(
-       
+  Item(  
+    this._itemName,
+    this._price,
+    this._category,
+    this._description,
+    this._itemOfExchange,
+    this._image,
+    this._author);
+
+    Item.created( 
     this._id,
     this._itemName,
     this._price,
@@ -21,7 +29,7 @@ class Item {
     this._createdAt,
     this._updatedAt,
     this._image,
-    this._author);
+    this._author)
     
   
 

@@ -1,5 +1,6 @@
 import 'dart:convert';
 import 'dart:io';
+import 'package:dio/dio.dart';
 
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
@@ -21,8 +22,10 @@ class ApiNetworkingManager {
   static const LOGOUT_URL = "https://trade-app-zuri.herokuapp.com/token/logout";
   static const IS_LOGGED_IN_URL =
       "https://trade-app-zuri.herokuapp.com/auth/users/me";
-      static const ACTIVATE_USER = "https://trade-app-zuri.herokuapp.com/auth/users/activation/";
-     static const CREATE_ITEM = "https://trade-app-zuri.herokuapp.com/item-create/";
+  static const ACTIVATE_USER =
+      "https://trade-app-zuri.herokuapp.com/auth/users/activation/";
+  static const CREATE_ITEM =
+      "https://trade-app-zuri.herokuapp.com/item-create/";
 
   static SharedPreferences _sharePref;
   static SharedPreferences _userPref;
@@ -31,17 +34,16 @@ class ApiNetworkingManager {
   static String _userName;
   static String _userEmail;
 
-
-  static String getUsername(){
+  static String getUsername() {
     return _userName = _userPref.getString("username");
   }
 
-  static String getUserEmail(){
+  static String getUserEmail() {
     return _userEmail;
   }
 
-
-  static Future<http.Response> signUpUser( User user, BuildContext context) async {
+  static Future<http.Response> signUpUser(
+      User user, BuildContext context) async {
     final response = await http.post(
       Uri.parse(SIGN_UP_URL),
       headers: <String, String>{
@@ -62,15 +64,13 @@ class ApiNetworkingManager {
       User signUpuser = User.fromJson(obj);
       int id = signUpuser.userId;
       print("user id $id");
-       _userPref = await SharedPreferences.getInstance();
+      _userPref = await SharedPreferences.getInstance();
       _userPref.setString("username", signUpuser.username);
       _userName = user.username;
       _userEmail = signUpuser.email;
       _userIdPref = await SharedPreferences.getInstance();
       _userIdPref.setInt("userId", id);
-       String token = _token.getString("tokKey");
-       
-     
+      String token = _token.getString("tokKey");
     } else {
       print("not successful");
       print(response.statusCode);
@@ -92,8 +92,7 @@ class ApiNetworkingManager {
       headers: <String, String>{
         'Content-Type': 'application/json; charset=UTF-8',
       },
-      body: jsonEncode(<String, String>{
-        "email": email, "password": password}),
+      body: jsonEncode(<String, String>{"email": email, "password": password}),
     );
     if (response.statusCode == 200) {
       print("user Logged in");
@@ -165,22 +164,18 @@ class ApiNetworkingManager {
     }
   }
 
-  static Future<http.Response> verifyUSer(String id, String token, BuildContext context) async {
-  
+  static Future<http.Response> verifyUSer(
+      String id, String token, BuildContext context) async {
     print(token);
     print(id);
     final response = await http.post(
       Uri.parse(ACTIVATE_USER),
       headers: <String, String>{
-        
         'Content-Type': 'application/json; charset=UTF-8',
       },
-       body: jsonEncode(<String, String>{
-         "uid": id.toString(),
-          "token": token
-          }),
+      body: jsonEncode(<String, String>{"uid": id.toString(), "token": token}),
     );
-   
+
     if (response.statusCode == 200) {
       print("user is activated");
       AppNavigator.navigateToLoginScreen(context);
@@ -197,8 +192,26 @@ class ApiNetworkingManager {
       print(response.contentLength);
     }
   }
+
 //FROM HERE WE HAVE API METHODS FOR THE ITEMS
+  static Future<Dio> createItem(Item item, BuildContext context) async {
+    var formData = FormData.fromMap({
+      "item_name": item.itemName,
+      "price": item.price,
+      "category": item.category,
+      "desription": item.description,
+      "image": MultipartFile.fromString(item.image),
+      "author": item.author,
+      "item_of_exchange": item.itemOfExchange
+    });
 
-
-   
+    var response = await Dio().post(CREATE_ITEM,
+        data: formData,
+        options: Options(headers: <String, String>{
+          'Content-Type': 'multipart/form-data; charset=UTF-8',
+        }, responseType: ResponseType.json));
+    if (response.statusCode == 201) {
+      print("item created");
+    }
+  }
 }
