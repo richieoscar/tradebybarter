@@ -102,6 +102,11 @@ class AppNavigator {
         context, MaterialPageRoute(builder: (context) => SignUpLoginScreen()));
   }
 
+   static void navigateToTradeList(BuildContext context) {
+    Navigator.push(
+        context, MaterialPageRoute(builder: (context) => Trade()));
+  }
+
   static void navigateToSignUpScreen(BuildContext context) {
     Navigator.push(context, MaterialPageRoute(builder: (context) => Signup()));
   }

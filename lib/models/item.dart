@@ -1,3 +1,5 @@
+import 'dart:io';
+
 class Item {
   int _id;
   String _itemName;
@@ -10,28 +12,20 @@ class Item {
   String _image;
   int _author;
 
-  Item(  
-    this._itemName,
-    this._price,
-    this._category,
-    this._description,
-    this._itemOfExchange,
-    this._image,
-    this._author);
+  Item(this._itemName, this._price, this._category, this._description,
+      this._itemOfExchange, this._image, this._author);
 
-    Item.created( 
-    this._id,
-    this._itemName,
-    this._price,
-    this._category,
-    this._description,
-    this._itemOfExchange,
-    this._createdAt,
-    this._updatedAt,
-    this._image,
-    this._author)
-    
-  
+  Item.created(
+      this._id,
+      this._itemName,
+      this._price,
+      this._category,
+      this._description,
+      this._itemOfExchange,
+      this._createdAt,
+      this._updatedAt,
+      this._image,
+      this._author);
 
   int get id => _id;
   set id(int id) => _id = id;
@@ -82,4 +76,3 @@ class Item {
     return data;
   }
 }
-

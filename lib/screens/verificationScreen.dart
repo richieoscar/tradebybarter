@@ -42,59 +42,40 @@ class _VerifyScreenState extends State<VerifyScreen> {
                     child: Center(
                       child: Column(
                         children: [
+                          SizedBox(height: 30),
                           Container(
                             child: Text(
-                              "Verification Code",
+                              "Activate Account",
                               style: KPageViewTextStyle,
                             ),
                           ),
                           SizedBox(height: 20),
                           Container(
-                            child: Text(
-                              "We have sent a verification code to",
-                              style: KVerText,
+                            child: Column(
+                              crossAxisAlignment:CrossAxisAlignment.center,
+                              children: [
+                                Icon(Icons.email, size:50, color: KBrandColors,),
+                                 SizedBox(height: 30),
+                                Text(
+                                  "We have sent a verification link to Your Email",
+                                  style: KVerText,
+                                ),
+                                SizedBox(height: 10),
+                                Text(
+                                  "Kindly Click the link to Activate your Account",
+                                  style: KVerText,
+                                ),
+                              ],
                             ),
                           ),
                           SizedBox(height: 10),
-                          Container(
-                            child: Text(
-                              _email == null? "Your Email"  :  ApiNetworkingManager.getUserEmail(),
-                              style: KVerEmail,
-                            ),
-                          ),
-                          SizedBox(height: 20),
+                         
+                  
                         ],
                       ),
                     ),
                   ),
-                  SizedBox(height: 20),
-                  Padding(
-                    padding: const EdgeInsets.only(
-                      left: 30.0,
-                      right: 30.0,
-                    ),
-                    child: PinCodeTextField(
-                      controller: _verifyController,
-                      appContext: context,
-                      length: 5,
-                      onChanged: (value) {
-                        print(value);
-                      },
-                      enableActiveFill: true,
-                      showCursor: false,
-                      pinTheme: PinTheme(
-                          inactiveFillColor: Colors.grey[100],
-                          selectedFillColor: Colors.grey[100],
-                          activeFillColor: Colors.grey[100],
-                          activeColor: Color(0xFFA60000),
-                          inactiveColor: Colors.grey[200],
-                          shape: PinCodeFieldShape.box,
-                          fieldHeight: 50,
-                          fieldWidth: 50,
-                          borderRadius: BorderRadius.circular(5.0),
-                          selectedColor: Colors.amberAccent),
-                    ),
-                  ),
+                  
                 
                   SizedBox(height: 40),
                   Container(
@@ -107,7 +88,7 @@ class _VerifyScreenState extends State<VerifyScreen> {
                         shape: MaterialStateProperty.all(RoundedRectangleBorder(
                             borderRadius: BorderRadius.circular(10.0))),
                       ),
-                      onPressed: () async {
+                      onPressed: (){
                         
                           // SharedPreferences pref  =  await SharedPreferences.getInstance();
                           // String token  = pref.getString("tokKey");
@@ -117,11 +98,11 @@ class _VerifyScreenState extends State<VerifyScreen> {
                           // String userid = id.toString();
                          // ApiNetworkingManager.verifyUSer(userid ,token, context);
             
-                        print('verify clicked');
+                        print('Go To Login');
                         AppNavigator.navigateToLoginScreen(context);
                       },
                       child: Text(
-                        "Verify",
+                        "Login",
                         style: TextStyle(
                             color: const Color(0xFFFFFFFF),
                             fontWeight: FontWeight.w500,

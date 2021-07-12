@@ -214,7 +214,6 @@ class _LoginState extends State<LoginScreen> {
                             });
                             return;
                           }
-
                           ApiNetworkingManager.loginUser(
                                   email, password, context)
                               .whenComplete(() => setState(() {

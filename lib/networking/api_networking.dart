@@ -6,6 +6,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:fluttertoast/fluttertoast.dart';
 import 'package:http/http.dart' as http;
+import 'package:http_parser/http_parser.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'package:trade_by_barter/models/User.dart';
 import 'package:trade_by_barter/models/auth.dart';
@@ -26,6 +27,7 @@ class ApiNetworkingManager {
       "https://trade-app-zuri.herokuapp.com/auth/users/activation/";
   static const CREATE_ITEM =
       "https://trade-app-zuri.herokuapp.com/item-create/";
+  static const ALL_ITEMS = "https://trade-app-zuri.herokuapp.com/item-all/";
 
   static SharedPreferences _sharePref;
   static SharedPreferences _userPref;
@@ -200,18 +202,74 @@ class ApiNetworkingManager {
       "price": item.price,
       "category": item.category,
       "desription": item.description,
-      "image": MultipartFile.fromString(item.image),
+      //"image": MultipartFile.fromFile(item.image.path, filename: "Image", contentType: new MediaType("image", "jpeg")),
       "author": item.author,
       "item_of_exchange": item.itemOfExchange
     });
 
     var response = await Dio().post(CREATE_ITEM,
         data: formData,
-        options: Options(headers: <String, String>{
+        options: Options(headers: {
           'Content-Type': 'multipart/form-data; charset=UTF-8',
         }, responseType: ResponseType.json));
     if (response.statusCode == 201) {
       print("item created");
+    } else {
+      print("Data:  ${response.data}");
+      print("Code:  ${response.statusCode}");
+      print("Message:  ${response.statusMessage}");
     }
+  }
+
+  static Future<http.Response> createItem2(
+      Item item, BuildContext context) async {
+    var uri = Uri.parse(CREATE_ITEM);
+    var request = http.MultipartRequest(
+      'POST',
+      uri,
+    )
+      ..fields['item_name'] = item.itemName
+      ..fields['price'] = item.price.toString()
+      ..fields['category'] = item.category
+      ..fields['description'] = item.description
+      ..files.add(await http.MultipartFile.fromPath('image', item.image,
+          contentType: MediaType('image', 'jpeg')))
+      ..fields['author'] = item.author.toString()
+      ..fields['item_of_exchange'] = item.itemOfExchange;
+    var response = await request.send();
+
+    if (response.statusCode == 201) {
+      print("Item Created");
+      print("Response:  ${response.toString()}");
+      AppNavigator.navigateToTradeList(context);
+    } else {
+      print("Item not created");
+      print(response.reasonPhrase);
+      //print(response.request);
+      //print(response.headers);
+      print(response.statusCode);
+    }
+  }
+
+  static Future<List<Item>> getItems() async {
+    List<Item> responseItem = [];
+    final response = await http.get(
+      Uri.parse(ALL_ITEMS),
+      headers: <String, String>{
+        'Content-Type': 'application/json',
+      },
+    );
+    if (response.statusCode == 200) {
+      print(response.body);
+      List json = jsonDecode(response.body);
+      responseItem = json.map((items) => Item.fromJson(items)).toList();
+    } else {
+      print("Could not get items");
+      print(response.statusCode);
+      print(response.body);
+      print(response.contentLength);
+      // AppNavigator.navigateToLoginScreen(context);
+    }
+    return responseItem;
   }
 }

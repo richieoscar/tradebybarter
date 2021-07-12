@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:trade_by_barter/models/item.dart';
+import 'package:trade_by_barter/networking/api_networking.dart';
 import 'package:trade_by_barter/screens/bottom_nav_bar.dart';
-
 
 class Trade extends StatefulWidget {
   @override
@@ -8,6 +9,9 @@ class Trade extends StatefulWidget {
 }
 
 class _TradeState extends State<Trade> {
+  //MAKING THE API CALL HERE
+  var future = ApiNetworkingManager.getItems();
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -18,90 +22,16 @@ class _TradeState extends State<Trade> {
             child: Text(
               "Trade's List",
               style:
-              TextStyle(color: Colors.black, fontWeight: FontWeight.bold),
+                  TextStyle(color: Colors.black, fontWeight: FontWeight.bold),
             ),
           )),
-      backgroundColor: Colors.white60,
-      body: Column(
-        children: [
-          SizedBox(height: 20),
-          Card(
-            child: Container(
-              height: 500,
-              margin: EdgeInsets.fromLTRB(30, 25.0, 30.0, 0.0),
-              child: Column(
-                children: [
-                  SizedBox(
-                    height: 10.0,
-                  ),
-                  imageRow(
-                      "images/populardemand6.png", "images/populardemand2.png"),
-                  imageRow(
-                      "images/populardemand2.png", "images/populardemand6.png"),
-                  imageRow(
-                      "images/populardemand6.png", "images/populardemand5.png"),
-                ],
-              ),
-            ),
-          ),
-          SizedBox(height: 30.0),
-          button(),
-        ],
-      ),
-
-    );
-  }
-
-  int _selectedIndex =0;
-  void _onItemTapped(int index) {
-    setState(() {
-      _selectedIndex = index;
-
-    });
-  }
-
-  Widget imageRow(String image1, String image2) {
-    return Container(
-      padding: EdgeInsets.all(20),
-      child: Row(
-        mainAxisAlignment: MainAxisAlignment.center,
-        children: [
-          Container(
-            decoration: BoxDecoration(
-              borderRadius: BorderRadius.circular(30.0),
-            ),
-            child: Image.asset(
-              image1,
-              width: 110.0,
-            ),
-          ),
-          SizedBox(
-            width: 25.0,
-          ),
-          Container(
-            decoration: BoxDecoration(
-              borderRadius: BorderRadius.circular(30.0),
-            ),
-            child: Image.asset(
-              image2,
-              width: 110.0,
-            ),
-          ),
-        ],
-      ),
-    );
-  }
-
-  Widget text(String text){
-    return Container(
-      margin: EdgeInsets.fromLTRB(0, 30, 0, 0),
-      child: Text(text,
-      style: TextStyle(
-        color: Colors.black,
-        fontSize: 20.0,
-        fontWeight: FontWeight.bold,
-      ),
-      )
+      // ignore: missing_return
+      body: FutureBuilder<List<Item>>(
+          builder: (context, snapshot) {
+            return Text(snapshot.hasData.toString());
+            //SNAPSHOT DOESNT HAVE DATA
+          },
+          future: future),
     );
   }
 

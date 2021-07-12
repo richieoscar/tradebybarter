@@ -2,6 +2,7 @@ import 'dart:io';
 
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 import 'package:trade_by_barter/navigation/navigation.dart';
 import 'package:image_picker/image_picker.dart';
 import '../constants.dart';
@@ -14,6 +15,7 @@ class AddPhotos extends StatefulWidget {
 class _AddPhotosState extends State<AddPhotos> {
   final _picker = ImagePicker();
   File _imageFile;
+  SharedPreferences imagefile;
 
   _openGallery() async {
     if (_imageFile == null) {
@@ -29,11 +31,14 @@ class _AddPhotosState extends State<AddPhotos> {
     }
   }
 
-  _handlePickedFile(PickedFile pickedImage) {
+  _handlePickedFile(PickedFile pickedImage)async {
     if (pickedImage != null) {
       File image = File(pickedImage.path);
-      setState(() {
+      setState(() async {
         _imageFile = image;
+        imagefile = await SharedPreferences.getInstance();
+        imagefile.setString("file", _imageFile.path);
+
       });
     }
   }
@@ -83,6 +88,7 @@ class _AddPhotosState extends State<AddPhotos> {
       decoration: BoxDecoration(borderRadius: BorderRadius.circular(30)),
       constraints: BoxConstraints.expand(height: 200, width: 200),
       child: Image.file(_imageFile, fit: BoxFit.fill),
+  
     );
   }
 
