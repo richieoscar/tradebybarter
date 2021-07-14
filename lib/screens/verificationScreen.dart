@@ -15,6 +15,7 @@ class VerifyScreen extends StatefulWidget {
 class _VerifyScreenState extends State<VerifyScreen> {
   String _email;
 
+
   var _verifyController = TextEditingController();
   @override
   Widget build(BuildContext context) {

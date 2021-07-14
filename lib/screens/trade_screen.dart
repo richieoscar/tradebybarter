@@ -1,16 +1,34 @@
+
+
 import 'package:flutter/material.dart';
 import 'package:trade_by_barter/models/item.dart';
 import 'package:trade_by_barter/networking/api_networking.dart';
-import 'package:trade_by_barter/screens/bottom_nav_bar.dart';
 
-class Trade extends StatefulWidget {
-  @override
-  _TradeState createState() => _TradeState();
-}
-
-class _TradeState extends State<Trade> {
+class Trade extends StatelessWidget {
+  
   //MAKING THE API CALL HERE
-  var future = ApiNetworkingManager.getItems();
+  Future<List<Item>> future = ApiNetworkingManager.getItems();
+
+  Widget showItems(BuildContext context){
+    return Container(
+      child: FutureBuilder<List<Item>>(future: future,builder: (context, snapshot){
+        if( snapshot.connectionState == ConnectionState.done  && snapshot.hasData){
+          return ListView.builder(
+            itemCount: snapshot.data.length,
+              itemBuilder: (context, index){
+            return ListTile(
+              leading: Container( width: 200,child: Image.network(snapshot.data[index].image)),
+              title: Text(snapshot.data[index].itemName),
+              subtitle: Text(snapshot.data[index].description),
+            );
+          });
+        }
+        else {
+          return Center(child: CircularProgressIndicator());
+        }
+      }),
+    );
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -26,12 +44,7 @@ class _TradeState extends State<Trade> {
             ),
           )),
       // ignore: missing_return
-      body: FutureBuilder<List<Item>>(
-          builder: (context, snapshot) {
-            return Text(snapshot.hasData.toString());
-            //SNAPSHOT DOESNT HAVE DATA
-          },
-          future: future),
+      body: showItems(context),
     );
   }
 
@@ -45,7 +58,7 @@ class _TradeState extends State<Trade> {
             borderRadius: BorderRadius.circular(15.0),
           )),
         ),
-        onPressed: _proceed(),
+        onPressed: (){},
         child: Text(
           "Proceed",
           style: TextStyle(
@@ -56,6 +69,6 @@ class _TradeState extends State<Trade> {
       ),
     );
   }
-
-  _proceed() {}
 }
+
+  

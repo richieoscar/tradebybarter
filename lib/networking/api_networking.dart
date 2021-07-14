@@ -27,7 +27,7 @@ class ApiNetworkingManager {
       "https://trade-app-zuri.herokuapp.com/auth/users/activation/";
   static const CREATE_ITEM =
       "https://trade-app-zuri.herokuapp.com/item-create/";
-  static const ALL_ITEMS = "https://trade-app-zuri.herokuapp.com/item-all/";
+  static const ALL_ITEMS = "https://trade-app-zuri.herokuapp.com/item-all";
 
   static SharedPreferences _sharePref;
   static SharedPreferences _userPref;
@@ -66,8 +66,8 @@ class ApiNetworkingManager {
       User signUpuser = User.fromJson(obj);
       int id = signUpuser.userId;
       print("user id $id");
-      _userPref = await SharedPreferences.getInstance();
-      _userPref.setString("username", signUpuser.username);
+
+     // _userPref.setString("username", signUpuser.username);
       _userName = user.username;
       _userEmail = signUpuser.email;
       _userIdPref = await SharedPreferences.getInstance();
@@ -118,8 +118,8 @@ class ApiNetworkingManager {
     }
   }
 
-  static Future<User> loggedInUser(BuildContext context) async {
-    var token = _token.getString("token");
+  static Future<User> loggedInUser() async {
+    var token = _token.getString("tokKey");
     final response = await http.get(
       Uri.parse(IS_LOGGED_IN_URL),
       headers: <String, String>{
@@ -129,13 +129,14 @@ class ApiNetworkingManager {
     );
     if (response.statusCode == 200) {
       print(response.body);
-      return User.fromJson(jsonDecode(response.body));
+      print("user is logged in");
+      var user =  User.fromJson(jsonDecode(response.body));
+      return user;
     } else {
       print("User is not Logged In");
       print(response.statusCode);
       print(response.body);
       print(response.contentLength);
-      AppNavigator.navigateToLoginScreen(context);
     }
   }
 
@@ -245,31 +246,28 @@ class ApiNetworkingManager {
     } else {
       print("Item not created");
       print(response.reasonPhrase);
-      //print(response.request);
-      //print(response.headers);
       print(response.statusCode);
     }
   }
 
   static Future<List<Item>> getItems() async {
-    List<Item> responseItem = [];
-    final response = await http.get(
+    var response = await http.get(
       Uri.parse(ALL_ITEMS),
-      headers: <String, String>{
+       headers: <String, String>{
         'Content-Type': 'application/json',
-      },
+       },
     );
     if (response.statusCode == 200) {
       print(response.body);
-      List json = jsonDecode(response.body);
-      responseItem = json.map((items) => Item.fromJson(items)).toList();
-    } else {
+      var json = jsonDecode(response.body) as List;
+        return json.map((item) => Item.fromJson(item)).toList();
+    }
+     else {
       print("Could not get items");
       print(response.statusCode);
       print(response.body);
       print(response.contentLength);
       // AppNavigator.navigateToLoginScreen(context);
     }
-    return responseItem;
   }
 }

@@ -13,34 +13,28 @@ class HomeScreen extends StatefulWidget {
 }
 
 class _HomeScreenState extends State<HomeScreen> {
-  String _username;
-  Future<User> user;
+  String _username = "Hi User";
+  Future<User> user = ApiNetworkingManager.loggedInUser();
 
-  getUserName() async {
-    SharedPreferences sp = await SharedPreferences.getInstance();
-    _username = sp.getString("username");
+  Widget greetUser(){
+    return Container(
+      child:FutureBuilder<User> (future: user, builder: (context, snapshot){
+        if (snapshot.hasData){
+          return Padding(
+            padding: const EdgeInsets.all(8.0),
+            child: Text("Hi ${snapshot.data.username}",
+            style: TextStyle(
+              fontSize: 20,
+              fontWeight: FontWeight.bold,
+            ),),
+          );
+        }
+        else{
+          return Text("Hi");
+        }
+      }),
+    );
   }
- 
-
-  @override
-  void initState() {
-    super.initState();
-   
-  }
-   _displayUserName() async{
-    SharedPreferences pref =  await SharedPreferences.getInstance();
-         var  user = pref.getString("username");
-          setState(() {
-            _username = user;
-          });
-  }
-
-  String _displayNoUserName(){
-    return _username = "Hi User";
-
-  }
-
- 
 
   @override
   Widget build(BuildContext context) {
@@ -55,17 +49,7 @@ class _HomeScreenState extends State<HomeScreen> {
               left: 10.0,
             ),
             child: Row(children: [
-              Text(
-                _username == null ? _displayNoUserName():_displayUserName(),
-                //ApiNetworkingManager.getUsername(),
-                textAlign: TextAlign.left,
-                textDirection: TextDirection.ltr,
-                style: TextStyle(
-                  fontSize: 15,
-                  color: Colors.black,
-                  fontWeight: FontWeight.bold,
-                ),
-              )
+              greetUser(),
             ]),
           ),
           SearchWidget(),
