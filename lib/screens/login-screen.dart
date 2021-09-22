@@ -270,7 +270,7 @@ class _LoginState extends State<LoginScreen> {
   Widget hideProgressBar() {
     return Visibility(
       visible: false,
-      child: CircularProgressIndicator(),
+      child: CircularProgressIndicator( color: KfilterBorderColors),
     );
   }
 
@@ -279,7 +279,7 @@ class _LoginState extends State<LoginScreen> {
       child: Visibility(
         visible: _show,
         child: CircularProgressIndicator(
-          //color: KfilterBorderColors,
+          color: KfilterBorderColors,
         ),
       ),
     );

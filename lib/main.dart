@@ -1,5 +1,7 @@
 import 'dart:async';
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
+import 'package:trade_by_barter/provider/api_provider.dart';
 import 'package:trade_by_barter/screens/antiques.dart';
 import 'package:trade_by_barter/screens/booksScreen.dart';
 import 'package:trade_by_barter/screens/bottom_nav_bar.dart';
@@ -20,7 +22,14 @@ import 'screens/trade_item_screen.dart';
 import 'screens/filterScreen.dart';
 
 void main() {
-  runApp(MyApp());
+  runApp(
+    MultiProvider(
+      providers: [
+        ChangeNotifierProvider(create: (_) => ApiProvider())
+      ],
+      child: MyApp(),
+    ),
+  );
 }
 
 class MyApp extends StatelessWidget {

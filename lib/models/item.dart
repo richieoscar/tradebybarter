@@ -3,7 +3,7 @@ import 'dart:io';
 class Item {
   int _id;
   String _itemName;
-  int _price;
+  double _price;
   String _category;
   String _description;
   String _itemOfExchange;
@@ -31,8 +31,8 @@ class Item {
   set id(int id) => _id = id;
   String get itemName => _itemName;
   set itemName(String itemName) => _itemName = itemName;
-  int get price => _price;
-  set price(int price) => _price = price;
+  double get price => _price;
+  set price(double price) => _price = price;
   String get category => _category;
   set category(String category) => _category = category;
   String get description => _description;

@@ -27,6 +27,7 @@ class ApiNetworkingManager {
       "https://trade-app-zuri.herokuapp.com/auth/users/activation/";
   static const CREATE_ITEM =
       "https://trade-app-zuri.herokuapp.com/item-create/";
+
   static const ALL_ITEMS = "https://trade-app-zuri.herokuapp.com/item-all";
 
   static SharedPreferences _sharePref;
@@ -269,5 +270,23 @@ class ApiNetworkingManager {
       print(response.contentLength);
       // AppNavigator.navigateToLoginScreen(context);
     }
+  }
+  static Future<List<Item>> getAllItems() async{
+    final response = await http.get(Uri.parse(ALL_ITEMS));
+    if(response.statusCode ==200){
+      print(response.body);
+
+      final convertResponse = jsonDecode(response.body);
+      final convertList = convertResponse as List;
+      final data = convertList.map((items) => Item.fromJson(items)).toList();
+      return data;
+    }
+
+    else{
+      throw Exception("failed");
+    }
+
+
+
   }
 }

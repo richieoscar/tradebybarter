@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:trade_by_barter/main.dart';
+import 'package:trade_by_barter/models/item.dart';
 import 'package:trade_by_barter/models/product_model.dart';
 import 'package:trade_by_barter/screens/add_photos_screen.dart';
 import 'package:trade_by_barter/screens/antiques.dart';
@@ -22,6 +23,7 @@ import 'package:trade_by_barter/screens/notification_screen.dart';
 import 'package:trade_by_barter/screens/settings_screen.dart';
 import 'package:trade_by_barter/screens/signUp.dart';
 import 'package:trade_by_barter/screens/signup_login_screen.dart';
+import 'package:trade_by_barter/screens/trade_item_screen.dart';
 import 'package:trade_by_barter/screens/trade_screen.dart';
 import 'package:trade_by_barter/screens/verificationScreen.dart';
 
@@ -44,10 +46,12 @@ class AppNavigator {
     Navigator.pushNamed(context, routeName);
   }
 
-  static void navigateWithArgument(BuildContext context, String routeName,
-      String producName, String productVal) {
-    Navigator.pushNamed(context, routeName,
-        arguments: Product(producName, productVal));
+  static void navigateToDetail(BuildContext context, Item item) {
+    Navigator.push(context, MaterialPageRoute(builder: (context)=> ItemScreen(),
+         settings: RouteSettings(
+           arguments:item,
+         )),
+        );
   }
 
   static void navigateToHomeScreen(BuildContext context) {

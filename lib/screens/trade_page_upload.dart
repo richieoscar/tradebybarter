@@ -24,6 +24,7 @@ class Pageupload extends StatefulWidget {
 
 class _PageuploadState extends State<Pageupload> {
   String dropdownValue = null;
+  bool _show = false;
   var items = ['Clothes', 'Gadgets', 'Automobiles'];
   var _itemNameController = TextEditingController();
   var _priceController = TextEditingController();
@@ -311,13 +312,14 @@ class _PageuploadState extends State<Pageupload> {
                         height: 5,
                       ),
                       Row(
-                        mainAxisAlignment: MainAxisAlignment.start,
+                        mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                         crossAxisAlignment: CrossAxisAlignment.center,
                         children: [
                           // button(),
                           _imageFile == null
                               ? _displayNoImageSelected()
-                              : _displaySelectedImage()
+                              : _displaySelectedImage(),
+                          showProgressBar(),
                         ],
                       ),
                       SizedBox(height: 40),
@@ -350,6 +352,9 @@ class _PageuploadState extends State<Pageupload> {
             )),
           ),
           onPressed: () {
+            setState(() {
+              _show = true;
+            });
             var itemName = _itemNameController.text;
             var itemDescription = _descriptionController.text;
             var price = _priceController.text;
@@ -374,9 +379,12 @@ class _PageuploadState extends State<Pageupload> {
                   backgroundColor: KProceedColor);
               return;
             }
-            Item item = Item(itemName, int.parse(price), category,
+            Item item = Item(itemName, double.parse(price), category,
                 itemDescription, itemOfexchange, image, int.parse(author));
             ApiNetworkingManager.createItem2(item, context).whenComplete(() {
+              setState(() {
+                _show = false;
+              });
               Fluttertoast.showToast(
                   msg: "Item Created Successfully",
                   gravity: ToastGravity.BOTTOM,
@@ -395,6 +403,24 @@ class _PageuploadState extends State<Pageupload> {
           ),
         ),
       ),
+    );
+  }
+
+  Widget showProgressBar() {
+    return Center(
+      child: Visibility(
+        visible: _show,
+        child: CircularProgressIndicator(
+          color: KfilterBorderColors,
+        ),
+      ),
+    );
+  }
+
+  Widget hideProgressBar() {
+    return Visibility(
+      visible: false,
+      child: CircularProgressIndicator( color: KfilterBorderColors),
     );
   }
 

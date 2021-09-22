@@ -1,44 +1,52 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:trade_by_barter/models/item.dart';
+import 'package:trade_by_barter/navigation/navigation.dart';
 import 'package:trade_by_barter/screens/bottom_nav_bar.dart';
 
 class ItemScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
+
+    final item = ModalRoute.of(context).settings.arguments as Item;
+    print(item.itemName);
     return Scaffold(
-      backgroundColor: Colors.grey[100],
-      bottomNavigationBar: Launcher(),
+      appBar: AppBar(
+        leading: IconButton(
+          icon: Icon(Icons.arrow_back),
+          color: Colors.black,
+          onPressed: () => AppNavigator.navigateBack(context),
+        ),
+        elevation: 0.0,
+        backgroundColor: Colors.white,
+        centerTitle: true,
+        title: Text(
+          "Detail",
+          style:
+          TextStyle(color: Colors.black, fontWeight: FontWeight.bold),
+        ),
+
+      ),
+
       body: SingleChildScrollView(
-        child: Column(
-          children: [
-            SizedBox(height: 50.0),
-            textTitle("Item Detail"),
-            SizedBox(height: 30.0),
-            itemImage("images/populardemand4.png"),
-            SizedBox(height: 40.0),
-            itemDetail("Product Name: MUL PURSE"),
-            itemDetail("Product value: 200"),
-            itemDetail("Product Description:"),
-            itemDetail("Product Condition: Ok"),
-            SizedBox(height: 30.0),
-            proceedButton(),
-          ],
+        child: Center(
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.center,
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: [
+              SizedBox(height: 50.0),
+              itemImage(item.image),
+              SizedBox(height: 40.0),
+              itemDetail(item.itemName),
+              itemDetail("Value: ${item.price.toString()}"),
+              itemDetail(item.description),
+              itemDetail("Exchange For: ${item.itemOfExchange}"),
+              SizedBox(height: 30.0),
+              proceedButton(),
+            ],
+          ),
         ),
       ),
-    );
-  }
-
-  Widget textTitle(String text) {
-    return Container(
-        margin: EdgeInsets.fromLTRB(0, 30, 0, 0),
-        child: Text(
-          text,
-          style: TextStyle(
-            color: Colors.black,
-            fontSize: 20.0,
-            fontWeight: FontWeight.bold,
-          ),
-        )
     );
   }
 
@@ -67,23 +75,17 @@ class ItemScreen extends StatelessWidget {
 
   Widget itemImage(String imagePath) {
     return Center(
-      child: Container(
-        width: 150,
-        margin: EdgeInsets.fromLTRB(0, 20, 0, 0),
-        decoration: BoxDecoration(shape: BoxShape.rectangle,
-            border: Border.all(color: Color(0xffa60000), width: 3),
-            borderRadius: BorderRadius.circular(10),
-            boxShadow: [
-          BoxShadow(
-            color: Colors.white,
-            offset: Offset(5.0, 5.0),
-            blurRadius: 1.0,
-            spreadRadius: 2.0,
+      child: Card(
+        child: Container(
+          constraints: BoxConstraints.expand(width: 200, height: 200),
+          decoration: BoxDecoration(shape: BoxShape.rectangle,
+              border: Border.all(color: Color(0xffa60000), width: 3),
+              borderRadius: BorderRadius.circular(10),
+              ),
+          child: Image.network(
+            imagePath,
+            fit: BoxFit.fill,
           ),
-        ]),
-        child: Image.asset(
-          imagePath,
-          fit: BoxFit.contain,
         ),
       ),
     );
@@ -96,16 +98,17 @@ class ItemScreen extends StatelessWidget {
           padding: EdgeInsets.all(10),
           margin: EdgeInsets.fromLTRB(10, 20, 10, 0),
           decoration: BoxDecoration(
-            color: Colors.grey[300],
+            color: Colors.grey[200],
             borderRadius: BorderRadius.circular(10),
             border: Border.all(color: Color(0xffa60000), width: 1),
           ),
           child: Text(
             text,
+            textAlign: TextAlign.center,
             style: TextStyle(
               color: Colors.black,
-              fontSize: 18.0,
-              fontWeight: FontWeight.w400,
+              fontSize: 16.0,
+              fontWeight: FontWeight.w500,
             ),
           )),
     );
